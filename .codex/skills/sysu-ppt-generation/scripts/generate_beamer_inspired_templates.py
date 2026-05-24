@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-"""Generate Beamer-inspired SYSU PPTX templates.
+"""Generate spacious Beamer-inspired SYSU PPTX templates.
 
-These decks borrow Beamer/Madrid academic slide structure: clear top title bar,
-frame numbers, theorem/example blocks, booktabs-like tables, columns, and
-diagram-first content. They keep SYSU colors, fonts, logos, and imagery.
+These PPTX files preserve Beamer's academic structure but redraw it for
+PowerPoint projection: larger typography, fewer simultaneous elements, wider
+margins, and bigger visual regions than a true LaTeX Beamer PDF.
 """
 
 from __future__ import annotations
@@ -16,16 +16,16 @@ from PIL import Image
 from pptx import Presentation
 from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE
-from pptx.enum.text import PP_ALIGN, MSO_VERTICAL_ANCHOR
+from pptx.enum.text import PP_ALIGN
 from pptx.util import Inches, Pt
 
 
 ROOT = Path(__file__).resolve().parents[4]
 STYLE_ROOT = ROOT / "templates" / "styles"
-ASSET_ROOT = ROOT / "templates" / "assets"
 OUTPUT_ROOT = ROOT / "outputs" / "style-showcase" / "beamer-inspired"
 TEMPLATE_ROOT = ROOT / "templates" / "generated" / "beamer-inspired"
-REF_ROOT = ROOT / ".codex" / "reference-skills" / "beamer-skill" / "beamer"
+LOGO_ROOT = ROOT / "templates" / "generated" / "beamer-assets"
+MANIFEST_PATH = ROOT / ".codex" / "skills" / "sysu-ppt-generation" / "assets" / "template-manifest.json"
 
 SLIDE_W = 13.333
 SLIDE_H = 7.5
@@ -35,8 +35,7 @@ STYLES: list[dict[str, Any]] = [
     {
         "id": "beamer-sysu-blue",
         "name": "Beamer SYSU Blue",
-        "strict_source_id": "strict-sysu-official-blue",
-        "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+        "source": "templates/source/sysu-official/\u4e2d\u5c71\u5927\u5b66\u5e7b\u706f\u7247\u6a21\u677f-\u84dd.pptx",
         "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
         "accent": "0B4F6C",
         "secondary": "3494BA",
@@ -49,14 +48,13 @@ STYLES: list[dict[str, Any]] = [
         "text": "1D2733",
         "muted": "667085",
         "font": "思源黑体 CN Medium",
-        "font_fallback": "Microsoft YaHei",
+        "font_fallback": "微软雅黑",
         "use_case": "Academic reports, seminars, and technical talks using SYSU official blue.",
     },
     {
         "id": "beamer-sysu-green",
         "name": "Beamer SYSU Green",
-        "strict_source_id": "strict-sysu-official-green",
-        "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+        "source": "templates/source/sysu-official/\u4e2d\u5c71\u5927\u5b66\u5e7b\u706f\u7247\u6a21\u677f-\u7eff.pptx",
         "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
         "accent": "2F6F4E",
         "secondary": "73A45D",
@@ -69,14 +67,13 @@ STYLES: list[dict[str, Any]] = [
         "text": "1E2A22",
         "muted": "617067",
         "font": "思源宋体 CN Heavy",
-        "font_fallback": "Microsoft YaHei",
+        "font_fallback": "微软雅黑",
         "use_case": "Biomedical, life-science, public-health, and sustainability talks using SYSU official green.",
     },
     {
         "id": "beamer-sysu-red",
         "name": "Beamer SYSU Red",
-        "strict_source_id": "strict-sysu-official-red",
-        "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+        "source": "templates/source/sysu-official/\u4e2d\u5c71\u5927\u5b66\u5e7b\u706f\u7247\u6a21\u677f-\u7ea2.pptx",
         "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
         "accent": "8F1D2C",
         "secondary": "C83A3A",
@@ -89,7 +86,7 @@ STYLES: list[dict[str, Any]] = [
         "text": "2B1B1D",
         "muted": "735A5D",
         "font": "思源宋体 CN Medium",
-        "font_fallback": "Microsoft YaHei",
+        "font_fallback": "微软雅黑",
         "use_case": "Formal academic reports, defenses, and official talks using SYSU red.",
     },
 ]
@@ -111,7 +108,7 @@ def add_rect(slide, x, y, w, h, fill, line=None, radius=False):
     shape.fill.fore_color.rgb = rgb(fill)
     if line:
         shape.line.color.rgb = rgb(line)
-        shape.line.width = Pt(0.8)
+        shape.line.width = Pt(0.9)
     else:
         shape.line.fill.background()
     return shape
@@ -130,13 +127,10 @@ def add_text(
     *,
     bold=False,
     align=None,
-    valign=None,
 ):
     box = slide.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h))
     box.text_frame.clear()
     box.text_frame.word_wrap = True
-    if valign:
-        box.text_frame.vertical_anchor = valign
     p = box.text_frame.paragraphs[0]
     if align:
         p.alignment = align
@@ -149,7 +143,44 @@ def add_text(
     return box
 
 
-def add_picture_contain(slide, image_path: Path, x: float, y: float, w: float, h: float):
+def add_bullet(slide, text, x, y, w, style, *, size=16):
+    add_rect(slide, x, y + 0.12, 0.13, 0.13, style["secondary"])
+    return add_text(slide, text, x + 0.28, y, w - 0.28, 0.28, size, style["text"], style["font_fallback"])
+
+
+def add_line(slide, x1, y1, x2, y2, color, width=1.5):
+    line = slide.shapes.add_connector(1, Inches(x1), Inches(y1), Inches(x2), Inches(y2))
+    line.line.color.rgb = rgb(color)
+    line.line.width = Pt(width)
+    return line
+
+
+def add_arrow(slide, x1, y1, x2, y2, color):
+    line = add_line(slide, x1, y1, x2, y2, color, 2.1)
+    line.line.end_arrowhead = True
+    return line
+
+
+def safe_image(path: Path) -> bool:
+    try:
+        with Image.open(path) as image:
+            image.verify()
+        return True
+    except Exception:
+        return False
+
+
+def alpha_transparency(path: Path) -> float:
+    with Image.open(path) as image:
+        rgba = image.convert("RGBA")
+    alpha = rgba.getchannel("A")
+    transparent = sum(1 for value in alpha.getdata() if value < 10)
+    return transparent / max(1, rgba.width * rgba.height)
+
+
+def add_picture_contain(slide, image_path: Path | None, x: float, y: float, w: float, h: float):
+    if not image_path:
+        return None
     with Image.open(image_path) as image:
         ratio = image.width / max(image.height, 1)
     box_ratio = w / h
@@ -166,7 +197,10 @@ def add_picture_contain(slide, image_path: Path, x: float, y: float, w: float, h
     return slide.shapes.add_picture(str(image_path), Inches(px), Inches(py), width=Inches(pw), height=Inches(ph))
 
 
-def add_picture_crop(slide, image_path: Path, x: float, y: float, w: float, h: float):
+def add_picture_crop(slide, image_path: Path | None, x: float, y: float, w: float, h: float):
+    if not image_path:
+        add_rect(slide, x, y, w, h, "E5E7EB", "D0D5DD", radius=True)
+        return None
     pic = slide.shapes.add_picture(str(image_path), Inches(x), Inches(y), width=Inches(w), height=Inches(h))
     with Image.open(image_path) as image:
         img_ratio = image.width / max(image.height, 1)
@@ -182,12 +216,23 @@ def add_picture_crop(slide, image_path: Path, x: float, y: float, w: float, h: f
     return pic
 
 
+def save_presentation(prs: Presentation, path: Path) -> Path:
+    try:
+        prs.save(path)
+        return path
+    except PermissionError:
+        fallback = path.with_name(f"{path.stem}-updated{path.suffix}")
+        prs.save(fallback)
+        print(f"Locked: {path}; wrote {fallback}")
+        return fallback
+
+
 def load_manifest(style: dict[str, Any]) -> dict[str, Any]:
     return json.loads((ROOT / style["asset_manifest"]).read_text(encoding="utf-8"))
 
 
 def assets_by_category(manifest: dict[str, Any], category: str, limit: int) -> list[dict[str, Any]]:
-    allowed = {".png", ".jpg", ".jpeg", ".gif", ".tiff"}
+    allowed = {".png", ".jpg", ".jpeg"}
     rows = [
         item
         for item in manifest["assets"]
@@ -197,263 +242,265 @@ def assets_by_category(manifest: dict[str, Any], category: str, limit: int) -> l
         and (ROOT / item["file"]).suffix.lower() in allowed
     ]
     rows.sort(key=lambda item: (len(item.get("slides", [])), item.get("width", 0) * item.get("height", 0)), reverse=True)
-    return rows[:limit]
+    kept = []
+    for item in rows:
+        path = ROOT / item["file"]
+        if path.exists() and safe_image(path):
+            kept.append(item)
+        if len(kept) >= limit:
+            break
+    return kept
 
 
-def add_frame_header(slide, style: dict[str, Any], title: str, index: int, section: str = "SYSU Beamer"):
+def select_wordmark_logo(manifest: dict[str, Any]) -> Path | None:
+    allowed = {".png"}
+    candidates = []
+    for item in manifest["assets"]:
+        if item["category"] != "logo-wordmark-emblem":
+            continue
+        path = ROOT / item["file"]
+        if path.suffix.lower() not in allowed or not path.exists() or not safe_image(path):
+            continue
+        width = item.get("width") or 0
+        height = item.get("height") or 0
+        if not width or not height:
+            continue
+        aspect = width / height
+        if not 2.6 <= aspect <= 4.2:
+            continue
+        transparency = alpha_transparency(path)
+        if transparency < 0.35:
+            continue
+        score = width * height + transparency * 500000 - abs(aspect - 3.45) * 100000
+        candidates.append((score, path))
+    if candidates:
+        return max(candidates, key=lambda row: row[0])[1]
+    fallback = assets_by_category(manifest, "logo-wordmark-emblem", 1)
+    return ROOT / fallback[0]["file"] if fallback else None
+
+
+def make_logo_variant(source: Path | None, color_hex: str, name: str) -> Path | None:
+    if not source:
+        return None
+    LOGO_ROOT.mkdir(parents=True, exist_ok=True)
+    out = LOGO_ROOT / f"{name}-{color_hex.lower()}.png"
+    if out.exists():
+        return out
+    with Image.open(source) as image:
+        rgba = image.convert("RGBA")
+    r, g, b = (int(color_hex[i : i + 2], 16) for i in (0, 2, 4))
+    pixels = [(r, g, b, a) if a > 0 else (r, g, b, 0) for *_, a in rgba.getdata()]
+    recolored = Image.new("RGBA", rgba.size)
+    recolored.putdata(pixels)
+    recolored.save(out)
+    return out
+
+
+def add_header(slide, style: dict[str, Any], title: str, index: int, logo_on_dark: Path | None, section: str):
     add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, style["bg"])
-    add_rect(slide, 0, 0, SLIDE_W, 0.58, style["accent"])
-    add_text(slide, title, 0.48, 0.13, 9.0, 0.25, 14, "FFFFFF", style["font"], bold=True)
-    add_text(slide, section, 10.0, 0.16, 2.45, 0.18, 8.5, "FFFFFF", style["font_fallback"], align=PP_ALIGN.RIGHT)
-    add_rect(slide, 0, 7.08, SLIDE_W, 0.02, style["border"])
-    add_text(slide, "Sun Yat-sen University", 0.48, 7.2, 2.8, 0.16, 7.5, style["muted"], "Arial")
-    add_text(slide, f"{index:02d}", 12.08, 7.2, 0.5, 0.16, 7.5, style["muted"], "Arial", align=PP_ALIGN.RIGHT)
-
-
-def add_logo(slide, logo: Path | None, x: float, y: float, w: float, h: float):
-    if logo and logo.exists():
-        add_picture_contain(slide, logo, x, y, w, h)
+    add_rect(slide, 0, 0, SLIDE_W, 0.78, style["accent"])
+    add_text(slide, title, 0.62, 0.18, 8.5, 0.34, 20, "FFFFFF", style["font"], bold=True)
+    add_text(slide, section, 9.25, 0.26, 1.25, 0.18, 10.5, "FFFFFF", style["font_fallback"], align=PP_ALIGN.RIGHT)
+    add_picture_contain(slide, logo_on_dark, 10.75, 0.13, 1.62, 0.46)
+    add_line(slide, 0.68, 6.96, 12.55, 6.96, style["border"], 0.8)
+    add_text(slide, "Sun Yat-sen University", 0.68, 7.1, 3.0, 0.18, 9.8, style["muted"], "Arial")
+    add_text(slide, f"{index:02d}", 12.05, 7.1, 0.5, 0.18, 9.8, style["muted"], "Arial", align=PP_ALIGN.RIGHT)
 
 
 def add_block(slide, style: dict[str, Any], x, y, w, h, label, body, *, kind="normal"):
     header_color = {"normal": style["accent"], "example": style["emphasis"], "alert": style["warning"]}[kind]
-    add_rect(slide, x, y, w, h, style["surface"], style["border"], radius=True)
-    add_rect(slide, x, y, w, 0.34, header_color)
-    add_text(slide, label, x + 0.16, y + 0.08, w - 0.32, 0.16, 8.5, "FFFFFF", style["font"], bold=True)
-    add_text(slide, body, x + 0.2, y + 0.52, w - 0.4, h - 0.66, 12, style["text"], style["font_fallback"])
+    add_rect(slide, x, y, w, h, "FFFFFF", style["border"], radius=True)
+    add_rect(slide, x, y, w, 0.48, header_color)
+    add_text(slide, label, x + 0.2, y + 0.13, w - 0.4, 0.18, 11.5, "FFFFFF", style["font"], bold=True)
+    add_text(slide, body, x + 0.28, y + 0.78, w - 0.56, h - 0.95, 15.5, style["text"], style["font_fallback"])
 
 
-def add_arrow(slide, x1, y1, x2, y2, color):
-    line = slide.shapes.add_connector(1, Inches(x1), Inches(y1), Inches(x2), Inches(y2))
-    line.line.color.rgb = rgb(color)
-    line.line.width = Pt(2.0)
-    line.line.end_arrowhead = True
-    return line
-
-
-def slide_cover(prs, style, logo, hero):
+def slide_cover(prs, style, logo_on_light, hero):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, style["bg"])
-    add_rect(slide, 0, 0, SLIDE_W, 0.74, style["accent"])
-    if hero:
-        add_picture_crop(slide, hero, 7.35, 1.0, 5.35, 4.4)
-        add_rect(slide, 7.35, 5.32, 5.35, 0.06, style["secondary"])
-    add_logo(slide, logo, 0.72, 1.02, 2.1, 0.72)
-    add_text(slide, "Beamer-Inspired SYSU Template", 0.72, 2.16, 5.9, 0.64, 26, style["accent"], style["font"], bold=True)
-    add_text(slide, "中山大学学术演示版式", 0.75, 2.88, 5.4, 0.38, 17, style["text"], style["font"], bold=True)
-    add_text(slide, "10pt discipline · 16:9 academic frames · semantic colors · SYSU assets", 0.76, 3.6, 5.6, 0.28, 11, style["muted"], "Arial")
-    add_rect(slide, 0.76, 4.3, 4.9, 0.02, style["border"])
-    add_text(slide, style["name"], 0.76, 4.55, 4.4, 0.28, 12, style["secondary"], style["font"], bold=True)
-    add_text(slide, "Presenter · Institute · Date", 0.76, 6.78, 4.1, 0.18, 8.5, style["muted"], "Arial")
+    add_rect(slide, 0, 0, SLIDE_W, 0.9, style["accent"])
+    add_picture_crop(slide, hero, 7.15, 1.22, 5.2, 4.15)
+    add_rect(slide, 7.15, 5.38, 5.2, 0.08, style["secondary"])
+    add_picture_contain(slide, logo_on_light, 0.82, 1.08, 2.35, 0.78)
+    add_text(slide, "Beamer-Inspired SYSU Template", 0.82, 2.2, 5.85, 0.78, 31, style["accent"], style["font"], bold=True)
+    add_text(slide, "Spacious PPTX academic frame", 0.86, 3.15, 5.45, 0.36, 18, style["text"], style["font_fallback"], bold=True)
+    add_text(slide, "Larger type / fewer elements / 16:9 projection-safe layout", 0.86, 3.78, 5.55, 0.28, 13.5, style["muted"], "Arial")
+    add_rect(slide, 0.86, 4.56, 4.65, 0.055, style["secondary"])
+    add_text(slide, style["name"], 0.86, 4.85, 4.6, 0.28, 14.5, style["accent"], style["font"], bold=True)
+    add_text(slide, "Presenter / Institute / Date", 0.86, 6.78, 4.1, 0.18, 9.5, style["muted"], "Arial")
 
 
-def slide_agenda(prs, style, logo):
+def slide_agenda(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_frame_header(slide, style, "Outline", 2, "Structure")
-    add_logo(slide, logo, 11.25, 0.72, 1.15, 0.38)
+    add_header(slide, style, "Outline: Four Moves Are Enough", 2, logo_on_dark, "Structure")
     items = [
-        ("01", "Motivation", "Why this topic matters now"),
-        ("02", "Formal Setup", "Definitions, notation, assumptions"),
-        ("03", "Core Construction", "Algorithm, diagram, theorem"),
-        ("04", "Evidence", "Comparison table or experiment"),
-        ("05", "Takeaways", "References, Q&A, backup slides"),
+        ("01", "Question", "State the problem and why it matters."),
+        ("02", "Method", "Introduce the model or workflow."),
+        ("03", "Evidence", "Show the decisive visual or table."),
+        ("04", "Takeaway", "End with the decision and next step."),
     ]
     for i, (num, title, desc) in enumerate(items):
-        y = 1.38 + i * 0.84
-        add_text(slide, num, 0.92, y, 0.62, 0.23, 13, style["secondary"], "Arial", bold=True)
-        add_text(slide, title, 1.72, y - 0.02, 2.6, 0.25, 14, style["accent"], style["font"], bold=True)
-        add_text(slide, desc, 4.45, y + 0.02, 5.9, 0.2, 10, style["text"], style["font_fallback"])
-        add_rect(slide, 1.72, y + 0.45, 8.6, 0.01, style["border"])
+        y = 1.38 + i * 1.02
+        add_text(slide, num, 1.05, y, 0.66, 0.28, 17, style["secondary"], "Arial", bold=True)
+        add_text(slide, title, 1.92, y - 0.04, 2.35, 0.32, 18.5, style["accent"], style["font"], bold=True)
+        add_text(slide, desc, 4.45, y, 5.9, 0.27, 15.2, style["text"], style["font_fallback"])
+        add_line(slide, 1.92, y + 0.54, 10.7, y + 0.54, style["border"], 0.7)
 
 
-def slide_theorem(prs, style):
+def slide_blocks(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_frame_header(slide, style, "Definition and Theorem Blocks", 3, "Formalism")
-    add_text(slide, "Motivation before formalism: state why the object matters, then introduce notation.", 0.78, 0.92, 9.5, 0.28, 12, style["text"], style["font_fallback"])
+    add_header(slide, style, "Blocks Are Bigger Than Beamer Defaults", 3, logo_on_dark, "Formalism")
+    add_text(slide, "For PPTX, a theorem block needs room for normal reading distance. Two large blocks are usually the limit.", 0.9, 1.04, 10.0, 0.36, 16.5, style["text"], style["font_fallback"])
     add_block(
         slide,
         style,
-        0.86,
-        1.46,
+        0.92,
+        1.76,
         5.55,
-        1.9,
+        2.45,
         "Definition",
-        "A model family F is efficient if evaluation cost grows sublinearly in the full parameter count.",
+        "A slide style is useful when it maps content shape to layout without shrinking text below presentation scale.",
         kind="normal",
     )
     add_block(
         slide,
         style,
-        6.92,
-        1.46,
+        6.9,
+        1.76,
         5.55,
-        1.9,
-        "Theorem",
-        "Under bounded-rank updates, adaptation can preserve the main representation while changing only the task interface.",
+        2.45,
+        "Rule",
+        "Keep one main claim, one evidence region, and one highlight color on a content slide.",
         kind="example",
     )
-    add_text(slide, "Immediate consequences", 0.94, 4.08, 2.8, 0.28, 15, style["accent"], style["font"], bold=True)
-    bullets = ["≤ 2 colored blocks per slide", "one display idea per block", "worked example within two slides"]
-    for i, item in enumerate(bullets):
-        y = 4.56 + i * 0.48
-        add_rect(slide, 1.0, y + 0.08, 0.12, 0.12, style["secondary"])
-        add_text(slide, item, 1.24, y, 5.0, 0.22, 11.5, style["text"], style["font_fallback"])
-    add_block(slide, style, 7.15, 4.08, 4.8, 1.45, "Example", "Use a tiny worked example here rather than another abstract bullet list.", kind="alert")
+    add_text(slide, "PPTX guardrail", 0.95, 4.95, 2.5, 0.28, 17, style["accent"], style["font"], bold=True)
+    add_bullet(slide, "Body text should normally be 16 pt or larger.", 1.0, 5.45, 5.3, style)
+    add_bullet(slide, "Use appendix slides rather than shrinking dense proof details.", 6.95, 5.45, 5.2, style)
 
 
-def slide_columns(prs, style, hero):
+def slide_visual(prs, style, logo_on_dark, hero):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_frame_header(slide, style, "Columns: Visual First, Text Second", 4, "Layout")
-    if hero:
-        add_rect(slide, 0.78, 1.0, 5.65, 4.55, style["surface"], style["border"], radius=True)
-        add_picture_crop(slide, hero, 0.98, 1.22, 5.25, 3.55)
-        add_text(slide, "Source SYSU image or extracted figure", 1.0, 4.92, 4.7, 0.18, 8, style["muted"], "Arial")
-    add_text(slide, "Claim", 7.05, 1.05, 2.2, 0.32, 17, style["accent"], style["font"], bold=True)
-    add_text(slide, "The slide title states the argument; the figure supplies evidence; bullets only interpret the visual.", 7.05, 1.52, 4.7, 0.65, 14, style["text"], style["font_fallback"])
-    for i, item in enumerate(["Top-align columns", "One figure, one takeaway", "No nested columns", "Caption stays near visual"]):
-        y = 2.65 + i * 0.5
-        add_rect(slide, 7.08, y + 0.09, 0.12, 0.12, style["secondary"])
-        add_text(slide, item, 7.32, y, 3.9, 0.22, 11, style["text"], style["font_fallback"])
-    add_rect(slide, 7.05, 5.25, 4.6, 0.04, style["secondary"])
-    add_text(slide, "Beamer columns translated to PPT: 50/45 split with a fixed gutter.", 7.05, 5.45, 4.8, 0.3, 10, style["muted"], style["font_fallback"])
+    add_header(slide, style, "Visual First, Interpretation Second", 4, logo_on_dark, "Evidence")
+    add_rect(slide, 0.86, 1.15, 6.25, 4.85, "FFFFFF", style["border"], radius=True)
+    add_picture_crop(slide, hero, 1.1, 1.38, 5.78, 3.92)
+    add_text(slide, "SYSU extracted image or generated figure", 1.12, 5.5, 4.8, 0.2, 10.5, style["muted"], "Arial")
+    add_text(slide, "Claim", 7.55, 1.28, 1.8, 0.34, 20, style["accent"], style["font"], bold=True)
+    add_text(slide, "The figure receives most of the slide. Text explains what to notice, not everything the presenter will say.", 7.55, 1.82, 4.45, 0.95, 17.2, style["text"], style["font_fallback"])
+    for i, item in enumerate(["One visual region", "One interpretive paragraph", "Two support bullets at most"]):
+        add_bullet(slide, item, 7.6, 3.22 + i * 0.56, 4.2, style, size=15.2)
+    add_rect(slide, 7.55, 5.35, 3.9, 0.06, style["secondary"])
 
 
-def slide_table(prs, style):
+def slide_table(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_frame_header(slide, style, "Booktabs-Style Comparison", 5, "Evidence")
-    add_text(slide, "Keep tables centered, sparse, and separated from the title bar.", 0.8, 0.9, 7.2, 0.24, 11.5, style["text"], style["font_fallback"])
-    x, y = 1.1, 1.55
-    col_w = [2.45, 2.35, 2.35, 2.35]
-    headers = ["Method", "Cost", "Evidence", "Takeaway"]
+    add_header(slide, style, "Tables Need Projection-Scale Rows", 5, logo_on_dark, "Comparison")
+    add_text(slide, "Use fewer rows and stronger spacing. A table should answer one comparison question.", 0.94, 1.05, 9.7, 0.32, 16, style["text"], style["font_fallback"])
+    x, y = 1.0, 1.78
+    col_w = [3.05, 3.1, 4.35]
+    headers = ["Frame", "Best use", "PPTX constraint"]
     rows = [
-        ["Baseline", "O(n)", "reference", "simple"],
-        ["Improved", "O(r)", "diagram", "efficient"],
-        ["SYSU template", "fixed", "assets", "brand-safe"],
-        ["Beamer rhythm", "bounded", "blocks", "readable"],
+        ["Visual", "Evidence", "Give the exhibit at least half the slide."],
+        ["Block", "Definition or rule", "Use two blocks, not four small ones."],
+        ["Table", "Comparison", "Keep rows large and highlight one result."],
     ]
     total_w = sum(col_w)
-    add_rect(slide, x, y, total_w, 0.04, style["accent"])
+    add_line(slide, x, y, x + total_w, y, style["accent"], 2.4)
     cursor = x
     for text, w in zip(headers, col_w):
-        add_text(slide, text, cursor + 0.08, y + 0.16, w - 0.16, 0.2, 9.5, style["accent"], style["font"], bold=True)
+        add_text(slide, text, cursor + 0.1, y + 0.2, w - 0.2, 0.22, 12.5, style["accent"], style["font"], bold=True)
         cursor += w
-    add_rect(slide, x, y + 0.48, total_w, 0.02, style["border"])
+    add_line(slide, x, y + 0.62, x + total_w, y + 0.62, style["border"], 1.0)
     for r, row in enumerate(rows):
-        yy = y + 0.58 + r * 0.55
+        yy = y + 0.88 + r * 0.78
         cursor = x
-        for j, (text, w) in enumerate(zip(row, col_w)):
-            color = style["secondary"] if text in {"efficient", "brand-safe"} else style["text"]
-            add_text(slide, text, cursor + 0.08, yy + 0.14, w - 0.16, 0.18, 9.8, color, style["font_fallback"], bold=j == 0 or color == style["secondary"])
+        for c, (text, w) in enumerate(zip(row, col_w)):
+            color = style["secondary"] if r == 1 and c == 2 else style["text"]
+            add_text(slide, text, cursor + 0.1, yy, w - 0.2, 0.33, 13.5, color, style["font_fallback"], bold=c == 0)
             cursor += w
-        add_rect(slide, x, yy + 0.48, total_w, 0.01, style["border"])
-    add_rect(slide, x, y + 0.58 + len(rows) * 0.55, total_w, 0.04, style["accent"])
-    add_text(slide, "One highlighted cell or row is enough; avoid rainbow tables.", 1.12, 5.2, 7.5, 0.28, 10.5, style["muted"], style["font_fallback"])
+        add_line(slide, x, yy + 0.56, x + total_w, yy + 0.56, style["border"], 0.45)
+    add_line(slide, x, y + 0.88 + len(rows) * 0.78, x + total_w, y + 0.88 + len(rows) * 0.78, style["accent"], 1.9)
 
 
-def slide_algorithm(prs, style):
+def slide_algorithm(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_frame_header(slide, style, "Algorithm Frame", 6, "Procedure")
-    add_text(slide, "Pseudocode stays under 10 lines and highlights one critical step.", 0.8, 0.9, 7.4, 0.24, 11.5, style["text"], style["font_fallback"])
-    add_rect(slide, 0.92, 1.38, 5.9, 4.75, "FFFFFF", style["border"], radius=True)
-    add_rect(slide, 0.92, 1.38, 5.9, 0.42, style["surface2"])
-    add_text(slide, "Algorithm 1: Template-Aware Slide Build", 1.12, 1.51, 5.2, 0.16, 8.8, style["accent"], style["font"], bold=True)
+    add_header(slide, style, "Algorithm Frames Should Breathe", 6, logo_on_dark, "Procedure")
+    add_rect(slide, 0.92, 1.2, 6.4, 4.95, "FFFFFF", style["border"], radius=True)
+    add_rect(slide, 0.92, 1.2, 6.4, 0.55, style["surface2"])
+    add_text(slide, "Algorithm 1: Template-aware build", 1.18, 1.36, 5.4, 0.2, 12.5, style["accent"], style["font"], bold=True)
     lines = [
-        "Input: outline O, style S, asset manifest A",
-        "1  choose source layout by content shape",
-        "2  place SYSU logo, footer, frame number",
-        "3  insert one main exhibit",
-        "4  highlight only the key result",
-        "5  validate overflow and contrast",
-        "Output: presentation-ready frame",
+        "Input: outline O, style S, assets A",
+        "1  choose layout by content shape",
+        "2  place SYSU identity elements",
+        "3  insert one main visual",
+        "4  validate text size and spacing",
+        "Output: projection-safe PPTX frame",
     ]
     for i, line in enumerate(lines):
-        y = 2.05 + i * 0.42
-        color = style["secondary"] if i == 3 else style["text"]
-        add_text(slide, line, 1.18, y, 5.1, 0.18, 9.8, color, "Consolas", bold=i == 3)
-    add_block(slide, style, 7.35, 1.52, 4.45, 1.45, "Guardrail", "No overlays in PPT templates. Duplicate frames for progressive builds.", kind="alert")
-    add_block(slide, style, 7.35, 3.4, 4.45, 1.45, "QA", "Every output should reopen, keep text in bounds, and show a real visual element.", kind="example")
+        color = style["secondary"] if i == 4 else style["text"]
+        add_text(slide, line, 1.22, 2.02 + i * 0.58, 5.55, 0.22, 12.7, color, "Consolas", bold=i == 4)
+    add_block(slide, style, 7.85, 1.4, 4.1, 1.9, "Guardrail", "Do not copy Beamer density mechanically into PowerPoint.", kind="alert")
+    add_block(slide, style, 7.85, 3.85, 4.1, 1.9, "QA", "Open the PPTX and check bounds before treating a template as reusable.", kind="example")
 
 
-def slide_diagram(prs, style):
+def slide_diagram(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_frame_header(slide, style, "Diagram Frame", 7, "TikZ-to-PPT")
-    labels = ["Question", "Model", "Evidence", "Conclusion"]
-    xs = [0.98, 3.8, 6.62, 9.44]
+    add_header(slide, style, "Diagrams Use Fewer, Larger Nodes", 7, logo_on_dark, "Diagram")
+    labels = ["Question", "Evidence", "Decision"]
+    xs = [1.15, 5.15, 9.15]
     for i, (x, label) in enumerate(zip(xs, labels)):
-        add_rect(slide, x, 2.15, 1.7, 0.85, style["surface"], style["border"], radius=True)
-        add_text(slide, label, x + 0.15, 2.43, 1.4, 0.18, 10, style["accent"] if i != 2 else style["secondary"], style["font"], bold=True, align=PP_ALIGN.CENTER)
+        add_rect(slide, x, 2.2, 2.3, 1.12, "FFFFFF", style["border"], radius=True)
+        add_text(slide, label, x + 0.18, 2.55, 1.92, 0.24, 14.5, style["accent"] if i != 1 else style["secondary"], style["font"], bold=True, align=PP_ALIGN.CENTER)
         if i < len(xs) - 1:
-            add_arrow(slide, x + 1.78, 2.57, xs[i + 1] - 0.1, 2.57, style["secondary"])
-    add_text(slide, "Diagram rules from Beamer/TikZ", 0.98, 4.05, 3.6, 0.3, 15, style["accent"], style["font"], bold=True)
-    rules = ["labels never overlap", "arrow labels need clearance", "solid vs dashed has semantic meaning", "diagram fits below title bar"]
-    for i, item in enumerate(rules):
-        y = 4.5 + i * 0.42
-        add_rect(slide, 1.02, y + 0.08, 0.12, 0.12, style["secondary"])
-        add_text(slide, item, 1.25, y, 5.3, 0.2, 10.2, style["text"], style["font_fallback"])
+            add_arrow(slide, x + 2.4, 2.76, xs[i + 1] - 0.12, 2.76, style["secondary"])
+    add_text(slide, "Spacing rule", 1.16, 4.22, 2.2, 0.28, 17, style["accent"], style["font"], bold=True)
+    add_text(slide, "Every label should remain readable without zooming. Use backup slides for dense process maps.", 1.16, 4.72, 8.4, 0.52, 16, style["text"], style["font_fallback"])
 
 
-def slide_refs(prs, style):
+def slide_refs(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_frame_header(slide, style, "References", 8, "Citations")
+    add_header(slide, style, "References and Backup", 8, logo_on_dark, "Close")
     refs = [
-        "Noi1r/beamer-skill. Beamer workflow and academic slide quality rules.",
-        "SYSU official PowerPoint templates. Source fonts, colors, marks, and imagery.",
-        "Local extracted asset manifests. Reusable logos, campus photos, and decorative elements.",
+        "SYSU source templates: colors, fonts, logos, campus imagery.",
+        "Noi1r/beamer-skill: academic structure translated to PPTX.",
+        "Local style specs: reusable rules for future Codex generation.",
     ]
     for i, ref in enumerate(refs):
-        y = 1.35 + i * 0.72
-        add_text(slide, f"[{i + 1}]", 0.92, y, 0.42, 0.2, 9.5, style["secondary"], "Arial", bold=True)
-        add_text(slide, ref, 1.45, y, 9.6, 0.3, 10.5, style["text"], style["font_fallback"])
-
-
-def slide_thanks(prs, style, logo):
-    slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, style["accent"])
-    add_logo(slide, logo, 0.9, 0.95, 2.0, 0.68)
-    add_text(slide, "Thank You", 0.9, 2.58, 4.6, 0.7, 33, "FFFFFF", "Arial", bold=True)
-    add_text(slide, "Questions and discussion", 0.94, 3.48, 4.5, 0.32, 15, "FFFFFF", style["font_fallback"])
-    add_text(slide, "Sun Yat-sen University", 0.94, 6.78, 3.8, 0.2, 9, "FFFFFF", "Arial")
-
-
-def slide_backup(prs, style):
-    slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_frame_header(slide, style, "Backup: Extended Details", 10, "Appendix")
-    add_text(slide, "Use backup slides for proof details, parameter choices, extended tables, or anticipated questions.", 0.84, 1.1, 8.5, 0.28, 12, style["text"], style["font_fallback"])
-    add_block(slide, style, 0.92, 1.75, 3.4, 2.0, "Proof detail", "Place the full derivation here, linked from the main theorem slide.", kind="normal")
-    add_block(slide, style, 4.92, 1.75, 3.4, 2.0, "Extended table", "Move dense results here instead of shrinking fonts in the main deck.", kind="example")
-    add_block(slide, style, 8.92, 1.75, 3.4, 2.0, "Q&A", "Prepare likely objections and implementation details.", kind="alert")
+        y = 1.55 + i * 0.86
+        add_text(slide, f"[{i + 1}]", 1.0, y, 0.45, 0.22, 12.5, style["secondary"], "Arial", bold=True)
+        add_text(slide, ref, 1.62, y - 0.02, 9.5, 0.32, 14.2, style["text"], style["font_fallback"])
+    add_rect(slide, 1.0, 4.75, 10.2, 0.86, style["surface"], style["border"], radius=True)
+    add_text(slide, "Backup slides hold details; the main talk keeps readable scale.", 1.28, 5.03, 8.4, 0.22, 14.5, style["accent"], style["font"], bold=True)
 
 
 def make_deck(style: dict[str, Any]) -> tuple[Path, Path]:
     manifest = load_manifest(style)
-    logos = assets_by_category(manifest, "logo-wordmark-emblem", 3)
     photos = assets_by_category(manifest, "campus-photo-or-background", 4)
     cutouts = assets_by_category(manifest, "cutout-building-or-decorative", 2)
-    logo = ROOT / logos[0]["file"] if logos else None
+    logo_source = select_wordmark_logo(manifest)
+    logo_on_dark = make_logo_variant(logo_source, "FFFFFF", f"{style['id']}-wordmark")
+    logo_on_light = make_logo_variant(logo_source, style["accent"], f"{style['id']}-wordmark")
     hero_item = (photos + cutouts)[0] if (photos + cutouts) else None
     hero = ROOT / hero_item["file"] if hero_item else None
 
     prs = Presentation()
     prs.slide_width = Inches(SLIDE_W)
     prs.slide_height = Inches(SLIDE_H)
-    slide_cover(prs, style, logo, hero)
-    slide_agenda(prs, style, logo)
-    slide_theorem(prs, style)
-    slide_columns(prs, style, hero)
-    slide_table(prs, style)
-    slide_algorithm(prs, style)
-    slide_diagram(prs, style)
-    slide_refs(prs, style)
-    slide_thanks(prs, style, logo)
-    slide_backup(prs, style)
+    slide_cover(prs, style, logo_on_light, hero)
+    slide_agenda(prs, style, logo_on_dark)
+    slide_blocks(prs, style, logo_on_dark)
+    slide_visual(prs, style, logo_on_dark, hero)
+    slide_table(prs, style, logo_on_dark)
+    slide_algorithm(prs, style, logo_on_dark)
+    slide_diagram(prs, style, logo_on_dark)
+    slide_refs(prs, style, logo_on_dark)
 
     TEMPLATE_ROOT.mkdir(parents=True, exist_ok=True)
     OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
     template_path = TEMPLATE_ROOT / f"{style['id']}-template.pptx"
     showcase_path = OUTPUT_ROOT / f"{style['id']}-showcase.pptx"
-    prs.save(template_path)
-    prs.save(showcase_path)
-    return template_path, showcase_path
+    saved_template_path = save_presentation(prs, template_path)
+    saved_showcase_path = save_presentation(prs, showcase_path)
+    return saved_template_path, saved_showcase_path
 
 
 def write_style(style: dict[str, Any], template_path: Path, showcase_path: Path) -> dict[str, Any]:
@@ -467,6 +514,8 @@ def write_style(style: dict[str, Any], template_path: Path, showcase_path: Path)
         "asset_manifest": style["asset_manifest"],
         "template_pptx": rel(template_path),
         "demo_pptx": rel(showcase_path),
+        "aspect_ratio": "16:9",
+        "slide_size_inches": {"width": SLIDE_W, "height": SLIDE_H},
         "reference": {
             "repo": "https://github.com/Noi1r/beamer-skill/tree/main/beamer",
             "local_path": ".codex/reference-skills/beamer-skill/beamer",
@@ -481,16 +530,16 @@ def write_style(style: dict[str, Any], template_path: Path, showcase_path: Path)
             "fallback": style["font_fallback"],
         },
         "rules": [
-            "Use a Beamer/Madrid-like top title bar and frame-number footer.",
-            "Keep 16:9 canvas and compact academic density.",
-            "Use at most two colored blocks per slide.",
-            "Use one substantive element per slide: equation, table, algorithm, diagram, or figure.",
+            "Use Beamer-like structure but redraw for PPTX projection scale.",
+            "Keep 16:9 canvas with larger margins and fewer simultaneous elements.",
+            "Use slide titles around 20 pt and body text normally at 16 pt or larger.",
+            "Use at most two large blocks per slide.",
+            "Give visuals or tables enough space to be read from a room.",
             "Use SYSU extracted logos, campus imagery, and source template colors.",
-            "Do not copy LaTeX output mechanically; this is a PPTX adaptation.",
         ],
         "use_case": style["use_case"],
     }
-    (style_dir / "style.json").write_text(json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")
+    (style_dir / "style.json").write_text(json.dumps(spec, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     lines = [
         f"# {style['name']}",
         "",
@@ -499,13 +548,14 @@ def write_style(style: dict[str, Any], template_path: Path, showcase_path: Path)
         f"- Source SYSU template: `{style['source']}`",
         f"- PPTX template: `{rel(template_path)}`",
         f"- Demo PPTX: `{rel(showcase_path)}`",
+        "- Aspect ratio: `16:9`",
         f"- Reference: `Noi1r/beamer-skill` at `{spec['reference']['commit']}`",
         "",
         "## Use",
         "",
         style["use_case"],
         "",
-        "This is a PPTX adaptation of Beamer academic layout discipline: top frame title, footline, theorem/example blocks, columns, booktabs-like tables, algorithm frames, diagrams, references, and backup slides.",
+        "This is a spacious PPTX adaptation of Beamer academic layout discipline. It keeps frame titles, footlines, blocks, tables, algorithms, diagrams, references, and backup logic, but uses larger projection-safe typography and fewer elements per slide.",
         "",
         "## Palette",
         "",
@@ -528,12 +578,28 @@ def write_style(style: dict[str, Any], template_path: Path, showcase_path: Path)
 
 
 def update_style_index(entries: list[dict[str, Any]]) -> None:
-    index_path = STYLE_ROOT / "style-index.json"
-    payload = json.loads(index_path.read_text(encoding="utf-8")) if index_path.exists() else {"styles": []}
+    payload = json.loads((STYLE_ROOT / "style-index.json").read_text(encoding="utf-8"))
     new_ids = {entry["id"] for entry in entries}
     retained = [entry for entry in payload.get("styles", []) if entry.get("id") not in new_ids]
     payload["styles"] = retained + entries
-    index_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    (STYLE_ROOT / "style-index.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def update_template_manifest(entries: list[dict[str, Any]]) -> None:
+    if not MANIFEST_PATH.exists():
+        return
+    payload = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    payload["beamer_inspired_templates"] = [
+        {
+            "id": entry["id"],
+            "template": entry["template_pptx"],
+            "demo": entry["demo_pptx"],
+            "source": entry["source"],
+            "asset_manifest": entry["asset_manifest"],
+        }
+        for entry in entries
+    ]
+    MANIFEST_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def main() -> int:
@@ -544,7 +610,9 @@ def main() -> int:
         print(f"Wrote {template_path}")
         print(f"Wrote {showcase_path}")
     update_style_index(entries)
+    update_template_manifest(entries)
     print(f"Wrote {STYLE_ROOT / 'style-index.json'}")
+    print(f"Wrote {MANIFEST_PATH}")
     return 0
 
 

@@ -31,10 +31,17 @@ Always choose a `style-id` before creating a deck. The style spec controls palet
 | `beamer-sysu-blue` | official blue adapted to Beamer/Madrid frame structure | academic reports and technical seminars |
 | `beamer-sysu-green` | official green adapted to Beamer/Madrid frame structure | biomedical/life-science talks |
 | `beamer-sysu-red` | official red adapted to Beamer/Madrid frame structure | formal academic talks |
+| `simpleplus-sysu-clean` | SimplePlus-inspired clean academic layout | restrained course reports and research talks |
+| `ustc-thu-sysu-institutional` | USTC/THU-inspired Chinese university layout | formal university reports and defenses |
+| `moloch-sysu-minimal` | Moloch/Metropolis-inspired minimal light layout | technical talks needing maximum content space |
+| `sleek-sysu-research` | Sleek-inspired technical research layout | algorithms, code, computational methods, and data-heavy talks |
+| `river-sysu-atelier` | River/Beamer Atelier-inspired teaching layout | long-form lectures and structured research presentations |
 
 The earlier `sysu-minimal-*`, simplified `sysu-medical-ai`, and `lora-hu-academic` style kits have been removed from the active library. Use LoRA Hu and `ppt169_building_effective_agents` only as outside references when explicitly useful; do not expose them as SYSU style IDs. The `strict-*` styles are source-faithful modes backed by extracted fonts, colors, and media manifests.
 
-The `beamer-sysu-*` styles are PPTX adaptations of Beamer academic layout discipline, not strict source-template copies. Use them when the desired result is a Beamer-like academic deck with SYSU identity: top title bar, footer frame number, theorem/example/alert blocks, columns, booktabs-like tables, algorithm frames, diagrams, references, and backup slides.
+The `beamer-sysu-*` styles are PPTX adaptations of Beamer academic layout discipline, not strict source-template copies. Use them when the desired result is a Beamer-like academic deck with SYSU identity: top title bar, footer frame number, theorem/example/alert blocks, columns, booktabs-like tables, algorithm frames, diagrams, references, and backup slides. Redraw them for projection-scale PPTX: larger titles, larger body text, fewer simultaneous components, bigger image/table regions, and more whitespace than a true Beamer PDF.
+
+The `beamer-candidates` styles are for visual selection before committing to a final template direction. Each candidate showcase is 16:9 and includes blue, green, and red SYSU variants in one deck. They borrow public Beamer layout grammar only; SYSU fonts, extracted logos, campus imagery, and official palettes remain the identity source. Show one color variant per full slide when needed instead of cramming three miniature frames onto one page.
 
 ## Strict Original Rules
 
@@ -64,7 +71,7 @@ For charts, use one primary template accent plus neutral grays. Highlight only t
 - Keep one main font family per deck. Use size and weight for hierarchy.
 - Do not use emoji as visual markers in official or academic decks.
 - For `strict-sysu-medical-ai`, favor the source courseware's clinical clarity, teal/blue structures, computational diagrams, and restrained data emphasis.
-- For `beamer-sysu-*`, keep Beamer-like compactness: slide titles at 14-18 pt, body around 10-13 pt, no oversized marketing hero type, and no more than two colored blocks per slide.
+- For `beamer-sysu-*` and `beamer-candidates`, keep Beamer-like structure but PPTX-scale typography: slide titles around 20 pt or larger, body text normally 16 pt or larger, no more than two large colored blocks per slide, and no miniature slide previews when a full-size layout sample is clearer.
 
 ## Academic Content Rules
 

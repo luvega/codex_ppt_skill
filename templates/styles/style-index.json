@@ -37,6 +37,51 @@
       "source": "templates/source/sysu-medical-ai/人工智能导论（医学五年制）简单模板.pptx"
     },
     {
+      "id": "simpleplus-sysu-clean",
+      "name": "SimplePlus-SYSU Clean",
+      "group": "beamer-candidates",
+      "style_spec": "templates/styles/simpleplus-sysu-clean/style.json",
+      "demo_pptx": "outputs/style-showcase/beamer-candidates/simpleplus-sysu-clean-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx"
+    },
+    {
+      "id": "ustc-thu-sysu-institutional",
+      "name": "USTC/THU-SYSU Institutional",
+      "group": "beamer-candidates",
+      "style_spec": "templates/styles/ustc-thu-sysu-institutional/style.json",
+      "demo_pptx": "outputs/style-showcase/beamer-candidates/ustc-thu-sysu-institutional-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx"
+    },
+    {
+      "id": "moloch-sysu-minimal",
+      "name": "Moloch-SYSU Minimal",
+      "group": "beamer-candidates",
+      "style_spec": "templates/styles/moloch-sysu-minimal/style.json",
+      "demo_pptx": "outputs/style-showcase/beamer-candidates/moloch-sysu-minimal-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx"
+    },
+    {
+      "id": "sleek-sysu-research",
+      "name": "Sleek-SYSU Research",
+      "group": "beamer-candidates",
+      "style_spec": "templates/styles/sleek-sysu-research/style.json",
+      "demo_pptx": "outputs/style-showcase/beamer-candidates/sleek-sysu-research-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx"
+    },
+    {
+      "id": "river-sysu-atelier",
+      "name": "River/Beamer Atelier Inspired",
+      "group": "beamer-candidates",
+      "style_spec": "templates/styles/river-sysu-atelier/style.json",
+      "demo_pptx": "outputs/style-showcase/beamer-candidates/river-sysu-atelier-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx"
+    },
+    {
       "id": "beamer-sysu-blue",
       "name": "Beamer SYSU Blue",
       "group": "beamer-inspired",

@@ -36,7 +36,9 @@ The source template and extracted asset manifest are the authority. Use the styl
 
 For generated strict showcase decks, keep slide 1 as the unmodified first slide from the source PPTX. Subsequent explanatory pages may learn from `ppt169_building_effective_agents` page rhythm, but must use the original source-template background colors plus SYSU fonts, extracted SYSU marks/images/elements, and the selected official or medical-AI color system. Do not apply the external deck's dark background. Do not add a generic full-height left vertical stripe unless the selected source slide itself uses that exact motif.
 
-For `beamer-sysu-*` styles, use the generated PPTX template under `templates/generated/beamer-inspired/`. These styles intentionally do not preserve source slide geometry; they adapt Beamer/Madrid academic frame structure to SYSU assets. Keep compact density, top frame title, footer page number, at most two colored blocks, and at least one substantive element per content slide.
+For `beamer-sysu-*` styles, use the generated PPTX template under `templates/generated/beamer-inspired/`. These styles intentionally do not preserve source slide geometry; they adapt Beamer/Madrid academic frame structure to SYSU assets. Keep top frame title, footer page number, at most two large colored blocks, and at least one substantive element per content slide, but redraw for PPTX projection scale rather than LaTeX Beamer density. Use larger type, larger visual regions, and split dense material across slides instead of shrinking it.
+
+For `beamer-candidates` styles, use the showcase decks under `outputs/style-showcase/beamer-candidates/` as style-selection references. They show each color variant as a full slide because miniature three-way previews are too cramped for PPTX evaluation.
 
 ## Outline First
 

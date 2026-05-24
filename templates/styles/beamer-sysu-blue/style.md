@@ -5,13 +5,14 @@
 - Source SYSU template: `templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx`
 - PPTX template: `templates/generated/beamer-inspired/beamer-sysu-blue-template.pptx`
 - Demo PPTX: `outputs/style-showcase/beamer-inspired/beamer-sysu-blue-showcase.pptx`
+- Aspect ratio: `16:9`
 - Reference: `Noi1r/beamer-skill` at `b73d48a`
 
 ## Use
 
 Academic reports, seminars, and technical talks using SYSU official blue.
 
-This is a PPTX adaptation of Beamer academic layout discipline: top frame title, footline, theorem/example blocks, columns, booktabs-like tables, algorithm frames, diagrams, references, and backup slides.
+This is a spacious PPTX adaptation of Beamer academic layout discipline. It keeps frame titles, footlines, blocks, tables, algorithms, diagrams, references, and backup logic, but uses larger projection-safe typography and fewer elements per slide.
 
 ## Palette
 

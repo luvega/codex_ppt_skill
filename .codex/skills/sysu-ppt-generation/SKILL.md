@@ -32,13 +32,25 @@ python .codex\skills\sysu-ppt-generation\scripts\generate_strict_original_showca
 python .codex\skills\sysu-ppt-generation\scripts\generate_beamer_inspired_templates.py
 ```
 
-7. Read `references/generation-workflow.md` before creating a deck.
-8. Read `references/design-rules.md` when choosing colors, fonts, slide patterns, or academic presentation structure.
-9. Read `references/reference-skill-notes.md` only when you need the rationale from the referenced third-party skills.
+7. If Beamer candidate showcase decks need refreshing, run:
+
+```powershell
+python .codex\skills\sysu-ppt-generation\scripts\generate_beamer_candidate_showcases.py
+```
+
+8. If README preview images need refreshing and PowerPoint is available on Windows, run:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .codex\skills\sysu-ppt-generation\scripts\export_readme_previews.ps1
+```
+
+9. Read `references/generation-workflow.md` before creating a deck.
+10. Read `references/design-rules.md` when choosing colors, fonts, slide patterns, or academic presentation structure.
+11. Read `references/reference-skill-notes.md` only when you need the rationale from the referenced third-party skills.
 
 ## Style Choice
 
-This project keeps only source-derived strict style IDs active. The earlier generated `sysu-minimal-*` showcase styles were removed because they were not faithful enough to the source templates.
+This project keeps source-derived strict style IDs, the earlier Beamer/Madrid adaptation, and a separate Beamer candidate showcase group for style selection. The earlier generated `sysu-minimal-*` showcase styles were removed because they were not faithful enough to the source templates.
 
 | Style ID | Use when |
 |---|---|
@@ -49,6 +61,11 @@ This project keeps only source-derived strict style IDs active. The earlier gene
 | `beamer-sysu-blue` | Beamer/Madrid-inspired SYSU blue academic template with title bar, footline, blocks, tables, diagrams |
 | `beamer-sysu-green` | Beamer/Madrid-inspired SYSU green academic template for biomedical/life-science talks |
 | `beamer-sysu-red` | Beamer/Madrid-inspired SYSU red academic template for formal talks |
+| `simpleplus-sysu-clean` | SimplePlus-inspired clean academic candidate; white canvas, light rules, restrained SYSU identity |
+| `ustc-thu-sysu-institutional` | USTC/THU-inspired formal Chinese university candidate; stronger institutional header and navigation |
+| `moloch-sysu-minimal` | Moloch/Metropolis-inspired minimal candidate; light background, large hierarchy, progress bar |
+| `sleek-sysu-research` | Sleek-inspired research candidate for algorithms, code, methods, and technical data |
+| `river-sysu-atelier` | River/Beamer Atelier-inspired structured teaching candidate with outline, section, and environment blocks |
 
 Each style has a spec under `templates/styles/<style-id>/style.json` and a showcase PPTX under `outputs/style-showcase/`.
 
@@ -56,7 +73,11 @@ Use the `strict-*` styles for normal generation in this project. Treat the sourc
 
 For strict showcase/demo decks, keep slide 1 as the original source PPT cover. Do not replace it with a synthetic generated cover, and do not add a generic full-height left vertical stripe unless that exact element exists in the selected source layout. `ppt169_building_effective_agents` may be used only as a content-page rhythm reference: precise cards, hero visual first, concise interpretation second, and clear information hierarchy. Do not copy its dark background, Anthropic palette, icons, or typography. Keep each strict style's source-template background colors, SYSU fonts, extracted SYSU assets, and SYSU official/medical-AI colors. Do not mix the LoRA Hu palette or LoRA-specific page grammar into SYSU strict styles unless the user explicitly asks for that hybrid.
 
-Use `beamer-sysu-*` styles when the user wants a Beamer-like academic structure in PowerPoint. Borrow Beamer/Madrid layout discipline: compact 16:9 academic frames, top title bar, footline frame numbers, theorem/example/alert blocks, two-column figure/text slides, booktabs-like tables, algorithm frames, references, and backup slides. Keep SYSU colors, fonts, logos, and campus imagery; do not output LaTeX or copy another university/institute identity.
+Use `beamer-sysu-*` styles when the user wants a Beamer-like academic structure in PowerPoint. Borrow Beamer/Madrid structure: frame titles, footline frame numbers, theorem/example/alert blocks, figure/text slides, booktabs-like tables, algorithm frames, diagrams, references, and backup slides. Redraw for PPTX projection scale: slide titles around 20 pt, body text normally 16 pt or larger, fewer simultaneous elements, larger visual regions, and generous spacing. Keep SYSU colors, fonts, logos, and campus imagery; do not output LaTeX or copy another university/institute identity.
+
+Use the `beamer-candidates` styles when the user is selecting a Beamer-derived direction before producing a final course/report template. Each candidate showcase is 16:9 and demonstrates blue, green, and red SYSU variants inside one PPTX. Treat public Beamer themes as aesthetic references only: translate layout grammar to PPTX, keep SYSU fonts/assets/colors, and do not copy another theme's branding or proprietary assets.
+
+For all Beamer-derived PPTX styles, do not mechanically preserve LaTeX Beamer density. A Beamer PDF can tolerate 10 pt text because it is typeset as a document; a PPTX template for projection needs larger text, larger blocks, fewer cards, and more breathing room.
 
 ## Template Choice
 

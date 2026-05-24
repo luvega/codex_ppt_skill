@@ -123,5 +123,37 @@
       "path": ".codex/reference-skills/beamer-skill/beamer",
       "commit": "b73d48a"
     }
+  ],
+  "beamer_candidate_showcases": [
+    {
+      "id": "simpleplus-sysu-clean",
+      "demo": "outputs/style-showcase/beamer-candidates/simpleplus-sysu-clean-showcase.pptx",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json"
+    },
+    {
+      "id": "ustc-thu-sysu-institutional",
+      "demo": "outputs/style-showcase/beamer-candidates/ustc-thu-sysu-institutional-showcase.pptx",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json"
+    },
+    {
+      "id": "moloch-sysu-minimal",
+      "demo": "outputs/style-showcase/beamer-candidates/moloch-sysu-minimal-showcase.pptx",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json"
+    },
+    {
+      "id": "sleek-sysu-research",
+      "demo": "outputs/style-showcase/beamer-candidates/sleek-sysu-research-showcase.pptx",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json"
+    },
+    {
+      "id": "river-sysu-atelier",
+      "demo": "outputs/style-showcase/beamer-candidates/river-sysu-atelier-showcase.pptx",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json"
+    }
   ]
 }
