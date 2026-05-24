@@ -1,0 +1,1471 @@
+{
+  "id": "strict-sysu-official-green",
+  "name": "Strict SYSU Official Green",
+  "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+  "asset_root": "templates/assets/strict-sysu-official-green",
+  "contact_sheet": "templates/assets/strict-sysu-official-green/contact-sheet.jpg",
+  "theme_colors": {
+    "dk1": "000000",
+    "lt1": "FFFFFF",
+    "dk2": "44546A",
+    "lt2": "E7E6E6",
+    "accent1": "4472C4",
+    "accent2": "ED7D31",
+    "accent3": "A5A5A5",
+    "accent4": "FFC000",
+    "accent5": "5B9BD5",
+    "accent6": "70AD47",
+    "hlink": "0563C1",
+    "folHlink": "954F72"
+  },
+  "observed_colors": [
+    {
+      "color": "00561F",
+      "count": 179
+    },
+    {
+      "color": "150000",
+      "count": 95
+    },
+    {
+      "color": "110000",
+      "count": 49
+    },
+    {
+      "color": "130000",
+      "count": 32
+    },
+    {
+      "color": "FFCC00",
+      "count": 28
+    },
+    {
+      "color": "6BA079",
+      "count": 25
+    },
+    {
+      "color": "135000",
+      "count": 14
+    },
+    {
+      "color": "100000",
+      "count": 6
+    },
+    {
+      "color": "105000",
+      "count": 6
+    },
+    {
+      "color": "103000",
+      "count": 6
+    },
+    {
+      "color": "102000",
+      "count": 4
+    },
+    {
+      "color": "120000",
+      "count": 4
+    },
+    {
+      "color": "400000",
+      "count": 3
+    },
+    {
+      "color": "FFC000",
+      "count": 3
+    },
+    {
+      "color": "44546A",
+      "count": 2
+    },
+    {
+      "color": "E7E6E6",
+      "count": 2
+    },
+    {
+      "color": "4472C4",
+      "count": 2
+    },
+    {
+      "color": "ED7D31",
+      "count": 2
+    },
+    {
+      "color": "A5A5A5",
+      "count": 2
+    },
+    {
+      "color": "5B9BD5",
+      "count": 2
+    },
+    {
+      "color": "70AD47",
+      "count": 2
+    },
+    {
+      "color": "0563C1",
+      "count": 2
+    },
+    {
+      "color": "954F72",
+      "count": 2
+    },
+    {
+      "color": "109000",
+      "count": 2
+    },
+    {
+      "color": "000000",
+      "count": 2
+    },
+    {
+      "color": "170000",
+      "count": 2
+    },
+    {
+      "color": "002060",
+      "count": 1
+    },
+    {
+      "color": "C00000",
+      "count": 1
+    },
+    {
+      "color": "094D34",
+      "count": 1
+    },
+    {
+      "color": "F2D28B",
+      "count": 1
+    },
+    {
+      "color": "FBFAFC",
+      "count": 1
+    }
+  ],
+  "fonts": [
+    {
+      "font": "+mn-ea",
+      "count": 1482
+    },
+    {
+      "font": "+mn-cs",
+      "count": 1446
+    },
+    {
+      "font": "+mn-lt",
+      "count": 1444
+    },
+    {
+      "font": "思源宋体 CN Heavy",
+      "count": 983
+    },
+    {
+      "font": "思源黑体 CN Regular",
+      "count": 545
+    },
+    {
+      "font": "Raleway",
+      "count": 30
+    },
+    {
+      "font": "微软雅黑",
+      "count": 21
+    },
+    {
+      "font": "Arial",
+      "count": 21
+    },
+    {
+      "font": "Estrangelo Edessa",
+      "count": 16
+    },
+    {
+      "font": "汉仪旗黑-50S",
+      "count": 12
+    },
+    {
+      "font": "Ebrima",
+      "count": 12
+    },
+    {
+      "font": "Nirmala UI",
+      "count": 8
+    },
+    {
+      "font": "新愚公装甲宋A",
+      "count": 6
+    },
+    {
+      "font": "Times New Roman",
+      "count": 6
+    },
+    {
+      "font": "等线",
+      "count": 5
+    },
+    {
+      "font": "等线 Light",
+      "count": 5
+    },
+    {
+      "font": "思源黑体 CN Light",
+      "count": 4
+    },
+    {
+      "font": "맑은 고딕",
+      "count": 4
+    },
+    {
+      "font": "新細明體",
+      "count": 4
+    },
+    {
+      "font": "Nyala",
+      "count": 4
+    },
+    {
+      "font": "Vrinda",
+      "count": 4
+    },
+    {
+      "font": "Shruti",
+      "count": 4
+    },
+    {
+      "font": "Tunga",
+      "count": 4
+    },
+    {
+      "font": "Raavi",
+      "count": 4
+    },
+    {
+      "font": "Euphemia",
+      "count": 4
+    },
+    {
+      "font": "Plantagenet Cherokee",
+      "count": 4
+    },
+    {
+      "font": "Microsoft Yi Baiti",
+      "count": 4
+    },
+    {
+      "font": "Microsoft Himalaya",
+      "count": 4
+    },
+    {
+      "font": "MV Boli",
+      "count": 4
+    },
+    {
+      "font": "Mangal",
+      "count": 4
+    },
+    {
+      "font": "Gautami",
+      "count": 4
+    },
+    {
+      "font": "Latha",
+      "count": 4
+    },
+    {
+      "font": "Kalinga",
+      "count": 4
+    },
+    {
+      "font": "Kartika",
+      "count": 4
+    },
+    {
+      "font": "DokChampa",
+      "count": 4
+    },
+    {
+      "font": "Iskoola Pota",
+      "count": 4
+    },
+    {
+      "font": "Mongolian Baiti",
+      "count": 4
+    },
+    {
+      "font": "Microsoft Uighur",
+      "count": 4
+    },
+    {
+      "font": "Sylfaen",
+      "count": 4
+    },
+    {
+      "font": "Leelawadee UI",
+      "count": 4
+    }
+  ],
+  "primary_fonts": [
+    "思源宋体 CN Heavy",
+    "思源黑体 CN Regular",
+    "Raleway",
+    "汉仪旗黑-50S"
+  ],
+  "assets": [
+    {
+      "source_part": "ppt/media/image9.svg",
+      "file": "templates/assets/strict-sysu-official-green/media/image9-edb5864d34.svg",
+      "sha256": "edb5864d3407950ebd5e31b07434b4f9827f9744afeefea09c7a049290ffe8c9",
+      "bytes": 73749,
+      "extension": ".svg",
+      "category": "svg-mark-or-diagram",
+      "slides": [
+        2,
+        3,
+        9,
+        11,
+        18,
+        26
+      ]
+    },
+    {
+      "source_part": "ppt/media/image10.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image10-f063c50195.png",
+      "sha256": "f063c50195e9e3023b5f78eb8d85689c83ae0ea75da5c1aac153473091b3d03a",
+      "bytes": 4149242,
+      "extension": ".png",
+      "category": "cutout-building-or-decorative",
+      "slides": [
+        3,
+        18
+      ],
+      "width": 1173,
+      "height": 1173,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/hdphoto2.wdp",
+      "file": "templates/assets/strict-sysu-official-green/media/hdphoto2-71193b5790.wdp",
+      "sha256": "71193b57901b0ad14cd9ca3a6b4bcbe2bbc00dd4d06c63ceb6872d34479f791b",
+      "bytes": 767831,
+      "extension": ".wdp",
+      "category": "unsupported-wdp-photo",
+      "slides": [
+        3,
+        18
+      ]
+    },
+    {
+      "source_part": "ppt/media/image11.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image11-4c61c85508.jpeg",
+      "sha256": "4c61c8550851fdd59b6ecf4ab8c5ccf6bc5777f307a4ad4cec4c32a808cfadf7",
+      "bytes": 410355,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        4
+      ],
+      "width": 880,
+      "height": 1174,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image12.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image12-fc71e97ca4.png",
+      "sha256": "fc71e97ca42b103b4f0e5eb54bed44ee4ed09f296af581ade128b621fe69c3b8",
+      "bytes": 15790,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        4,
+        7,
+        8,
+        13,
+        22,
+        24
+      ],
+      "width": 404,
+      "height": 177,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image13.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image13-20843aceda.jpeg",
+      "sha256": "20843aceda3d8f03b521bd144e3c91ea4d31eda65c5553f94b64f75445137193",
+      "bytes": 151314,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        5
+      ],
+      "width": 758,
+      "height": 370,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image14.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image14-45ba49af03.jpeg",
+      "sha256": "45ba49af0326fc1f7c81d96dc1c7f86ba949aaaaa66aa0caa570a34ea7b15732",
+      "bytes": 453492,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        5
+      ],
+      "width": 939,
+      "height": 1175,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image15.jpg",
+      "file": "templates/assets/strict-sysu-official-green/media/image15-0d40c9b40b.jpg",
+      "sha256": "0d40c9b40b054a66d113bd54a242bd08628a3276e65ea06f1fe4dcf6dad03f60",
+      "bytes": 276520,
+      "extension": ".jpg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        6
+      ],
+      "width": 1299,
+      "height": 1732,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image16.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image16-5b1a983b92.png",
+      "sha256": "5b1a983b929e69eca6a085559c67418137c42290b63b4c471ec9f93eb1c2c907",
+      "bytes": 26536,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        6
+      ],
+      "width": 568,
+      "height": 520,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image17.svg",
+      "file": "templates/assets/strict-sysu-official-green/media/image17-ab17ab628b.svg",
+      "sha256": "ab17ab628bc80794df3f1b23453e0c3b21ba606248c552d57cd4bdb06d86ba74",
+      "bytes": 21176,
+      "extension": ".svg",
+      "category": "svg-mark-or-diagram",
+      "slides": [
+        6
+      ]
+    },
+    {
+      "source_part": "ppt/media/image18.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image18-16040bb39b.jpeg",
+      "sha256": "16040bb39b0fd271192b367b5ffeca7eea94f6a530fc6073c5da9dd3fe28e720",
+      "bytes": 303629,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        8
+      ],
+      "width": 811,
+      "height": 540,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image19.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image19-404637a739.jpeg",
+      "sha256": "404637a739b6577cc666340f3d35b07490b449e5b3a091aaae8f2f06367fe81e",
+      "bytes": 211158,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        8
+      ],
+      "width": 810,
+      "height": 541,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image20.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image20-6b9af9f58b.jpeg",
+      "sha256": "6b9af9f58b64ee71d767238d46b1f3b1ba8d9ff920b646b95ebe638930c0e73c",
+      "bytes": 324291,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        8
+      ],
+      "width": 811,
+      "height": 540,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image21.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image21-d84097c6d8.png",
+      "sha256": "d84097c6d88fdbf7ba0cd4c42a5b1e9c1d3a3f8b12399cb3bc5d5e5993210309",
+      "bytes": 3131826,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        9
+      ],
+      "width": 1920,
+      "height": 540,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/hdphoto3.wdp",
+      "file": "templates/assets/strict-sysu-official-green/media/hdphoto3-2c98c27997.wdp",
+      "sha256": "2c98c279972499fd405069baee3a955501c2fe01e47162939b4ebc942a79cc8c",
+      "bytes": 638288,
+      "extension": ".wdp",
+      "category": "unsupported-wdp-photo",
+      "slides": [
+        9
+      ]
+    },
+    {
+      "source_part": "ppt/media/image22.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image22-0273713c53.jpeg",
+      "sha256": "0273713c5382f8cfd97115fae1c7fe95c49bf99b6b4ec2a2c86c8f39e7ae8a5e",
+      "bytes": 485757,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        9
+      ],
+      "width": 813,
+      "height": 1174,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image23.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image23-86c6cec439.jpeg",
+      "sha256": "86c6cec439676e317177a54176dbef28c0e4daa64f0ed02c4c425328d11b0ff6",
+      "bytes": 809795,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        11,
+        26
+      ],
+      "width": 1173,
+      "height": 1173,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image24.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image24-7bc17a77e9.jpeg",
+      "sha256": "7bc17a77e9f3034bb51e2e6b61dc139e4cdc7d74121bd958797b0b1517b06b86",
+      "bytes": 1381903,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        12
+      ],
+      "width": 1566,
+      "height": 1174,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image26.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image26-50abfa56be.png",
+      "sha256": "50abfa56be1a95af1951c4560e0c0e5039d03c3d6b884cc65ee4fcff9a39de5c",
+      "bytes": 5640732,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        14
+      ],
+      "width": 2276,
+      "height": 829,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/hdphoto4.wdp",
+      "file": "templates/assets/strict-sysu-official-green/media/hdphoto4-4ef4b82b1a.wdp",
+      "sha256": "4ef4b82b1a1dfdce9e27a73179eefb36136d5dc8ffe219f6d2cb4daca8319b1c",
+      "bytes": 1302853,
+      "extension": ".wdp",
+      "category": "unsupported-wdp-photo",
+      "slides": [
+        14
+      ]
+    },
+    {
+      "source_part": "ppt/media/image27.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image27-29c446219a.png",
+      "sha256": "29c446219a78737520b7aa4f79e7c0b85ea60cac760ee3e6c547a37047f8e1a2",
+      "bytes": 27063,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        14,
+        15
+      ],
+      "width": 568,
+      "height": 520,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image28.svg",
+      "file": "templates/assets/strict-sysu-official-green/media/image28-6d28c5bbba.svg",
+      "sha256": "6d28c5bbbac6a0eb0957b3b4faf6fd23f54d13c1fdd88ddeb2ba7b93e839f76e",
+      "bytes": 21167,
+      "extension": ".svg",
+      "category": "svg-mark-or-diagram",
+      "slides": [
+        14,
+        15
+      ]
+    },
+    {
+      "source_part": "ppt/media/image29.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image29-962116c265.jpeg",
+      "sha256": "962116c265094f1245b59553909a937d77d919d5607f23175b3c09b4165255ba",
+      "bytes": 898516,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        15
+      ],
+      "width": 2935,
+      "height": 512,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image30.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image30-dd14a9f86b.jpeg",
+      "sha256": "dd14a9f86b96f5ed11a096fc80276261b5b4958e7c0087826fccfd30870f855f",
+      "bytes": 98000,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        15
+      ],
+      "width": 420,
+      "height": 378,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image31.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image31-953b7def51.png",
+      "sha256": "953b7def5164afbcdabf6b6ac2b9d21071c912f50f977e195a30032919d060da",
+      "bytes": 402598,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        15
+      ],
+      "width": 414,
+      "height": 378,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/hdphoto5.wdp",
+      "file": "templates/assets/strict-sysu-official-green/media/hdphoto5-15ddb9d8cb.wdp",
+      "sha256": "15ddb9d8cbdd4fb154c22b3d4c88fce32e4d3620da72d397321c16dabe172e5c",
+      "bytes": 87226,
+      "extension": ".wdp",
+      "category": "unsupported-wdp-photo",
+      "slides": [
+        15
+      ]
+    },
+    {
+      "source_part": "ppt/media/image32.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image32-f2d41dc2c9.png",
+      "sha256": "f2d41dc2c9e2f6ad3bef86640250aa473b8b84df408921292ce6e67d6b95585a",
+      "bytes": 348903,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        15
+      ],
+      "width": 415,
+      "height": 378,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/hdphoto6.wdp",
+      "file": "templates/assets/strict-sysu-official-green/media/hdphoto6-47a77bf3ba.wdp",
+      "sha256": "47a77bf3ba6969829efb947cce869165e2ba5bd1607d974a4079f4079f41ce43",
+      "bytes": 84205,
+      "extension": ".wdp",
+      "category": "unsupported-wdp-photo",
+      "slides": [
+        15
+      ]
+    },
+    {
+      "source_part": "ppt/media/image33.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image33-5f35915831.png",
+      "sha256": "5f3591583146304b47d59daea3ee979eb3734d7ab588fb16c1cdf220fa0c67f1",
+      "bytes": 446191,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        15
+      ],
+      "width": 414,
+      "height": 378,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image34.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image34-b58cfa33a2.png",
+      "sha256": "b58cfa33a2c608683075dd2e2db93e8f9b86ae50bc9f34c008c3cdf6947a8e15",
+      "bytes": 26305,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        15
+      ],
+      "width": 568,
+      "height": 520,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image35.svg",
+      "file": "templates/assets/strict-sysu-official-green/media/image35-81f4b191ca.svg",
+      "sha256": "81f4b191ca8b97ec688a4e16ca9f1d5c4103d89c64b4368703393ad4215b3f94",
+      "bytes": 21148,
+      "extension": ".svg",
+      "category": "svg-mark-or-diagram",
+      "slides": [
+        15
+      ]
+    },
+    {
+      "source_part": "ppt/media/image36.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image36-6ea1ab9b53.jpeg",
+      "sha256": "6ea1ab9b53fffb1ad9d17b35f459f1df3e2ba36bf7cf1c225d949c6eb5d76dd2",
+      "bytes": 683138,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        16
+      ],
+      "width": 1171,
+      "height": 1173,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image57.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image57-c2784ea262.jpeg",
+      "sha256": "c2784ea262e56291a55166e87304badf2f2f6c6dd21396e7e485bb759f9205ee",
+      "bytes": 458063,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        27,
+        32
+      ],
+      "width": 751,
+      "height": 1127,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image25.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image25-eee02e2e4e.jpeg",
+      "sha256": "eee02e2e4e2fa3d4c74f8424b09ce4a6a62126227654c812d1f15e15773617d7",
+      "bytes": 184645,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        12
+      ],
+      "width": 1023,
+      "height": 644,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image59.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image59-7010d2091c.jpeg",
+      "sha256": "7010d2091cc9e1bbb082ddcb73d22bafe64aa602b1086580ad15bffd63ebab11",
+      "bytes": 363129,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        28,
+        30
+      ],
+      "width": 607,
+      "height": 910,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image60.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image60-243d54f025.jpeg",
+      "sha256": "243d54f02566a556033141ee6fa1c865cd474629508f49a8b2c73c11ac29e873",
+      "bytes": 320629,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        28,
+        31
+      ],
+      "width": 607,
+      "height": 910,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image61.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image61-383d7b567e.jpeg",
+      "sha256": "383d7b567e96deb8e5451b62518cc9540368878aff929613519f417ab9a3a8ac",
+      "bytes": 663913,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        28
+      ],
+      "width": 750,
+      "height": 1125,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image62.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image62-203079b72b.jpeg",
+      "sha256": "203079b72b354fd72671ca3b49b0aacc609eb7a71bee10ca783b23a31cbd45be",
+      "bytes": 246161,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        29,
+        30
+      ],
+      "width": 520,
+      "height": 780,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image63.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image63-967d20dbcd.jpeg",
+      "sha256": "967d20dbcd3deebd38180d132f1193866f2f6848b37f7f7f1748fc41ba72d455",
+      "bytes": 236809,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        29,
+        31
+      ],
+      "width": 607,
+      "height": 910,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image64.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image64-19328d55d8.jpeg",
+      "sha256": "19328d55d8faabb45246868add9bfcacae7ce3979806703cc2637190b83ea67a",
+      "bytes": 515212,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        29
+      ],
+      "width": 751,
+      "height": 1127,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image65.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image65-d737eae0c0.jpeg",
+      "sha256": "d737eae0c09619638c85bcdc9099a479286e903aa3cb60ff206c6e02a746fc1b",
+      "bytes": 340859,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        30,
+        31
+      ],
+      "width": 519,
+      "height": 779,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image66.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image66-2c7cc88fb9.jpeg",
+      "sha256": "2c7cc88fb9d54e410eb2aeeb6e483e47822da325c538185042dd7d438e465abb",
+      "bytes": 321705,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        30
+      ],
+      "width": 752,
+      "height": 1128,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image67.jpg",
+      "file": "templates/assets/strict-sysu-official-green/media/image67-af7ce5ba09.jpg",
+      "sha256": "af7ce5ba09d2c200a7ca3aea7eb34174b98c6e87f4b701900f7cd30fbb17de59",
+      "bytes": 122748,
+      "extension": ".jpg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        31
+      ],
+      "width": 1280,
+      "height": 1920,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image68.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image68-02172129a3.png",
+      "sha256": "02172129a3b7562fe0dc74d61bf5134958d95c907c17ff498fa8cf2a8094fd5d",
+      "bytes": 77553,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        33
+      ],
+      "width": 1905,
+      "height": 832,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image38.svg",
+      "file": "templates/assets/strict-sysu-official-green/media/image38-3afa207059.svg",
+      "sha256": "3afa207059ca391e0ff549307e3dfcbffcc8572c2d0feaf1d730556b8da5777b",
+      "bytes": 21165,
+      "extension": ".svg",
+      "category": "svg-mark-or-diagram",
+      "slides": [
+        17
+      ]
+    },
+    {
+      "source_part": "ppt/media/image40.svg",
+      "file": "templates/assets/strict-sysu-official-green/media/image40-0d44511732.svg",
+      "sha256": "0d4451173279766908a7114154eddacac4181b85b590fc81118ff95c4c0ee611",
+      "bytes": 21195,
+      "extension": ".svg",
+      "category": "svg-mark-or-diagram",
+      "slides": [
+        17
+      ]
+    },
+    {
+      "source_part": "ppt/media/image58.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image58-fc7bd0153a.jpeg",
+      "sha256": "fc7bd0153acc285c56fd6e319f3f31e82a4bc7093526aac2954cf38e47848e69",
+      "bytes": 78396,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        28,
+        29
+      ],
+      "width": 520,
+      "height": 779,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image41.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image41-6c355647d0.jpeg",
+      "sha256": "6c355647d0ad254d2538ee803a3ef29af15216a7541bf8ee36ddd4568a311d06",
+      "bytes": 1019402,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        19
+      ],
+      "width": 1469,
+      "height": 1653,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image37.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image37-0cc50dde24.png",
+      "sha256": "0cc50dde248b28585e5dc48782b6afc6bfa016d98cd3d5d44f5a45dc5e32774e",
+      "bytes": 21723,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        17
+      ],
+      "width": 568,
+      "height": 520,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image42.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image42-ec84d0154e.png",
+      "sha256": "ec84d0154ef93771f8b287447f1faa4aa5f0171b43296be659798fe120967c3a",
+      "bytes": 64426,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        19
+      ],
+      "width": 1376,
+      "height": 396,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image43.svg",
+      "file": "templates/assets/strict-sysu-official-green/media/image43-95d752b7fd.svg",
+      "sha256": "95d752b7fdfc553fd6450b23b5f4a9f6c85937832752b94340e31046f586ab1f",
+      "bytes": 74261,
+      "extension": ".svg",
+      "category": "svg-mark-or-diagram",
+      "slides": [
+        19
+      ]
+    },
+    {
+      "source_part": "ppt/media/image44.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image44-feec4ae11f.jpeg",
+      "sha256": "feec4ae11f0be080fc8c834c60740ad3cae469d9f7416b635f8c78c32cc31aef",
+      "bytes": 314823,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        20
+      ],
+      "width": 1198,
+      "height": 551,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image45.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image45-f322bd0947.jpeg",
+      "sha256": "f322bd0947660d85411e205b30b9a3e34a85001516f29ca1e91a3033d8649e78",
+      "bytes": 369935,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        20
+      ],
+      "width": 1197,
+      "height": 549,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image46.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image46-be6d2702cf.jpeg",
+      "sha256": "be6d2702cfdac50d757c8d788c29b8bd93e2ad0a44a6d50532d3fa564a556dfa",
+      "bytes": 956988,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        21
+      ],
+      "width": 1456,
+      "height": 1649,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image47.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image47-0d74e2642b.jpeg",
+      "sha256": "0d74e2642bb12f2920ae218a85643b0d1eb33d3611e8469160396b6f114b9a0c",
+      "bytes": 493101,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        23
+      ],
+      "width": 1187,
+      "height": 527,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image48.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image48-86f3c5b9df.jpeg",
+      "sha256": "86f3c5b9df4584804446d7281d5230379f603e2f8d1d1aa99a3e8943870f8414",
+      "bytes": 182040,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        24
+      ],
+      "width": 453,
+      "height": 635,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image49.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image49-07b6506a1c.jpeg",
+      "sha256": "07b6506a1c385b12c73e1b3366fbb65c7483fba5fba761f0dde4d1da31c6e8fb",
+      "bytes": 159411,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        24
+      ],
+      "width": 454,
+      "height": 699,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image50.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image50-84488dcd81.jpeg",
+      "sha256": "84488dcd817732ce95fbc050413e112a76d07f282e27dbd7df2d5ef51a0521dd",
+      "bytes": 142721,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        25
+      ],
+      "width": 749,
+      "height": 435,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image51.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image51-27fd1c86dd.jpeg",
+      "sha256": "27fd1c86dd7cee5e7498b5a6ab36c1cc8cfe8ff31bce38bd30d01b58e01dd572",
+      "bytes": 90667,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        25
+      ],
+      "width": 691,
+      "height": 435,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image52.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image52-7ebeac8e4d.jpeg",
+      "sha256": "7ebeac8e4d273b6bf17d273dbc02f3100ae36257389f408139520dd0c273149d",
+      "bytes": 141141,
+      "extension": ".jpeg",
+      "category": "diagram-icon-or-small-photo",
+      "slides": [
+        25
+      ],
+      "width": 646,
+      "height": 435,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image39.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image39-15eb204099.png",
+      "sha256": "15eb2040998b214f5f67068d05767ccf88490446da295cce09ff02bcae55300a",
+      "bytes": 24458,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        17
+      ],
+      "width": 568,
+      "height": 520,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image53.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image53-25f6e1ab90.jpeg",
+      "sha256": "25f6e1ab90ec350d6edcb3aa794732c425744214694506363ca4dff6579a0e20",
+      "bytes": 278454,
+      "extension": ".jpeg",
+      "category": "recurring-template-element",
+      "slides": [
+        27,
+        31,
+        32
+      ],
+      "width": 520,
+      "height": 780,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image54.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image54-75d2861c12.jpeg",
+      "sha256": "75d2861c1221bcdf2175e633ef4bc4d118ca7731ce4bcf41d24145e2d4d47406",
+      "bytes": 188293,
+      "extension": ".jpeg",
+      "category": "recurring-template-element",
+      "slides": [
+        27,
+        28,
+        32
+      ],
+      "width": 519,
+      "height": 779,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image55.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image55-27ff1e5c47.jpeg",
+      "sha256": "27ff1e5c47812da5519e9b3f2bb39600d664b318ed739575aaa76b73bb36d2a7",
+      "bytes": 452255,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        27,
+        29,
+        32
+      ],
+      "width": 606,
+      "height": 909,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image1.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image1-d7d112a8dd.png",
+      "sha256": "d7d112a8ddf786582eb48a31d787b29cc6a3b5e04d71523e3fbc41fce8ed7697",
+      "bytes": 3198285,
+      "extension": ".png",
+      "category": "campus-photo-or-background",
+      "slides": [],
+      "width": 2936,
+      "height": 1652,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image2.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image2-be1e1c56b7.png",
+      "sha256": "be1e1c56b70079ea7f6ed057e0f880d2b8e33a7948d57ffb78fb28c4aa87b45a",
+      "bytes": 3796012,
+      "extension": ".png",
+      "category": "cutout-building-or-decorative",
+      "slides": [
+        1
+      ],
+      "width": 1016,
+      "height": 1650,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/hdphoto1.wdp",
+      "file": "templates/assets/strict-sysu-official-green/media/hdphoto1-246f4e18ff.wdp",
+      "sha256": "246f4e18ff0d51a104d8474322760acf9a5f0aa02d4d71b58cefb8e6d14a2631",
+      "bytes": 743112,
+      "extension": ".wdp",
+      "category": "unsupported-wdp-photo",
+      "slides": [
+        1
+      ]
+    },
+    {
+      "source_part": "ppt/media/image3.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image3-8641eade4e.png",
+      "sha256": "8641eade4ecce2090b7afe50f01f06b6f5729ef025eaa29d9848dd3711cb474c",
+      "bytes": 55550,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "width": 1376,
+      "height": 396,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image4.svg",
+      "file": "templates/assets/strict-sysu-official-green/media/image4-908c52d0d1.svg",
+      "sha256": "908c52d0d1ad53c5ec8e47910ab9af51b86acf4df2c359b0c4f99ee6c49302c9",
+      "bytes": 73717,
+      "extension": ".svg",
+      "category": "svg-mark-or-diagram",
+      "slides": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ]
+    },
+    {
+      "source_part": "ppt/media/image5.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image5-27d674acec.png",
+      "sha256": "27d674acec7f6acd5ada279a8b1e52900639a1a022826a1d2ed2e18c87ffa49d",
+      "bytes": 35572,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        1,
+        3,
+        11,
+        18,
+        26
+      ],
+      "width": 687,
+      "height": 300,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image6.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image6-42aa2bd3d2.jpeg",
+      "sha256": "42aa2bd3d2c02719fec20982e2d143254a52b2da40b30cf8ce87a772eb38db6b",
+      "bytes": 1544005,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        2
+      ],
+      "width": 2934,
+      "height": 825,
+      "mode": "RGB",
+      "has_alpha": false
+    },
+    {
+      "source_part": "ppt/media/image7.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image7-1e51791833.png",
+      "sha256": "1e51791833dd98a3e64bd6bfc03856bcc2a5ace92adc6882fa84979bad76d114",
+      "bytes": 63602,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        2
+      ],
+      "width": 995,
+      "height": 435,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image8.png",
+      "file": "templates/assets/strict-sysu-official-green/media/image8-a21fc312fe.png",
+      "sha256": "a21fc312fef69fa564909af0a3413d1c6f5fc06b1358534034b05f5588540014",
+      "bytes": 64549,
+      "extension": ".png",
+      "category": "logo-wordmark-emblem",
+      "slides": [
+        2,
+        3,
+        9,
+        11,
+        18,
+        26
+      ],
+      "width": 1376,
+      "height": 396,
+      "mode": "RGBA",
+      "has_alpha": true
+    },
+    {
+      "source_part": "ppt/media/image56.jpeg",
+      "file": "templates/assets/strict-sysu-official-green/media/image56-3b855ec110.jpeg",
+      "sha256": "3b855ec11056571cb205ecc480adc2ac4fce0c6f7a2d3d5159979bb49029aae1",
+      "bytes": 97570,
+      "extension": ".jpeg",
+      "category": "campus-photo-or-background",
+      "slides": [
+        27,
+        30,
+        32
+      ],
+      "width": 607,
+      "height": 910,
+      "mode": "RGB",
+      "has_alpha": false
+    }
+  ],
+  "category_counts": {
+    "svg-mark-or-diagram": 8,
+    "cutout-building-or-decorative": 2,
+    "unsupported-wdp-photo": 6,
+    "campus-photo-or-background": 26,
+    "logo-wordmark-emblem": 17,
+    "diagram-icon-or-small-photo": 13,
+    "recurring-template-element": 2
+  }
+}

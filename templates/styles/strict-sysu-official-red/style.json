@@ -1,0 +1,227 @@
+{
+  "id": "strict-sysu-official-red",
+  "name": "Strict SYSU Official Red",
+  "group": "strict-original",
+  "strict_original": true,
+  "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+  "demo_pptx": "outputs/style-showcase/template-elements/strict-sysu-official-red-elements-showcase.pptx",
+  "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
+  "contact_sheet": "templates/assets/strict-sysu-official-red/contact-sheet.jpg",
+  "fonts": {
+    "primary": [
+      "思源宋体 CN Medium",
+      "思源宋体 CN Heavy",
+      "Calibri"
+    ],
+    "observed_top": [
+      {
+        "font": "思源宋体 CN Medium",
+        "count": 307
+      },
+      {
+        "font": "思源宋体 CN Heavy",
+        "count": 275
+      },
+      {
+        "font": "+mn-cs",
+        "count": 254
+      },
+      {
+        "font": "+mn-lt",
+        "count": 226
+      },
+      {
+        "font": "+mn-ea",
+        "count": 216
+      },
+      {
+        "font": "Calibri",
+        "count": 216
+      },
+      {
+        "font": "Arial",
+        "count": 80
+      },
+      {
+        "font": "Estrangelo Edessa",
+        "count": 16
+      },
+      {
+        "font": "Ebrima",
+        "count": 12
+      },
+      {
+        "font": "思源黑体 CN Normal",
+        "count": 11
+      },
+      {
+        "font": "+mj-ea",
+        "count": 9
+      },
+      {
+        "font": "Helvetica",
+        "count": 9
+      },
+      {
+        "font": "Nirmala UI",
+        "count": 8
+      },
+      {
+        "font": "汉仪旗黑-50S",
+        "count": 7
+      },
+      {
+        "font": "微软雅黑",
+        "count": 6
+      },
+      {
+        "font": "Times New Roman",
+        "count": 6
+      },
+      {
+        "font": "等线",
+        "count": 5
+      },
+      {
+        "font": "等线 Light",
+        "count": 5
+      },
+      {
+        "font": "맑은 고딕",
+        "count": 4
+      },
+      {
+        "font": "新細明體",
+        "count": 4
+      }
+    ]
+  },
+  "colors": {
+    "accent": "8F1D2C",
+    "secondary": "C83A3A",
+    "theme": {
+      "dk1": "000000",
+      "lt1": "FFFFFF",
+      "dk2": "44546A",
+      "lt2": "E7E6E6",
+      "accent1": "4472C4",
+      "accent2": "ED7D31",
+      "accent3": "A5A5A5",
+      "accent4": "FFC000",
+      "accent5": "5B9BD5",
+      "accent6": "70AD47",
+      "hlink": "0563C1",
+      "folHlink": "954F72"
+    },
+    "observed_top": [
+      {
+        "color": "FFC000",
+        "count": 120
+      },
+      {
+        "color": "A00000",
+        "count": 102
+      },
+      {
+        "color": "27282D",
+        "count": 72
+      },
+      {
+        "color": "150000",
+        "count": 43
+      },
+      {
+        "color": "800000",
+        "count": 26
+      },
+      {
+        "color": "100000",
+        "count": 24
+      },
+      {
+        "color": "120000",
+        "count": 19
+      },
+      {
+        "color": "FEFCFA",
+        "count": 18
+      },
+      {
+        "color": "FDF5F5",
+        "count": 15
+      },
+      {
+        "color": "C00000",
+        "count": 14
+      },
+      {
+        "color": "000000",
+        "count": 10
+      },
+      {
+        "color": "FFFFFF",
+        "count": 8
+      },
+      {
+        "color": "808080",
+        "count": 8
+      },
+      {
+        "color": "105000",
+        "count": 6
+      },
+      {
+        "color": "103000",
+        "count": 6
+      },
+      {
+        "color": "135000",
+        "count": 5
+      },
+      {
+        "color": "740003",
+        "count": 4
+      },
+      {
+        "color": "FFE9A7",
+        "count": 4
+      },
+      {
+        "color": "E9CAFE",
+        "count": 4
+      },
+      {
+        "color": "110000",
+        "count": 4
+      }
+    ]
+  },
+  "assets": {
+    "root": "templates/assets/strict-sysu-official-red",
+    "category_counts": {
+      "logo-wordmark-emblem": 9,
+      "unsupported-wdp-photo": 8,
+      "campus-photo-or-background": 7,
+      "cutout-building-or-decorative": 3,
+      "svg-mark-or-diagram": 2,
+      "diagram-icon-or-small-photo": 7
+    }
+  },
+  "use_case": "Exact official SYSU red style with extracted ceremonial marks, source serif titles, and campus imagery.",
+  "generation_rules": [
+    "Keep the first slide of the generated style showcase as the original source PPT cover.",
+    "Use the source PPTX as the layout authority, but use the extracted asset manifest to choose logos, marks, photos, and recurring decorative elements.",
+    "Preserve source font families, especially the observed Source Han Serif/Sans variants such as 思源宋体 CN Heavy or 思源黑体 CN Heavy when present.",
+    "Use extracted theme and observed colors before adding new colors.",
+    "Treat official blue, green, and red as separate visual systems; do not only swap accent colors.",
+    "Do not add a generic full-height left vertical stripe unless the source layout itself contains that element.",
+    "For technical content pages, the allowed outside aesthetic reference is ppt169_building_effective_agents page rhythm: precise cards, hero diagram first, concise interpretation second; keep source-template background colors.",
+    "For generated decks, map content to source slide layouts first, then use extracted assets to fill or extend slides."
+  ],
+  "aesthetic_reference": {
+    "project": "ppt169_building_effective_agents",
+    "source": ".codex/reference-skills/ppt-master/examples/ppt169_building_effective_agents/spec_lock.md",
+    "adaptation": "Borrow page rhythm and technical-card discipline only; keep source-template backgrounds and replace fonts, colors, icons, and imagery with SYSU template assets."
+  },
+  "removed_scope": "Lingnan PDF is intentionally excluded from strict styles because it is not an editable PPTX template in this project."
+}

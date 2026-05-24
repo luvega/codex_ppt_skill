@@ -1,0 +1,39 @@
+{
+  "id": "beamer-sysu-red",
+  "name": "Beamer SYSU Red",
+  "group": "beamer-inspired",
+  "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+  "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
+  "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-red-template.pptx",
+  "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-red-showcase.pptx",
+  "reference": {
+    "repo": "https://github.com/Noi1r/beamer-skill/tree/main/beamer",
+    "local_path": ".codex/reference-skills/beamer-skill/beamer",
+    "commit": "b73d48a"
+  },
+  "palette": {
+    "accent": "8F1D2C",
+    "secondary": "C83A3A",
+    "emphasis": "0173B2",
+    "warning": "DE8F05",
+    "bg": "FFFFFF",
+    "surface": "FBF4F4",
+    "surface2": "F3E5E5",
+    "border": "ECDADA",
+    "text": "2B1B1D",
+    "muted": "735A5D"
+  },
+  "fonts": {
+    "primary": "思源宋体 CN Medium",
+    "fallback": "Microsoft YaHei"
+  },
+  "rules": [
+    "Use a Beamer/Madrid-like top title bar and frame-number footer.",
+    "Keep 16:9 canvas and compact academic density.",
+    "Use at most two colored blocks per slide.",
+    "Use one substantive element per slide: equation, table, algorithm, diagram, or figure.",
+    "Use SYSU extracted logos, campus imagery, and source template colors.",
+    "Do not copy LaTeX output mechanically; this is a PPTX adaptation."
+  ],
+  "use_case": "Formal academic reports, defenses, and official talks using SYSU red."
+}

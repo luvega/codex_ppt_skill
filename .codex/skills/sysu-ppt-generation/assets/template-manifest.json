@@ -1,0 +1,127 @@
+{
+  "project_root": "F:/AI_PPT",
+  "inventory": ".codex/skills/sysu-ppt-generation/references/template-inventory.json",
+  "source_templates": [
+    {
+      "id": "sysu-official-blue",
+      "path": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "role": "default official academic/report template"
+    },
+    {
+      "id": "sysu-official-orange",
+      "path": "templates/source/sysu-official/中山大学幻灯片模板-橙.pptx",
+      "role": "warm administrative/event template"
+    },
+    {
+      "id": "sysu-official-red",
+      "path": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+      "role": "formal red official template"
+    },
+    {
+      "id": "sysu-official-green",
+      "path": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+      "role": "green sustainability/biomedical template"
+    },
+    {
+      "id": "sysu-official-black",
+      "path": "templates/source/sysu-official/中山大学幻灯片模板-黑.pptx",
+      "role": "high-contrast solemn template"
+    },
+    {
+      "id": "sysu-tangfeng-33",
+      "path": "templates/source/sysu-legacy/中山大学模板-唐峰素材 (33).pptx",
+      "role": "Tang Feng / older SYSU visual reference"
+    },
+    {
+      "id": "sysu-medical-ai-source",
+      "path": "templates/source/sysu-medical-ai/人工智能导论（医学五年制）简单模板.pptx",
+      "role": "Medical AI course template source"
+    },
+    {
+      "id": "lingnan-reference-pdf",
+      "path": "templates/source/lingnan-reference/参考slides.pdf",
+      "role": "PDF reference only; not an active strict style without editable PPTX source"
+    }
+  ],
+  "style_index": "templates/styles/style-index.json",
+  "template_element_gallery": "outputs/style-showcase/template-elements/template-elements-gallery.pptx",
+  "template_element_showcases": [
+    {
+      "id": "strict-sysu-official-blue",
+      "path": "outputs/style-showcase/template-elements/strict-sysu-official-blue-elements-showcase.pptx",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
+      "contact_sheet": "templates/assets/strict-sysu-official-blue/contact-sheet.jpg",
+      "mode": "extracted_template_elements"
+    },
+    {
+      "id": "strict-sysu-official-green",
+      "path": "outputs/style-showcase/template-elements/strict-sysu-official-green-elements-showcase.pptx",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
+      "contact_sheet": "templates/assets/strict-sysu-official-green/contact-sheet.jpg",
+      "mode": "extracted_template_elements"
+    },
+    {
+      "id": "strict-sysu-official-red",
+      "path": "outputs/style-showcase/template-elements/strict-sysu-official-red-elements-showcase.pptx",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
+      "contact_sheet": "templates/assets/strict-sysu-official-red/contact-sheet.jpg",
+      "mode": "extracted_template_elements"
+    },
+    {
+      "id": "strict-sysu-medical-ai",
+      "path": "outputs/style-showcase/template-elements/strict-sysu-medical-ai-elements-showcase.pptx",
+      "source": "templates/source/sysu-medical-ai/人工智能导论（医学五年制）简单模板.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-medical-ai/asset-manifest.json",
+      "contact_sheet": "templates/assets/strict-sysu-medical-ai/contact-sheet.jpg",
+      "mode": "extracted_template_elements"
+    }
+  ],
+  "beamer_inspired_templates": [
+    {
+      "id": "beamer-sysu-blue",
+      "template": "templates/generated/beamer-inspired/beamer-sysu-blue-template.pptx",
+      "demo": "outputs/style-showcase/beamer-inspired/beamer-sysu-blue-showcase.pptx",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json"
+    },
+    {
+      "id": "beamer-sysu-green",
+      "template": "templates/generated/beamer-inspired/beamer-sysu-green-template.pptx",
+      "demo": "outputs/style-showcase/beamer-inspired/beamer-sysu-green-showcase.pptx",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json"
+    },
+    {
+      "id": "beamer-sysu-red",
+      "template": "templates/generated/beamer-inspired/beamer-sysu-red-template.pptx",
+      "demo": "outputs/style-showcase/beamer-inspired/beamer-sysu-red-showcase.pptx",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json"
+    }
+  ],
+  "reference_skills": [
+    {
+      "id": "ai-lingnan-pptx",
+      "path": ".codex/reference-skills/ai-tools-installation/recommended_skills/pptx",
+      "commit": "f76ba65"
+    },
+    {
+      "id": "ai-lingnan-marp-slides-creator",
+      "path": ".codex/reference-skills/ai-tools-installation/recommended_skills/marp-slides-creator",
+      "commit": "f76ba65"
+    },
+    {
+      "id": "ai-lingnan-marp-export",
+      "path": ".codex/reference-skills/ai-tools-installation/recommended_skills/marp-export",
+      "commit": "f76ba65"
+    },
+    {
+      "id": "noi1r-beamer",
+      "path": ".codex/reference-skills/beamer-skill/beamer",
+      "commit": "b73d48a"
+    }
+  ]
+}

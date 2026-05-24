@@ -1,0 +1,39 @@
+{
+  "id": "beamer-sysu-green",
+  "name": "Beamer SYSU Green",
+  "group": "beamer-inspired",
+  "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+  "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
+  "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-green-template.pptx",
+  "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-green-showcase.pptx",
+  "reference": {
+    "repo": "https://github.com/Noi1r/beamer-skill/tree/main/beamer",
+    "local_path": ".codex/reference-skills/beamer-skill/beamer",
+    "commit": "b73d48a"
+  },
+  "palette": {
+    "accent": "2F6F4E",
+    "secondary": "73A45D",
+    "emphasis": "029E73",
+    "warning": "DE8F05",
+    "bg": "FFFFFF",
+    "surface": "F4F8F1",
+    "surface2": "EAF2E4",
+    "border": "DCE8DC",
+    "text": "1E2A22",
+    "muted": "617067"
+  },
+  "fonts": {
+    "primary": "思源宋体 CN Heavy",
+    "fallback": "Microsoft YaHei"
+  },
+  "rules": [
+    "Use a Beamer/Madrid-like top title bar and frame-number footer.",
+    "Keep 16:9 canvas and compact academic density.",
+    "Use at most two colored blocks per slide.",
+    "Use one substantive element per slide: equation, table, algorithm, diagram, or figure.",
+    "Use SYSU extracted logos, campus imagery, and source template colors.",
+    "Do not copy LaTeX output mechanically; this is a PPTX adaptation."
+  ],
+  "use_case": "Biomedical, life-science, public-health, and sustainability talks using SYSU official green."
+}

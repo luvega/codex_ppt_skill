@@ -1,0 +1,26 @@
+# Local third-party reference clones. Keep provenance in
+# .codex/skills/sysu-ppt-generation/references/reference-skill-notes.md.
+.codex/reference-skills/
+
+# Original local reference/source templates are not uploaded.
+templates/source/**
+!templates/source/
+!templates/source/README.md
+
+# Python/cache artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Office lock and temp files
+~$*
+*.tmp
+*.temp
+
+# Logs and local scratch
+*.log
+*.bak
+.DS_Store
+Thumbs.db

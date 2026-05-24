@@ -1,0 +1,39 @@
+{
+  "id": "beamer-sysu-blue",
+  "name": "Beamer SYSU Blue",
+  "group": "beamer-inspired",
+  "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+  "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
+  "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-blue-template.pptx",
+  "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-blue-showcase.pptx",
+  "reference": {
+    "repo": "https://github.com/Noi1r/beamer-skill/tree/main/beamer",
+    "local_path": ".codex/reference-skills/beamer-skill/beamer",
+    "commit": "b73d48a"
+  },
+  "palette": {
+    "accent": "0B4F6C",
+    "secondary": "3494BA",
+    "emphasis": "029E73",
+    "warning": "DE8F05",
+    "bg": "FFFFFF",
+    "surface": "F3F8FB",
+    "surface2": "E6F1F6",
+    "border": "D8E5EC",
+    "text": "1D2733",
+    "muted": "667085"
+  },
+  "fonts": {
+    "primary": "思源黑体 CN Medium",
+    "fallback": "Microsoft YaHei"
+  },
+  "rules": [
+    "Use a Beamer/Madrid-like top title bar and frame-number footer.",
+    "Keep 16:9 canvas and compact academic density.",
+    "Use at most two colored blocks per slide.",
+    "Use one substantive element per slide: equation, table, algorithm, diagram, or figure.",
+    "Use SYSU extracted logos, campus imagery, and source template colors.",
+    "Do not copy LaTeX output mechanically; this is a PPTX adaptation."
+  ],
+  "use_case": "Academic reports, seminars, and technical talks using SYSU official blue."
+}
