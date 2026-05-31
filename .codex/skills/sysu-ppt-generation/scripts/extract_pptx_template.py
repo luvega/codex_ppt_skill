@@ -256,9 +256,15 @@ def inspect_pptx(path: Path, root: Path) -> dict[str, Any]:
 
 
 def find_templates(root: Path) -> list[Path]:
-    skip_parts = {".codex", "outputs", ".git", "__pycache__"}
+    skip_parts = {".codex", "generated", "outputs", ".git", "__pycache__"}
+    removed_source_parts = {"sysu-" + "medical-ai"}
     return sorted(
-        [p for p in root.rglob("*.pptx") if not skip_parts.intersection(p.parts)],
+        [
+            p
+            for p in root.rglob("*.pptx")
+            if not skip_parts.intersection(p.parts)
+            and not removed_source_parts.intersection(p.parts)
+        ],
         key=lambda p: (str(p.parent), p.name),
     )
 
@@ -335,6 +341,7 @@ def write_markdown(data: dict[str, Any], out_file: Path) -> None:
     lines.append("## Extraction Notes")
     lines.append("")
     lines.append("- Slide indices are zero-based when mapping template slides.")
+    lines.append("- This inventory intentionally covers source templates under `templates/source/`; generated PPTX templates are routed through `templates/styles/style-index.json`.")
     lines.append("- Theme colors come from `ppt/theme/theme*.xml`; runtime colors also include direct `srgbClr` values found in slides, layouts, and masters.")
     lines.append("- The local machine did not need visual rendering for this inventory. If LibreOffice and Poppler are available, add thumbnail review before final deck delivery.")
     out_file.write_text("\n".join(lines) + "\n", encoding="utf-8")

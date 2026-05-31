@@ -14,8 +14,7 @@ Always choose a `style-id` before creating a deck. The style spec controls palet
 ## Brand Constraints
 
 - Canvas: 16:9 widescreen, 13.333 x 7.5 in.
-- Official template family: five color variants under `templates/source/sysu-official/`.
-- Medical AI source template: `templates/source/sysu-medical-ai/人工智能导论（医学五年制）简单模板.pptx`.
+- Official template family currently active in this workspace: blue, green, and red PPTX files under `templates/source/sysu-official/`.
 - Core fonts are template-specific. Preserve the selected style's extracted primary fonts, including `思源黑体 CN Medium`, `思源黑体 CN Heavy`, `思源宋体 CN Heavy`, `思源宋体 CN Medium`, `黑体`, `微软雅黑`, `Arial`, and `KaiTi` when they are listed in the style spec.
 - The smaller Tang Feng template uses Arial plus Microsoft YaHei. Keep that pairing when starting from that file.
 - Keep slide footers and numbers unless the selected source slide omits them.
@@ -27,7 +26,6 @@ Always choose a `style-id` before creating a deck. The style spec controls palet
 | `strict-sysu-official-blue` | original official blue, no simplification | exact official SYSU blue template reuse |
 | `strict-sysu-official-green` | original official green, no simplification | exact official SYSU green template reuse |
 | `strict-sysu-official-red` | original official red, no simplification | exact official SYSU red template reuse |
-| `strict-sysu-medical-ai` | original medical AI courseware, no simplification | exact medical AI teaching template reuse |
 | `beamer-sysu-blue` | official blue adapted to Beamer/Madrid frame structure | academic reports and technical seminars |
 | `beamer-sysu-green` | official green adapted to Beamer/Madrid frame structure | biomedical/life-science talks |
 | `beamer-sysu-red` | official red adapted to Beamer/Madrid frame structure | formal academic talks |
@@ -37,7 +35,7 @@ Always choose a `style-id` before creating a deck. The style spec controls palet
 | `sleek-sysu-research` | Sleek-inspired technical research layout | algorithms, code, computational methods, and data-heavy talks |
 | `river-sysu-atelier` | River/Beamer Atelier-inspired teaching layout | long-form lectures and structured research presentations |
 
-The earlier `sysu-minimal-*`, simplified `sysu-medical-ai`, and `lora-hu-academic` style kits have been removed from the active library. Use LoRA Hu and `ppt169_building_effective_agents` only as outside references when explicitly useful; do not expose them as SYSU style IDs. The `strict-*` styles are source-faithful modes backed by extracted fonts, colors, and media manifests.
+The earlier `sysu-minimal-*` and `lora-hu-academic` style kits have been removed from the active library. Use LoRA Hu and `ppt169_building_effective_agents` only as outside references when explicitly useful; do not expose them as SYSU style IDs. The `strict-*` styles are source-faithful modes backed by extracted fonts, colors, and media manifests.
 
 The `beamer-sysu-*` styles are PPTX adaptations of Beamer academic layout discipline, not strict source-template copies. Use them when the desired result is a Beamer-like academic deck with SYSU identity: top title bar, footer frame number, theorem/example/alert blocks, columns, booktabs-like tables, algorithm frames, diagrams, references, and backup slides. Redraw them for projection-scale PPTX: larger titles, larger body text, fewer simultaneous components, bigger image/table regions, and more whitespace than a true Beamer PDF.
 
@@ -45,7 +43,7 @@ The `beamer-candidates` styles are for visual selection before committing to a f
 
 ## Strict Original Rules
 
-- For `strict-sysu-official-blue`, `strict-sysu-official-green`, `strict-sysu-official-red`, and `strict-sysu-medical-ai`, read both the source PPTX inventory and the style's `asset_manifest` before generating.
+- For ready strict styles, read both the source PPTX inventory and the style's `asset_manifest` before generating.
 - Preserve source masters, slide size, theme, logos, footers, page numbers, placeholder geometry, and source typography.
 - Do structural work first: duplicate, delete, or reorder slides before replacing content.
 - Replace text and images inside existing placeholders whenever possible. Remove unused source elements entirely; do not leave empty labels, sample captions, or mismatched icon groups.
@@ -70,7 +68,6 @@ For charts, use one primary template accent plus neutral grays. Highlight only t
 - Chinese titles need more space than English titles; split lines intentionally.
 - Keep one main font family per deck. Use size and weight for hierarchy.
 - Do not use emoji as visual markers in official or academic decks.
-- For `strict-sysu-medical-ai`, favor the source courseware's clinical clarity, teal/blue structures, computational diagrams, and restrained data emphasis.
 - For `beamer-sysu-*` and `beamer-candidates`, keep Beamer-like structure but PPTX-scale typography: slide titles around 20 pt or larger, body text normally 16 pt or larger, no more than two large colored blocks per slide, and no miniature slide previews when a full-size layout sample is clearer.
 
 ## Academic Content Rules

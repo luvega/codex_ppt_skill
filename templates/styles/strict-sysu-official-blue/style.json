@@ -2,11 +2,14 @@
   "id": "strict-sysu-official-blue",
   "name": "Strict SYSU Official Blue",
   "group": "strict-original",
-  "strict_original": true,
   "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
   "demo_pptx": "outputs/style-showcase/template-elements/strict-sysu-official-blue-elements-showcase.pptx",
   "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
   "contact_sheet": "templates/assets/strict-sysu-official-blue/contact-sheet.jpg",
+  "slide_size_inches": {
+    "width": 13.333,
+    "height": 7.5
+  },
   "fonts": {
     "primary": [
       "思源黑体 CN Medium",
@@ -96,6 +99,119 @@
       }
     ]
   },
+  "palette_or_colors": {
+    "accent": "0B4F6C",
+    "secondary": "3494BA",
+    "theme": {
+      "dk1": "000000",
+      "lt1": "FFFFFF",
+      "dk2": "373545",
+      "lt2": "CEDBE6",
+      "accent1": "3494BA",
+      "accent2": "58B6C0",
+      "accent3": "75BDA7",
+      "accent4": "7A8C8E",
+      "accent5": "84ACB6",
+      "accent6": "2683C6",
+      "hlink": "6B9F25",
+      "folHlink": "9F6715"
+    },
+    "observed_top": [
+      {
+        "color": "83ABB3",
+        "count": 96
+      },
+      {
+        "color": "150000",
+        "count": 29
+      },
+      {
+        "color": "CFE5E7",
+        "count": 20
+      },
+      {
+        "color": "E1EAEB",
+        "count": 19
+      },
+      {
+        "color": "C6E1E7",
+        "count": 18
+      },
+      {
+        "color": "B7CBCD",
+        "count": 13
+      },
+      {
+        "color": "120000",
+        "count": 11
+      },
+      {
+        "color": "105000",
+        "count": 9
+      },
+      {
+        "color": "103000",
+        "count": 9
+      },
+      {
+        "color": "000000",
+        "count": 6
+      },
+      {
+        "color": "110000",
+        "count": 6
+      },
+      {
+        "color": "102000",
+        "count": 6
+      },
+      {
+        "color": "100000",
+        "count": 6
+      },
+      {
+        "color": "BDDBE5",
+        "count": 5
+      },
+      {
+        "color": "BFD1D3",
+        "count": 3
+      },
+      {
+        "color": "FFFCF9",
+        "count": 3
+      },
+      {
+        "color": "75B3C9",
+        "count": 3
+      },
+      {
+        "color": "109000",
+        "count": 3
+      },
+      {
+        "color": "170000",
+        "count": 3
+      },
+      {
+        "color": "130000",
+        "count": 3
+      }
+    ]
+  },
+  "use_case": "Exact official SYSU blue style with extracted marks, campus imagery, and source typography.",
+  "generation_status": "ready",
+  "rules": [
+    "Keep the first slide of the generated style showcase as the original source PPT cover.",
+    "Use the source PPTX as the layout authority, but use the extracted asset manifest to choose logos, marks, photos, and recurring decorative elements.",
+    "Preserve source font families, especially the observed Source Han Serif/Sans variants such as 思源宋体 CN Heavy or 思源黑体 CN Heavy when present.",
+    "Use extracted theme and observed colors before adding new colors.",
+    "Treat official blue, green, and red as separate visual systems; do not only swap accent colors.",
+    "Do not add a generic full-height left vertical stripe unless the source layout itself contains that element.",
+    "For technical content pages, the allowed outside aesthetic reference is ppt169_building_effective_agents page rhythm: precise cards, hero diagram first, concise interpretation second; keep source-template background colors.",
+    "For generated decks, map content to source slide layouts first, then use extracted assets to fill or extend slides."
+  ],
+  "strict_original": true,
   "colors": {
     "accent": "0B4F6C",
     "secondary": "3494BA",
@@ -207,7 +323,6 @@
       "svg-mark-or-diagram": 1
     }
   },
-  "use_case": "Exact official SYSU blue style with extracted marks, campus imagery, and source typography.",
   "generation_rules": [
     "Keep the first slide of the generated style showcase as the original source PPT cover.",
     "Use the source PPTX as the layout authority, but use the extracted asset manifest to choose logos, marks, photos, and recurring decorative elements.",

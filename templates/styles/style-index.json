@@ -7,7 +7,8 @@
       "style_spec": "templates/styles/strict-sysu-official-blue/style.json",
       "demo_pptx": "outputs/style-showcase/template-elements/strict-sysu-official-blue-elements-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx"
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "generation_status": "ready"
     },
     {
       "id": "strict-sysu-official-green",
@@ -16,7 +17,8 @@
       "style_spec": "templates/styles/strict-sysu-official-green/style.json",
       "demo_pptx": "outputs/style-showcase/template-elements/strict-sysu-official-green-elements-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx"
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+      "generation_status": "ready"
     },
     {
       "id": "strict-sysu-official-red",
@@ -25,16 +27,8 @@
       "style_spec": "templates/styles/strict-sysu-official-red/style.json",
       "demo_pptx": "outputs/style-showcase/template-elements/strict-sysu-official-red-elements-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx"
-    },
-    {
-      "id": "strict-sysu-medical-ai",
-      "name": "Strict SYSU Medical AI",
-      "group": "strict-original",
-      "style_spec": "templates/styles/strict-sysu-medical-ai/style.json",
-      "demo_pptx": "outputs/style-showcase/template-elements/strict-sysu-medical-ai-elements-showcase.pptx",
-      "asset_manifest": "templates/assets/strict-sysu-medical-ai/asset-manifest.json",
-      "source": "templates/source/sysu-medical-ai/人工智能导论（医学五年制）简单模板.pptx"
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+      "generation_status": "ready"
     },
     {
       "id": "simpleplus-sysu-clean",
@@ -43,7 +37,9 @@
       "style_spec": "templates/styles/simpleplus-sysu-clean/style.json",
       "demo_pptx": "outputs/style-showcase/beamer-candidates/simpleplus-sysu-clean-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx"
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "generation_status": "style_selection_only",
+      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
     },
     {
       "id": "ustc-thu-sysu-institutional",
@@ -52,7 +48,9 @@
       "style_spec": "templates/styles/ustc-thu-sysu-institutional/style.json",
       "demo_pptx": "outputs/style-showcase/beamer-candidates/ustc-thu-sysu-institutional-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx"
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+      "generation_status": "style_selection_only",
+      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
     },
     {
       "id": "moloch-sysu-minimal",
@@ -61,7 +59,9 @@
       "style_spec": "templates/styles/moloch-sysu-minimal/style.json",
       "demo_pptx": "outputs/style-showcase/beamer-candidates/moloch-sysu-minimal-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx"
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "generation_status": "style_selection_only",
+      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
     },
     {
       "id": "sleek-sysu-research",
@@ -70,7 +70,9 @@
       "style_spec": "templates/styles/sleek-sysu-research/style.json",
       "demo_pptx": "outputs/style-showcase/beamer-candidates/sleek-sysu-research-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx"
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+      "generation_status": "style_selection_only",
+      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
     },
     {
       "id": "river-sysu-atelier",
@@ -79,7 +81,9 @@
       "style_spec": "templates/styles/river-sysu-atelier/style.json",
       "demo_pptx": "outputs/style-showcase/beamer-candidates/river-sysu-atelier-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx"
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "generation_status": "style_selection_only",
+      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
     },
     {
       "id": "beamer-sysu-blue",
@@ -89,7 +93,8 @@
       "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-blue-template.pptx",
       "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-blue-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx"
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "generation_status": "ready"
     },
     {
       "id": "beamer-sysu-green",
@@ -99,7 +104,8 @@
       "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-green-template.pptx",
       "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-green-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx"
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+      "generation_status": "ready"
     },
     {
       "id": "beamer-sysu-red",
@@ -109,7 +115,8 @@
       "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-red-template.pptx",
       "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-red-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx"
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+      "generation_status": "ready"
     }
   ],
   "template_element_gallery_pptx": "outputs/style-showcase/template-elements/template-elements-gallery.pptx"

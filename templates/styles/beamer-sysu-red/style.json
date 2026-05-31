@@ -3,14 +3,40 @@
   "name": "Beamer SYSU Red",
   "group": "beamer-inspired",
   "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+  "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-red-showcase.pptx",
   "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
   "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-red-template.pptx",
-  "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-red-showcase.pptx",
   "aspect_ratio": "16:9",
   "slide_size_inches": {
     "width": 13.333,
     "height": 7.5
   },
+  "fonts": {
+    "primary": "思源宋体 CN Medium",
+    "fallback": "微软雅黑"
+  },
+  "palette_or_colors": {
+    "accent": "8F1D2C",
+    "secondary": "C83A3A",
+    "emphasis": "0173B2",
+    "warning": "DE8F05",
+    "bg": "FFFFFF",
+    "surface": "FBF4F4",
+    "surface2": "F3E5E5",
+    "border": "ECDADA",
+    "text": "2B1B1D",
+    "muted": "735A5D"
+  },
+  "use_case": "Formal academic reports, defenses, and official talks using SYSU red.",
+  "generation_status": "ready",
+  "rules": [
+    "Use Beamer-like structure but redraw for PPTX projection scale.",
+    "Keep 16:9 canvas with larger margins and fewer simultaneous elements.",
+    "Use slide titles around 20 pt and body text normally at 16 pt or larger.",
+    "Use at most two large blocks per slide.",
+    "Give visuals or tables enough space to be read from a room.",
+    "Use SYSU extracted logos, campus imagery, and source template colors."
+  ],
   "reference": {
     "repo": "https://github.com/Noi1r/beamer-skill/tree/main/beamer",
     "local_path": ".codex/reference-skills/beamer-skill/beamer",
@@ -27,18 +53,5 @@
     "border": "ECDADA",
     "text": "2B1B1D",
     "muted": "735A5D"
-  },
-  "fonts": {
-    "primary": "思源宋体 CN Medium",
-    "fallback": "微软雅黑"
-  },
-  "rules": [
-    "Use Beamer-like structure but redraw for PPTX projection scale.",
-    "Keep 16:9 canvas with larger margins and fewer simultaneous elements.",
-    "Use slide titles around 20 pt and body text normally at 16 pt or larger.",
-    "Use at most two large blocks per slide.",
-    "Give visuals or tables enough space to be read from a room.",
-    "Use SYSU extracted logos, campus imagery, and source template colors."
-  ],
-  "use_case": "Formal academic reports, defenses, and official talks using SYSU red."
+  }
 }

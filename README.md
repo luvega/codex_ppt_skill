@@ -48,11 +48,38 @@
 
 完整风格入口以 `templates/styles/style-index.json` 为准。当前包含三类：
 
-- 严格原始模板风格：官方蓝、官方绿、官方红、医学人工智能。
+- 严格原始模板风格：官方蓝、官方绿、官方红。
 - Beamer 启发模板：蓝、绿、红三套可直接复用的 PPTX 模板。
 - Beamer 候选方向：SimplePlus、USTC/THU Institutional、Moloch Minimal、Sleek Research、River/Atelier Inspired。
 
 严格原始模板用于需要尽量贴近源模板的场景；Beamer 系列用于学术报告、课程讲授、方法介绍、算法说明和研究展示。Beamer 系列只借鉴公共 Beamer 主题的结构语言，不复制外部院校品牌、图形资产或专有视觉元素。
+
+### 我该选哪个风格
+
+| 场景 | 推荐入口 | 说明 |
+|---|---|---|
+| 通用课程汇报、学术报告、课题组分享 | `strict-sysu-official-blue` | 默认正式中山大学蓝色模板，适合大多数报告。 |
+| 生命科学、公共卫生、生态、医学相关课程 | `strict-sysu-official-green` | 绿色系统更适合生命科学和公共健康语境。 |
+| 正式会议、政策汇报、仪式性或偏行政场景 | `strict-sysu-official-red` | 红色系统更正式，但应控制文字密度。 |
+| 课程讲授、方法课、结构化学术报告 | `beamer-sysu-blue` / `beamer-sysu-green` / `beamer-sysu-red` | 使用 Beamer 式标题栏、页脚、block、表格和算法页，但已按 PPTX 投影尺度重绘。 |
+| 还在比较视觉方向 | `beamer-candidates` 系列 | 只作为选型展示，不作为默认正式生成模板。 |
+
+## 从大纲到 PPT
+
+正式生成 deck 时建议使用固定输出目录，便于复查和复现：
+
+```text
+outputs/<deck-slug>/
+  outline.md
+  style.json
+  template-mapping.json
+  working.pptx
+  replacements.json
+  final.pptx
+  qa-notes.md
+```
+
+生成前先写 `outline.md` 和 `template-mapping.json`，再复制源模板或生成模板为 `working.pptx`。最终交付 `final.pptx`，并在 `qa-notes.md` 记录 slide count、尺寸、资产来源、渲染/缩略图检查结果和已知限制。
 
 ## 使用方式
 
@@ -60,6 +87,8 @@
 
 ```text
 templates/styles/style-index.json
+.codex/skills/sysu-ppt-generation/references/style-schema.md
+.codex/skills/sysu-ppt-generation/references/output-contract.md
 ```
 
 再按目标场景选择风格。若需要 Beamer 系列 PPTX，可优先从以下目录中的生成模板开始：
@@ -78,6 +107,7 @@ python "$skill\scripts\extract_pptx_template.py" --root . --out-dir "$skill\refe
 python "$skill\scripts\generate_strict_original_showcases.py"
 python "$skill\scripts\generate_beamer_inspired_templates.py"
 python "$skill\scripts\generate_beamer_candidate_showcases.py"
+python "$skill\scripts\validate_project_state.py"
 powershell -NoProfile -ExecutionPolicy Bypass -File "$skill\scripts\export_readme_previews.ps1"
 ```
 

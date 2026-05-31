@@ -2,24 +2,77 @@
   "id": "sleek-sysu-research",
   "name": "Sleek-SYSU Research",
   "group": "beamer-candidates",
-  "demo_pptx": "outputs/style-showcase/beamer-candidates/sleek-sysu-research-showcase.pptx",
   "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+  "demo_pptx": "outputs/style-showcase/beamer-candidates/sleek-sysu-research-showcase.pptx",
   "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
   "aspect_ratio": "16:9",
   "slide_size_inches": {
     "width": 13.333,
     "height": 7.5
   },
+  "fonts": {
+    "heading": "思源黑体 CN Heavy",
+    "primary": "思源黑体 CN Medium",
+    "fallback": "微软雅黑"
+  },
+  "palette_or_colors": {
+    "blue": {
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
+      "accent": "0B4F6C",
+      "secondary": "3494BA",
+      "emphasis": "029E73",
+      "warning": "DE8F05",
+      "surface": "F3F8FB",
+      "surface2": "E6F1F6",
+      "border": "D8E5EC",
+      "text": "1D2733",
+      "muted": "667085"
+    },
+    "green": {
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
+      "accent": "2F6F4E",
+      "secondary": "73A45D",
+      "emphasis": "0B8F67",
+      "warning": "C98218",
+      "surface": "F4F8F1",
+      "surface2": "EAF2E4",
+      "border": "DCE8DC",
+      "text": "1E2A22",
+      "muted": "617067"
+    },
+    "red": {
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
+      "accent": "8F1D2C",
+      "secondary": "C83A3A",
+      "emphasis": "0173B2",
+      "warning": "DE8F05",
+      "surface": "FBF4F4",
+      "surface2": "F3E5E5",
+      "border": "ECDADA",
+      "text": "2B1B1D",
+      "muted": "735A5D"
+    }
+  },
+  "use_case": "Algorithm, code, computational method, and data-heavy research presentations.",
+  "generation_status": "style_selection_only",
+  "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template.",
+  "rules": [
+    "Technical panels are large and few.",
+    "Use dark-on-light contrast and clear grid alignment.",
+    "Reserve color for state, result, and emphasis.",
+    "Use one color variant per full slide in selection decks.",
+    "Use slide titles around 18-30 pt and body text normally at 16 pt or larger.",
+    "Use large visual regions; avoid miniature slide previews.",
+    "Keep 16:9 widescreen dimensions."
+  ],
   "reference": {
     "label": "Sleek Beamer Theme",
     "urls": [
       "https://cs.overleaf.com/latex/templates/sleek-beamer-theme/zzpczkprdbqs"
     ]
-  },
-  "fonts": {
-    "heading": "思源黑体 CN Heavy",
-    "primary": "思源黑体 CN Medium",
-    "fallback": "微软雅黑"
   },
   "palette_variants": {
     "blue": {
@@ -73,7 +126,6 @@
     "Use large visual regions; avoid miniature slide previews.",
     "Keep 16:9 widescreen dimensions."
   ],
-  "use_case": "Algorithm, code, computational method, and data-heavy research presentations.",
   "notes": [
     "This is a PPTX adaptation for SYSU style selection, not a LaTeX export.",
     "All generated slides use 16:9 widescreen dimensions.",

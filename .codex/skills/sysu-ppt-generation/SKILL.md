@@ -45,8 +45,10 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .codex\skills\sysu-ppt-gener
 ```
 
 9. Read `references/generation-workflow.md` before creating a deck.
-10. Read `references/design-rules.md` when choosing colors, fonts, slide patterns, or academic presentation structure.
-11. Read `references/reference-skill-notes.md` only when you need the rationale from the referenced third-party skills.
+10. Read `references/style-schema.md` before interpreting `style.json` fields or `generation_status`.
+11. Read `references/output-contract.md` before creating a new deck output folder.
+12. Read `references/design-rules.md` when choosing colors, fonts, slide patterns, or academic presentation structure.
+13. Read `references/reference-skill-notes.md` only when you need the rationale from the referenced third-party skills.
 
 ## Style Choice
 
@@ -57,7 +59,6 @@ This project keeps source-derived strict style IDs, the earlier Beamer/Madrid ad
 | `strict-sysu-official-blue` | Strict original official blue template, preserving source masters and source slide geometry |
 | `strict-sysu-official-green` | Strict original official green template, preserving source masters and source slide geometry |
 | `strict-sysu-official-red` | Strict original official red template, preserving source masters and source slide geometry |
-| `strict-sysu-medical-ai` | Strict original medical AI courseware template |
 | `beamer-sysu-blue` | Beamer/Madrid-inspired SYSU blue academic template with title bar, footline, blocks, tables, diagrams |
 | `beamer-sysu-green` | Beamer/Madrid-inspired SYSU green academic template for biomedical/life-science talks |
 | `beamer-sysu-red` | Beamer/Madrid-inspired SYSU red academic template for formal talks |
@@ -69,9 +70,9 @@ This project keeps source-derived strict style IDs, the earlier Beamer/Madrid ad
 
 Each style has a spec under `templates/styles/<style-id>/style.json` and a showcase PPTX under `outputs/style-showcase/`.
 
-Use the `strict-*` styles for normal generation in this project. Treat the source PPTX plus `asset_manifest` as the style authority: preserve source layouts and typography, use extracted校徽/标志物/校区图片/绘图元素, and derive new slides from those assets rather than copying the source file as the final answer. Lingnan PDF is not an active strict style unless an editable PPTX source is added.
+Use the ready `strict-*` styles for normal generation in this project. Treat the source PPTX plus `asset_manifest` as the style authority: preserve source layouts and typography, use extracted校徽/标志物/校区图片/绘图元素, and derive new slides from those assets rather than copying the source file as the final answer. Lingnan PDF is not an active strict style unless an editable PPTX source is added.
 
-For strict showcase/demo decks, keep slide 1 as the original source PPT cover. Do not replace it with a synthetic generated cover, and do not add a generic full-height left vertical stripe unless that exact element exists in the selected source layout. `ppt169_building_effective_agents` may be used only as a content-page rhythm reference: precise cards, hero visual first, concise interpretation second, and clear information hierarchy. Do not copy its dark background, Anthropic palette, icons, or typography. Keep each strict style's source-template background colors, SYSU fonts, extracted SYSU assets, and SYSU official/medical-AI colors. Do not mix the LoRA Hu palette or LoRA-specific page grammar into SYSU strict styles unless the user explicitly asks for that hybrid.
+For strict showcase/demo decks, keep slide 1 as the original source PPT cover. Do not replace it with a synthetic generated cover, and do not add a generic full-height left vertical stripe unless that exact element exists in the selected source layout. `ppt169_building_effective_agents` may be used only as a content-page rhythm reference: precise cards, hero visual first, concise interpretation second, and clear information hierarchy. Do not copy its dark background, Anthropic palette, icons, or typography. Keep each strict style's source-template background colors, SYSU fonts, extracted SYSU assets, and official SYSU colors. Do not mix the LoRA Hu palette or LoRA-specific page grammar into SYSU strict styles unless the user explicitly asks for that hybrid.
 
 Use `beamer-sysu-*` styles when the user wants a Beamer-like academic structure in PowerPoint. Borrow Beamer/Madrid structure: frame titles, footline frame numbers, theorem/example/alert blocks, figure/text slides, booktabs-like tables, algorithm frames, diagrams, references, and backup slides. Redraw for PPTX projection scale: slide titles around 20 pt, body text normally 16 pt or larger, fewer simultaneous elements, larger visual regions, and generous spacing. Keep SYSU colors, fonts, logos, and campus imagery; do not output LaTeX or copy another university/institute identity.
 
@@ -81,19 +82,16 @@ For all Beamer-derived PPTX styles, do not mechanically preserve LaTeX Beamer de
 
 ## Template Choice
 
-Default to a style-kit plus template-first editing workflow. The local source templates are 16:9 and include official SYSU, Tang Feng/legacy, Lingnan reference, and medical AI teaching materials.
+Default to a style-kit plus template-first editing workflow. The local source templates are 16:9 and include official SYSU, Tang Feng/legacy, and Lingnan reference materials.
 
 Use this starting point unless the user specifies otherwise:
 
 | User intent | Starting template |
 |---|---|
 | General official SYSU deck, academic talk, report, defense | `templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx` |
-| Warm administrative or event tone | `templates/source/sysu-official/中山大学幻灯片模板-橙.pptx` |
 | Formal red-themed university communication | `templates/source/sysu-official/中山大学幻灯片模板-红.pptx` |
 | Sustainability, biomedical, public health, ecology | `templates/source/sysu-official/中山大学幻灯片模板-绿.pptx` |
-| High-contrast closing, solemn review, monochrome visual tone | `templates/source/sysu-official/中山大学幻灯片模板-黑.pptx` |
 | Tang Feng / older SYSU look or when user points to that file | `templates/source/sysu-legacy/中山大学模板-唐峰素材 (33).pptx` |
-| Medical AI courseware | `templates/source/sysu-medical-ai/人工智能导论（医学五年制）简单模板.pptx` |
 
 Ask at most three clarifying questions when required: target audience, talk duration or slide count, and preferred style ID. If those are not blocking, choose `strict-sysu-official-blue` for academic/report decks and state it in the working notes.
 

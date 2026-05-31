@@ -1,16 +1,11 @@
 {
-  "project_root": "F:/AI_PPT",
+  "project_root": "E:/Codex_Projects/AI_PPT",
   "inventory": ".codex/skills/sysu-ppt-generation/references/template-inventory.json",
   "source_templates": [
     {
       "id": "sysu-official-blue",
       "path": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
       "role": "default official academic/report template"
-    },
-    {
-      "id": "sysu-official-orange",
-      "path": "templates/source/sysu-official/中山大学幻灯片模板-橙.pptx",
-      "role": "warm administrative/event template"
     },
     {
       "id": "sysu-official-red",
@@ -23,19 +18,9 @@
       "role": "green sustainability/biomedical template"
     },
     {
-      "id": "sysu-official-black",
-      "path": "templates/source/sysu-official/中山大学幻灯片模板-黑.pptx",
-      "role": "high-contrast solemn template"
-    },
-    {
       "id": "sysu-tangfeng-33",
       "path": "templates/source/sysu-legacy/中山大学模板-唐峰素材 (33).pptx",
       "role": "Tang Feng / older SYSU visual reference"
-    },
-    {
-      "id": "sysu-medical-ai-source",
-      "path": "templates/source/sysu-medical-ai/人工智能导论（医学五年制）简单模板.pptx",
-      "role": "Medical AI course template source"
     },
     {
       "id": "lingnan-reference-pdf",
@@ -68,14 +53,6 @@
       "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
       "contact_sheet": "templates/assets/strict-sysu-official-red/contact-sheet.jpg",
-      "mode": "extracted_template_elements"
-    },
-    {
-      "id": "strict-sysu-medical-ai",
-      "path": "outputs/style-showcase/template-elements/strict-sysu-medical-ai-elements-showcase.pptx",
-      "source": "templates/source/sysu-medical-ai/人工智能导论（医学五年制）简单模板.pptx",
-      "asset_manifest": "templates/assets/strict-sysu-medical-ai/asset-manifest.json",
-      "contact_sheet": "templates/assets/strict-sysu-medical-ai/contact-sheet.jpg",
       "mode": "extracted_template_elements"
     }
   ],

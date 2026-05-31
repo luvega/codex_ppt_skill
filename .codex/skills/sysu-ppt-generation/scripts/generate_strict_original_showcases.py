@@ -66,15 +66,6 @@ STRICT_STYLES: list[dict[str, Any]] = [
         "primary_fonts": ["思源宋体 CN Medium", "思源宋体 CN Heavy", "Calibri"],
         "use_case": "Exact official SYSU red style with extracted ceremonial marks, source serif titles, and campus imagery.",
     },
-    {
-        "id": "strict-sysu-medical-ai",
-        "name": "Strict SYSU Medical AI",
-        "source": "templates/source/sysu-medical-ai/人工智能导论（医学五年制）简单模板.pptx",
-        "accent": "0B5C7D",
-        "secondary": "18A0A6",
-        "primary_fonts": ["Arial", "黑体", "微软雅黑", "Microsoft YaHei", "KaiTi"],
-        "use_case": "Medical AI courseware style with extracted clinical-computing diagrams and teaching imagery.",
-    },
 ]
 
 
@@ -127,15 +118,6 @@ def source_palette(style: dict[str, Any]) -> dict[str, str]:
             "muted": "735A5D",
             "quiet": "A99799",
             "border": "ECDADA",
-        },
-        "strict-sysu-medical-ai": {
-            "bg": "FBFEFF",
-            "surface": "EEF8FA",
-            "surface2": "E1F4F6",
-            "text": "182A33",
-            "muted": "58727D",
-            "quiet": "8DA2AA",
-            "border": "CEE7EC",
         },
     }
     palette = palettes.get(style["id"], palettes["strict-sysu-official-blue"]).copy()
@@ -460,7 +442,7 @@ def make_showcase_deck(style: dict[str, Any], manifest: dict[str, Any]) -> Path:
         add_text(slide, f"#{color}", x, y + 0.79, 1.38, 0.18, 8.8, pal["muted"], "Arial", align=PP_ALIGN.CENTER)
     add_rect(slide, 0.92, 4.65, 10.85, 1.18, pal["surface"], pal["border"], radius=True)
     add_text(slide, "Design rule", 1.18, 4.88, 1.6, 0.22, 11.5, pal["secondary"], font, bold=True)
-    add_text(slide, "Official blue, green, red, and medical AI styles must remain separate visual systems. Build charts, callouts, rules, and diagrams from extracted colors before inventing new ones.", 2.55, 4.86, 8.7, 0.42, 12.5, pal["text"], font)
+    add_text(slide, "Official blue, green, and red styles must remain separate visual systems. Build charts, callouts, rules, and diagrams from extracted colors before inventing new ones.", 2.55, 4.86, 8.7, 0.42, 12.5, pal["text"], font)
 
     slide = prs.slides.add_slide(layout)
     add_header(slide, style, "Extracted marks and recurring template elements", "These assets come from ppt/media and are indexed by source slide usage.", 4)
