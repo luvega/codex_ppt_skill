@@ -2,6 +2,7 @@
   "id": "strict-sysu-official-blue",
   "name": "Strict SYSU Official Blue",
   "group": "strict-original",
+  "strict_original": true,
   "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
   "demo_pptx": "outputs/style-showcase/template-elements/strict-sysu-official-blue-elements-showcase.pptx",
   "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
@@ -99,7 +100,7 @@
       }
     ]
   },
-  "palette_or_colors": {
+  "colors": {
     "accent": "0B4F6C",
     "secondary": "3494BA",
     "theme": {
@@ -199,20 +200,7 @@
       }
     ]
   },
-  "use_case": "Exact official SYSU blue style with extracted marks, campus imagery, and source typography.",
-  "generation_status": "ready",
-  "rules": [
-    "Keep the first slide of the generated style showcase as the original source PPT cover.",
-    "Use the source PPTX as the layout authority, but use the extracted asset manifest to choose logos, marks, photos, and recurring decorative elements.",
-    "Preserve source font families, especially the observed Source Han Serif/Sans variants such as 思源宋体 CN Heavy or 思源黑体 CN Heavy when present.",
-    "Use extracted theme and observed colors before adding new colors.",
-    "Treat official blue, green, and red as separate visual systems; do not only swap accent colors.",
-    "Do not add a generic full-height left vertical stripe unless the source layout itself contains that element.",
-    "For technical content pages, the allowed outside aesthetic reference is ppt169_building_effective_agents page rhythm: precise cards, hero diagram first, concise interpretation second; keep source-template background colors.",
-    "For generated decks, map content to source slide layouts first, then use extracted assets to fill or extend slides."
-  ],
-  "strict_original": true,
-  "colors": {
+  "palette_or_colors": {
     "accent": "0B4F6C",
     "secondary": "3494BA",
     "theme": {
@@ -323,6 +311,8 @@
       "svg-mark-or-diagram": 1
     }
   },
+  "use_case": "Exact official SYSU blue style with extracted marks, campus imagery, and source typography.",
+  "generation_status": "ready",
   "generation_rules": [
     "Keep the first slide of the generated style showcase as the original source PPT cover.",
     "Use the source PPTX as the layout authority, but use the extracted asset manifest to choose logos, marks, photos, and recurring decorative elements.",
@@ -338,5 +328,15 @@
     "source": ".codex/reference-skills/ppt-master/examples/ppt169_building_effective_agents/spec_lock.md",
     "adaptation": "Borrow page rhythm and technical-card discipline only; keep source-template backgrounds and replace fonts, colors, icons, and imagery with SYSU template assets."
   },
-  "removed_scope": "Lingnan PDF is intentionally excluded from strict styles because it is not an editable PPTX template in this project."
+  "removed_scope": "Lingnan PDF is intentionally excluded from strict styles because it is not an editable PPTX template in this project.",
+  "rules": [
+    "Keep the first slide of the generated style showcase as the original source PPT cover.",
+    "Use the source PPTX as the layout authority, but use the extracted asset manifest to choose logos, marks, photos, and recurring decorative elements.",
+    "Preserve source font families, especially the observed Source Han Serif/Sans variants such as 思源宋体 CN Heavy or 思源黑体 CN Heavy when present.",
+    "Use extracted theme and observed colors before adding new colors.",
+    "Treat official blue, green, and red as separate visual systems; do not only swap accent colors.",
+    "Do not add a generic full-height left vertical stripe unless the source layout itself contains that element.",
+    "For technical content pages, the allowed outside aesthetic reference is ppt169_building_effective_agents page rhythm: precise cards, hero diagram first, concise interpretation second; keep source-template background colors.",
+    "For generated decks, map content to source slide layouts first, then use extracted assets to fill or extend slides."
+  ]
 }

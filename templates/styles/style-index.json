@@ -31,6 +31,39 @@
       "generation_status": "ready"
     },
     {
+      "id": "beamer-sysu-blue",
+      "name": "Beamer SYSU Blue",
+      "group": "beamer-inspired",
+      "style_spec": "templates/styles/beamer-sysu-blue/style.json",
+      "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-blue-template.pptx",
+      "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-blue-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "generation_status": "ready"
+    },
+    {
+      "id": "beamer-sysu-green",
+      "name": "Beamer SYSU Green",
+      "group": "beamer-inspired",
+      "style_spec": "templates/styles/beamer-sysu-green/style.json",
+      "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-green-template.pptx",
+      "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-green-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+      "generation_status": "ready"
+    },
+    {
+      "id": "beamer-sysu-red",
+      "name": "Beamer SYSU Red",
+      "group": "beamer-inspired",
+      "style_spec": "templates/styles/beamer-sysu-red/style.json",
+      "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-red-template.pptx",
+      "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-red-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+      "generation_status": "ready"
+    },
+    {
       "id": "simpleplus-sysu-clean",
       "name": "SimplePlus-SYSU Clean",
       "group": "beamer-candidates",
@@ -84,39 +117,6 @@
       "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
       "generation_status": "style_selection_only",
       "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
-    },
-    {
-      "id": "beamer-sysu-blue",
-      "name": "Beamer SYSU Blue",
-      "group": "beamer-inspired",
-      "style_spec": "templates/styles/beamer-sysu-blue/style.json",
-      "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-blue-template.pptx",
-      "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-blue-showcase.pptx",
-      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
-      "generation_status": "ready"
-    },
-    {
-      "id": "beamer-sysu-green",
-      "name": "Beamer SYSU Green",
-      "group": "beamer-inspired",
-      "style_spec": "templates/styles/beamer-sysu-green/style.json",
-      "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-green-template.pptx",
-      "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-green-showcase.pptx",
-      "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
-      "generation_status": "ready"
-    },
-    {
-      "id": "beamer-sysu-red",
-      "name": "Beamer SYSU Red",
-      "group": "beamer-inspired",
-      "style_spec": "templates/styles/beamer-sysu-red/style.json",
-      "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-red-template.pptx",
-      "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-red-showcase.pptx",
-      "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
-      "generation_status": "ready"
     }
   ],
   "template_element_gallery_pptx": "outputs/style-showcase/template-elements/template-elements-gallery.pptx"

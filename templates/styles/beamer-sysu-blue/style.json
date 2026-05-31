@@ -3,40 +3,14 @@
   "name": "Beamer SYSU Blue",
   "group": "beamer-inspired",
   "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
-  "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-blue-showcase.pptx",
   "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
   "template_pptx": "templates/generated/beamer-inspired/beamer-sysu-blue-template.pptx",
+  "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-blue-showcase.pptx",
   "aspect_ratio": "16:9",
   "slide_size_inches": {
     "width": 13.333,
     "height": 7.5
   },
-  "fonts": {
-    "primary": "思源黑体 CN Medium",
-    "fallback": "微软雅黑"
-  },
-  "palette_or_colors": {
-    "accent": "0B4F6C",
-    "secondary": "3494BA",
-    "emphasis": "029E73",
-    "warning": "DE8F05",
-    "bg": "FFFFFF",
-    "surface": "F3F8FB",
-    "surface2": "E6F1F6",
-    "border": "D8E5EC",
-    "text": "1D2733",
-    "muted": "667085"
-  },
-  "use_case": "Academic reports, seminars, and technical talks using SYSU official blue.",
-  "generation_status": "ready",
-  "rules": [
-    "Use Beamer-like structure but redraw for PPTX projection scale.",
-    "Keep 16:9 canvas with larger margins and fewer simultaneous elements.",
-    "Use slide titles around 20 pt and body text normally at 16 pt or larger.",
-    "Use at most two large blocks per slide.",
-    "Give visuals or tables enough space to be read from a room.",
-    "Use SYSU extracted logos, campus imagery, and source template colors."
-  ],
   "reference": {
     "repo": "https://github.com/Noi1r/beamer-skill/tree/main/beamer",
     "local_path": ".codex/reference-skills/beamer-skill/beamer",
@@ -53,5 +27,32 @@
     "border": "D8E5EC",
     "text": "1D2733",
     "muted": "667085"
-  }
+  },
+  "palette_or_colors": {
+    "accent": "0B4F6C",
+    "secondary": "3494BA",
+    "emphasis": "029E73",
+    "warning": "DE8F05",
+    "bg": "FFFFFF",
+    "surface": "F3F8FB",
+    "surface2": "E6F1F6",
+    "border": "D8E5EC",
+    "text": "1D2733",
+    "muted": "667085"
+  },
+  "fonts": {
+    "primary": "思源黑体 CN Medium",
+    "fallback": "微软雅黑"
+  },
+  "generation_status": "ready",
+  "rules": [
+    "Use Beamer-like structure but redraw for PPTX projection scale.",
+    "Keep 16:9 canvas with larger margins and fewer simultaneous elements.",
+    "Use slide titles around 20 pt and body text normally at 16 pt or larger.",
+    "Support Chinese teaching pages with long titles, two-column lecture layouts, tables, flowcharts, and summary pages.",
+    "Use at most two large blocks per slide.",
+    "Give visuals or tables enough space to be read from a room.",
+    "Use SYSU extracted logos, campus imagery, and source template colors."
+  ],
+  "use_case": "Academic reports, seminars, and technical talks using SYSU official blue."
 }

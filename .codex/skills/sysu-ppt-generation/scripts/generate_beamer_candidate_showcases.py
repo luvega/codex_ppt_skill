@@ -496,14 +496,15 @@ def add_scale_rule(prs, family: dict[str, Any], variants: dict[str, dict[str, An
 def add_variant_slide(prs, family: dict[str, Any], variant_key: str, variants: dict[str, dict[str, Any]], assets: AssetPack, slide_no: int):
     variant = variants[variant_key]
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_family_header(slide, family, variant, f"{variant['label']} Full-Scale Layout", slide_no, assets.logo_light[variant_key], assets.logo_dark[variant_key])
+    color_label = {"blue": "蓝色", "green": "绿色", "red": "红色"}[variant_key]
+    add_family_header(slide, family, variant, f"{color_label}方案：真实中文两栏讲授页", slide_no, assets.logo_light[variant_key], assets.logo_dark[variant_key])
     add_rect(slide, 0.92, 1.2, 5.8, 4.72, "FFFFFF", variant["border"], radius=True)
     add_picture_crop(slide, assets.photo[variant_key], 1.16, 1.44, 5.32, 3.62)
-    add_text(slide, "Extracted SYSU visual asset", 1.18, 5.25, 4.8, 0.2, 10.5, variant["muted"], "Arial")
-    add_text(slide, "One claim per slide", 7.18, 1.38, 4.35, 0.44, 24, variant["accent"], family["font_heading"], bold=True)
-    add_text(slide, "Use a large visual region, a readable interpretation paragraph, and no more than two support bullets.", 7.2, 2.08, 4.55, 0.95, 18, variant["text"], family["font_primary"])
-    add_bullet(slide, "The audience reads the page without zooming.", 7.25, 3.55, 4.1, variant, family)
-    add_bullet(slide, "Color marks hierarchy rather than filling space.", 7.25, 4.15, 4.1, variant, family)
+    add_text(slide, "中山大学源模板提取图像或课程案例图", 1.18, 5.25, 4.8, 0.2, 10.5, variant["muted"], family["font_primary"])
+    add_text(slide, "课堂页先讲一个判断", 7.18, 1.38, 4.35, 0.44, 23, variant["accent"], family["font_heading"], bold=True)
+    add_text(slide, "右侧文字解释学生应看到什么，而不是把教师要说的全部写进页面。视觉区域保持足够大，便于投影检查。", 7.2, 2.08, 4.55, 1.05, 17, variant["text"], family["font_primary"])
+    add_bullet(slide, "标题表达结论，不只写主题。", 7.25, 3.55, 4.1, variant, family)
+    add_bullet(slide, "图片、表格和流程图各占一页核心空间。", 7.25, 4.15, 4.1, variant, family)
     add_rect(slide, 7.2, 5.25, 3.8, 0.08, variant["secondary"])
 
 
@@ -615,6 +616,22 @@ def write_style(family: dict[str, Any], showcase_path: Path, variants: dict[str,
             }
             for key, value in variants.items()
         },
+        "palette_or_colors": {
+            key: {
+                "source": value["source"],
+                "asset_manifest": value["asset_manifest"],
+                "accent": value["accent"],
+                "secondary": value["secondary"],
+                "emphasis": value["emphasis"],
+                "warning": value["warning"],
+                "surface": value["surface"],
+                "surface2": value["surface2"],
+                "border": value["border"],
+                "text": value["text"],
+                "muted": value["muted"],
+            }
+            for key, value in variants.items()
+        },
         "layout_rules": family["rules"],
         "pptx_spacing_rules": [
             "Use one color variant per full slide in selection decks.",
@@ -622,7 +639,15 @@ def write_style(family: dict[str, Any], showcase_path: Path, variants: dict[str,
             "Use large visual regions; avoid miniature slide previews.",
             "Keep 16:9 widescreen dimensions.",
         ],
+        "rules": family["rules"]
+        + [
+            "Use one color variant per full slide in selection decks.",
+            "Use slide titles around 18-30 pt and body text normally at 16 pt or larger.",
+            "Use large visual regions; avoid miniature slide previews.",
+            "Keep 16:9 widescreen dimensions.",
+        ],
         "use_case": family["use_case"],
+        "generation_status": "style_selection_only",
         "notes": [
             "This is a PPTX adaptation for SYSU style selection, not a LaTeX export.",
             "All generated slides use 16:9 widescreen dimensions.",
@@ -665,6 +690,8 @@ def write_style(family: dict[str, Any], showcase_path: Path, variants: dict[str,
         "demo_pptx": rel(showcase_path),
         "asset_manifest": base["asset_manifest"],
         "source": base["source"],
+        "generation_status": "style_selection_only",
+        "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template.",
     }
 
 

@@ -322,9 +322,9 @@ def slide_cover(prs, style, logo_on_light, hero):
     add_picture_crop(slide, hero, 7.15, 1.22, 5.2, 4.15)
     add_rect(slide, 7.15, 5.38, 5.2, 0.08, style["secondary"])
     add_picture_contain(slide, logo_on_light, 0.82, 1.08, 2.35, 0.78)
-    add_text(slide, "Beamer-Inspired SYSU Template", 0.82, 2.2, 5.85, 0.78, 31, style["accent"], style["font"], bold=True)
-    add_text(slide, "Spacious PPTX academic frame", 0.86, 3.15, 5.45, 0.36, 18, style["text"], style["font_fallback"], bold=True)
-    add_text(slide, "Larger type / fewer elements / 16:9 projection-safe layout", 0.86, 3.78, 5.55, 0.28, 13.5, style["muted"], "Arial")
+    add_text(slide, "面向课堂讲授的中山大学学术模板", 0.82, 2.2, 5.85, 0.9, 29, style["accent"], style["font"], bold=True)
+    add_text(slide, "从大纲到可复查 PPTX 的生成示例", 0.86, 3.28, 5.45, 0.36, 18, style["text"], style["font_fallback"], bold=True)
+    add_text(slide, "中文长标题 / 两栏讲授 / 表格 / 流程图 / 总结页", 0.86, 3.9, 5.55, 0.28, 13.5, style["muted"], style["font_fallback"])
     add_rect(slide, 0.86, 4.56, 4.65, 0.055, style["secondary"])
     add_text(slide, style["name"], 0.86, 4.85, 4.6, 0.28, 14.5, style["accent"], style["font"], bold=True)
     add_text(slide, "Presenter / Institute / Date", 0.86, 6.78, 4.1, 0.18, 9.5, style["muted"], "Arial")
@@ -332,12 +332,12 @@ def slide_cover(prs, style, logo_on_light, hero):
 
 def slide_agenda(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_header(slide, style, "Outline: Four Moves Are Enough", 2, logo_on_dark, "Structure")
+    add_header(slide, style, "课程主线：从问题到课堂结论", 2, logo_on_dark, "结构")
     items = [
-        ("01", "Question", "State the problem and why it matters."),
-        ("02", "Method", "Introduce the model or workflow."),
-        ("03", "Evidence", "Show the decisive visual or table."),
-        ("04", "Takeaway", "End with the decision and next step."),
+        ("01", "提出问题", "用真实场景说明为什么需要这一节课。"),
+        ("02", "建立框架", "把概念、数据、方法放入同一个分析结构。"),
+        ("03", "展示证据", "用一张表格或图示支撑核心判断。"),
+        ("04", "形成结论", "用可操作的总结页结束课堂。"),
     ]
     for i, (num, title, desc) in enumerate(items):
         y = 1.38 + i * 1.02
@@ -349,59 +349,75 @@ def slide_agenda(prs, style, logo_on_dark):
 
 def slide_blocks(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_header(slide, style, "Blocks Are Bigger Than Beamer Defaults", 3, logo_on_dark, "Formalism")
-    add_text(slide, "For PPTX, a theorem block needs room for normal reading distance. Two large blocks are usually the limit.", 0.9, 1.04, 10.0, 0.36, 16.5, style["text"], style["font_fallback"])
-    add_block(
+    add_header(slide, style, "长中文标题也要保持完整、可读和有层级", 3, logo_on_dark, "标题页")
+    add_text(slide, "主题示例", 0.94, 1.22, 1.5, 0.22, 12.5, style["secondary"], style["font"], bold=True)
+    add_text(
         slide,
-        style,
+        "生成式人工智能如何改变大学课堂中的知识组织、学习反馈与教师评价",
         0.92,
-        1.76,
-        5.55,
-        2.45,
-        "Definition",
-        "A slide style is useful when it maps content shape to layout without shrinking text below presentation scale.",
-        kind="normal",
+        1.62,
+        7.1,
+        1.32,
+        26,
+        style["accent"],
+        style["font"],
+        bold=True,
     )
-    add_block(
+    add_text(
         slide,
-        style,
+        "长标题页不依赖压缩字号解决问题，而是通过换行、留白和副标题分层，让学生先读到本页的中心判断。",
+        0.98,
+        3.25,
         6.9,
-        1.76,
-        5.55,
-        2.45,
-        "Rule",
-        "Keep one main claim, one evidence region, and one highlight color on a content slide.",
-        kind="example",
+        0.72,
+        17,
+        style["text"],
+        style["font_fallback"],
     )
-    add_text(slide, "PPTX guardrail", 0.95, 4.95, 2.5, 0.28, 17, style["accent"], style["font"], bold=True)
-    add_bullet(slide, "Body text should normally be 16 pt or larger.", 1.0, 5.45, 5.3, style)
-    add_bullet(slide, "Use appendix slides rather than shrinking dense proof details.", 6.95, 5.45, 5.2, style)
+    add_rect(slide, 8.55, 1.45, 3.65, 3.9, "FFFFFF", style["border"], radius=True)
+    add_text(slide, "本页检查点", 8.86, 1.82, 2.6, 0.26, 16, style["accent"], style["font"], bold=True)
+    add_bullet(slide, "标题可在 5 秒内读完", 8.88, 2.38, 2.7, style, size=14.5)
+    add_bullet(slide, "关键词不被边界截断", 8.88, 3.0, 2.7, style, size=14.5)
+    add_bullet(slide, "副标题解释课堂任务", 8.88, 3.62, 2.7, style, size=14.5)
+    add_rect(slide, 0.98, 4.78, 6.55, 0.08, style["secondary"])
+    add_text(slide, "适用：章节导入、课程问题、报告核心论点", 0.98, 5.1, 6.2, 0.24, 13.8, style["muted"], style["font_fallback"])
 
 
 def slide_visual(prs, style, logo_on_dark, hero):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_header(slide, style, "Visual First, Interpretation Second", 4, logo_on_dark, "Evidence")
-    add_rect(slide, 0.86, 1.15, 6.25, 4.85, "FFFFFF", style["border"], radius=True)
-    add_picture_crop(slide, hero, 1.1, 1.38, 5.78, 3.92)
-    add_text(slide, "SYSU extracted image or generated figure", 1.12, 5.5, 4.8, 0.2, 10.5, style["muted"], "Arial")
-    add_text(slide, "Claim", 7.55, 1.28, 1.8, 0.34, 20, style["accent"], style["font"], bold=True)
-    add_text(slide, "The figure receives most of the slide. Text explains what to notice, not everything the presenter will say.", 7.55, 1.82, 4.45, 0.95, 17.2, style["text"], style["font_fallback"])
-    for i, item in enumerate(["One visual region", "One interpretive paragraph", "Two support bullets at most"]):
-        add_bullet(slide, item, 7.6, 3.22 + i * 0.56, 4.2, style, size=15.2)
-    add_rect(slide, 7.55, 5.35, 3.9, 0.06, style["secondary"])
+    add_header(slide, style, "两栏讲授页：左侧讲逻辑，右侧放证据", 4, logo_on_dark, "讲授")
+    add_rect(slide, 0.86, 1.16, 5.15, 4.95, "FFFFFF", style["border"], radius=True)
+    add_text(slide, "教师讲授要点", 1.16, 1.52, 2.5, 0.28, 17, style["accent"], style["font"], bold=True)
+    add_text(
+        slide,
+        "以“学习反馈”为例，先区分可观察行为、过程性数据和最终评价，再讨论 AI 工具能补足哪一段信息。",
+        1.16,
+        2.1,
+        4.28,
+        0.92,
+        16.2,
+        style["text"],
+        style["font_fallback"],
+    )
+    add_bullet(slide, "学生是否理解：看过程，不只看答案", 1.18, 3.38, 4.2, style, size=14.8)
+    add_bullet(slide, "教师是否调整：看反馈是否可执行", 1.18, 3.96, 4.2, style, size=14.8)
+    add_bullet(slide, "工具是否可靠：看记录能否复查", 1.18, 4.54, 4.2, style, size=14.8)
+    add_rect(slide, 6.38, 1.16, 5.92, 4.95, style["surface"], style["border"], radius=True)
+    add_picture_crop(slide, hero, 6.68, 1.48, 5.32, 3.38)
+    add_text(slide, "右侧保留一个主要视觉区域，承载案例、图表或课堂截图。", 6.7, 5.18, 4.95, 0.28, 12.5, style["muted"], style["font_fallback"])
 
 
 def slide_table(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_header(slide, style, "Tables Need Projection-Scale Rows", 5, logo_on_dark, "Comparison")
-    add_text(slide, "Use fewer rows and stronger spacing. A table should answer one comparison question.", 0.94, 1.05, 9.7, 0.32, 16, style["text"], style["font_fallback"])
+    add_header(slide, style, "表格页：比较三种课堂反馈证据", 5, logo_on_dark, "比较")
+    add_text(slide, "投影表格只回答一个问题：哪类证据最适合支持教师下一步行动？", 0.94, 1.05, 9.7, 0.32, 16, style["text"], style["font_fallback"])
     x, y = 1.0, 1.78
     col_w = [3.05, 3.1, 4.35]
-    headers = ["Frame", "Best use", "PPTX constraint"]
+    headers = ["证据类型", "适合回答的问题", "课堂使用约束"]
     rows = [
-        ["Visual", "Evidence", "Give the exhibit at least half the slide."],
-        ["Block", "Definition or rule", "Use two blocks, not four small ones."],
-        ["Table", "Comparison", "Keep rows large and highlight one result."],
+        ["课堂提问", "学生是否掌握关键概念", "记录代表性回答即可"],
+        ["过程日志", "学习路径在哪一步卡住", "只保留可解释字段"],
+        ["阶段测验", "是否达到教学目标", "突出一个改进动作"],
     ]
     total_w = sum(col_w)
     add_line(slide, x, y, x + total_w, y, style["accent"], 2.4)
@@ -423,53 +439,56 @@ def slide_table(prs, style, logo_on_dark):
 
 def slide_algorithm(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_header(slide, style, "Algorithm Frames Should Breathe", 6, logo_on_dark, "Procedure")
-    add_rect(slide, 0.92, 1.2, 6.4, 4.95, "FFFFFF", style["border"], radius=True)
-    add_rect(slide, 0.92, 1.2, 6.4, 0.55, style["surface2"])
-    add_text(slide, "Algorithm 1: Template-aware build", 1.18, 1.36, 5.4, 0.2, 12.5, style["accent"], style["font"], bold=True)
-    lines = [
-        "Input: outline O, style S, assets A",
-        "1  choose layout by content shape",
-        "2  place SYSU identity elements",
-        "3  insert one main visual",
-        "4  validate text size and spacing",
-        "Output: projection-safe PPTX frame",
+    add_header(slide, style, "流程图页：从大纲到可复查课件", 6, logo_on_dark, "流程")
+    nodes = [
+        ("写大纲", "outline.md"),
+        ("选模板", "style.json"),
+        ("映射页面", "mapping.json"),
+        ("质量检查", "qa-notes.md"),
     ]
-    for i, line in enumerate(lines):
-        color = style["secondary"] if i == 4 else style["text"]
-        add_text(slide, line, 1.22, 2.02 + i * 0.58, 5.55, 0.22, 12.7, color, "Consolas", bold=i == 4)
-    add_block(slide, style, 7.85, 1.4, 4.1, 1.9, "Guardrail", "Do not copy Beamer density mechanically into PowerPoint.", kind="alert")
-    add_block(slide, style, 7.85, 3.85, 4.1, 1.9, "QA", "Open the PPTX and check bounds before treating a template as reusable.", kind="example")
+    for i, (title, note) in enumerate(nodes):
+        x = 0.95 + i * 3.05
+        add_rect(slide, x, 2.15, 2.2, 1.18, "FFFFFF", style["border"], radius=True)
+        add_text(slide, title, x + 0.18, 2.45, 1.84, 0.24, 15, style["accent"], style["font"], bold=True, align=PP_ALIGN.CENTER)
+        add_text(slide, note, x + 0.18, 2.92, 1.84, 0.18, 9.8, style["muted"], "Arial", align=PP_ALIGN.CENTER)
+        if i < len(nodes) - 1:
+            add_arrow(slide, x + 2.32, 2.75, x + 2.92, 2.75, style["secondary"])
+    add_rect(slide, 1.0, 4.42, 10.9, 0.92, style["surface"], style["border"], radius=True)
+    add_text(slide, "关键要求：每次生成 deck 都留下中间文件，后续教师或代理可以复查风格、内容替换和 QA 结论。", 1.32, 4.75, 10.05, 0.24, 15.2, style["text"], style["font_fallback"])
 
 
 def slide_diagram(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_header(slide, style, "Diagrams Use Fewer, Larger Nodes", 7, logo_on_dark, "Diagram")
-    labels = ["Question", "Evidence", "Decision"]
-    xs = [1.15, 5.15, 9.15]
-    for i, (x, label) in enumerate(zip(xs, labels)):
-        add_rect(slide, x, 2.2, 2.3, 1.12, "FFFFFF", style["border"], radius=True)
-        add_text(slide, label, x + 0.18, 2.55, 1.92, 0.24, 14.5, style["accent"] if i != 1 else style["secondary"], style["font"], bold=True, align=PP_ALIGN.CENTER)
-        if i < len(xs) - 1:
-            add_arrow(slide, x + 2.4, 2.76, xs[i + 1] - 0.12, 2.76, style["secondary"])
-    add_text(slide, "Spacing rule", 1.16, 4.22, 2.2, 0.28, 17, style["accent"], style["font"], bold=True)
-    add_text(slide, "Every label should remain readable without zooming. Use backup slides for dense process maps.", 1.16, 4.72, 8.4, 0.52, 16, style["text"], style["font_fallback"])
+    add_header(slide, style, "总结页：把课堂结论压缩成三个可执行动作", 7, logo_on_dark, "总结")
+    cards = [
+        ("先选风格", "用蓝/绿/红或 Beamer 系列确定视觉边界。"),
+        ("再映射页面", "根据内容形状选择长标题、两栏、表格或流程图。"),
+        ("最后做 QA", "检查尺寸、字体、溢出、资产来源和预览图。"),
+    ]
+    for i, (title, body) in enumerate(cards):
+        x = 0.92 + i * 3.82
+        add_rect(slide, x, 1.72, 3.28, 3.05, "FFFFFF", style["border"], radius=True)
+        add_rect(slide, x, 1.72, 3.28, 0.12, style["secondary"])
+        add_text(slide, f"0{i + 1}", x + 0.28, 2.08, 0.62, 0.24, 14, style["secondary"], "Arial", bold=True)
+        add_text(slide, title, x + 0.9, 2.04, 1.85, 0.28, 17, style["accent"], style["font"], bold=True)
+        add_text(slide, body, x + 0.3, 2.9, 2.65, 0.72, 15, style["text"], style["font_fallback"])
+    add_text(slide, "适用作课程结尾、报告建议页或生成代理交付前的检查页。", 1.0, 5.45, 8.6, 0.3, 15, style["muted"], style["font_fallback"])
 
 
 def slide_refs(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_header(slide, style, "References and Backup", 8, logo_on_dark, "Close")
+    add_header(slide, style, "交付记录与备份页", 8, logo_on_dark, "交付")
     refs = [
-        "SYSU source templates: colors, fonts, logos, campus imagery.",
-        "Noi1r/beamer-skill: academic structure translated to PPTX.",
-        "Local style specs: reusable rules for future Codex generation.",
+        "源模板与资产包：提供中山大学颜色、字体、标识和校区图像。",
+        "style.json：记录本次 deck 的风格、字体、调色板和生成规则。",
+        "qa-notes.md：记录尺寸、页数、渲染检查和已知限制。",
     ]
     for i, ref in enumerate(refs):
         y = 1.55 + i * 0.86
         add_text(slide, f"[{i + 1}]", 1.0, y, 0.45, 0.22, 12.5, style["secondary"], "Arial", bold=True)
         add_text(slide, ref, 1.62, y - 0.02, 9.5, 0.32, 14.2, style["text"], style["font_fallback"])
     add_rect(slide, 1.0, 4.75, 10.2, 0.86, style["surface"], style["border"], radius=True)
-    add_text(slide, "Backup slides hold details; the main talk keeps readable scale.", 1.28, 5.03, 8.4, 0.22, 14.5, style["accent"], style["font"], bold=True)
+    add_text(slide, "主讲稿保持可读，细节证据放入备份页或 qa-notes。", 1.28, 5.03, 8.4, 0.22, 14.5, style["accent"], style["font"], bold=True)
 
 
 def make_deck(style: dict[str, Any]) -> tuple[Path, Path]:
@@ -525,14 +544,20 @@ def write_style(style: dict[str, Any], template_path: Path, showcase_path: Path)
             key: style[key]
             for key in ["accent", "secondary", "emphasis", "warning", "bg", "surface", "surface2", "border", "text", "muted"]
         },
+        "palette_or_colors": {
+            key: style[key]
+            for key in ["accent", "secondary", "emphasis", "warning", "bg", "surface", "surface2", "border", "text", "muted"]
+        },
         "fonts": {
             "primary": style["font"],
             "fallback": style["font_fallback"],
         },
+        "generation_status": "ready",
         "rules": [
             "Use Beamer-like structure but redraw for PPTX projection scale.",
             "Keep 16:9 canvas with larger margins and fewer simultaneous elements.",
             "Use slide titles around 20 pt and body text normally at 16 pt or larger.",
+            "Support Chinese teaching pages with long titles, two-column lecture layouts, tables, flowcharts, and summary pages.",
             "Use at most two large blocks per slide.",
             "Give visuals or tables enough space to be read from a room.",
             "Use SYSU extracted logos, campus imagery, and source template colors.",
@@ -574,6 +599,7 @@ def write_style(style: dict[str, Any], template_path: Path, showcase_path: Path)
         "demo_pptx": rel(showcase_path),
         "asset_manifest": style["asset_manifest"],
         "source": style["source"],
+        "generation_status": "ready",
     }
 
 

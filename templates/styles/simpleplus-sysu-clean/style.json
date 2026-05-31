@@ -2,20 +2,27 @@
   "id": "simpleplus-sysu-clean",
   "name": "SimplePlus-SYSU Clean",
   "group": "beamer-candidates",
-  "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
   "demo_pptx": "outputs/style-showcase/beamer-candidates/simpleplus-sysu-clean-showcase.pptx",
+  "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
   "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
   "aspect_ratio": "16:9",
   "slide_size_inches": {
     "width": 13.333,
     "height": 7.5
   },
+  "reference": {
+    "label": "SimplePlus Beamer Theme",
+    "urls": [
+      "https://github.com/pm25/SimplePlus-BeamerTheme",
+      "https://pt.overleaf.com/latex/templates/simpleplus-beamertheme/wfmfjhdcrdfx"
+    ]
+  },
   "fonts": {
     "heading": "思源黑体 CN Heavy",
     "primary": "思源黑体 CN Medium",
     "fallback": "微软雅黑"
   },
-  "palette_or_colors": {
+  "palette_variants": {
     "blue": {
       "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
@@ -56,26 +63,7 @@
       "muted": "735A5D"
     }
   },
-  "use_case": "Clean academic seminars, course reports, and content-first research talks.",
-  "generation_status": "style_selection_only",
-  "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template.",
-  "rules": [
-    "White canvas, light rules, and restrained color.",
-    "Small identity elements, large content regions.",
-    "One visual or one block group per slide.",
-    "Use one color variant per full slide in selection decks.",
-    "Use slide titles around 18-30 pt and body text normally at 16 pt or larger.",
-    "Use large visual regions; avoid miniature slide previews.",
-    "Keep 16:9 widescreen dimensions."
-  ],
-  "reference": {
-    "label": "SimplePlus Beamer Theme",
-    "urls": [
-      "https://github.com/pm25/SimplePlus-BeamerTheme",
-      "https://pt.overleaf.com/latex/templates/simpleplus-beamertheme/wfmfjhdcrdfx"
-    ]
-  },
-  "palette_variants": {
+  "palette_or_colors": {
     "blue": {
       "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
@@ -127,6 +115,17 @@
     "Use large visual regions; avoid miniature slide previews.",
     "Keep 16:9 widescreen dimensions."
   ],
+  "rules": [
+    "White canvas, light rules, and restrained color.",
+    "Small identity elements, large content regions.",
+    "One visual or one block group per slide.",
+    "Use one color variant per full slide in selection decks.",
+    "Use slide titles around 18-30 pt and body text normally at 16 pt or larger.",
+    "Use large visual regions; avoid miniature slide previews.",
+    "Keep 16:9 widescreen dimensions."
+  ],
+  "use_case": "Clean academic seminars, course reports, and content-first research talks.",
+  "generation_status": "style_selection_only",
   "notes": [
     "This is a PPTX adaptation for SYSU style selection, not a LaTeX export.",
     "All generated slides use 16:9 widescreen dimensions.",

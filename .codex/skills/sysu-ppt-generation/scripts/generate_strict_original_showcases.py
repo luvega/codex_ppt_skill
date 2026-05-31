@@ -512,6 +512,7 @@ def write_style_files(style: dict[str, Any], manifest: dict[str, Any], demo_path
         "demo_pptx": rel(demo_path),
         "asset_manifest": rel(ASSET_ROOT / style["id"] / "asset-manifest.json"),
         "contact_sheet": manifest["contact_sheet"],
+        "slide_size_inches": {"width": SLIDE_W, "height": SLIDE_H},
         "fonts": {
             "primary": style["primary_fonts"],
             "observed_top": manifest["fonts"][:20],
@@ -522,11 +523,18 @@ def write_style_files(style: dict[str, Any], manifest: dict[str, Any], demo_path
             "theme": manifest["theme_colors"],
             "observed_top": manifest["observed_colors"][:20],
         },
+        "palette_or_colors": {
+            "accent": style["accent"],
+            "secondary": style["secondary"],
+            "theme": manifest["theme_colors"],
+            "observed_top": manifest["observed_colors"][:20],
+        },
         "assets": {
             "root": manifest["asset_root"],
             "category_counts": manifest["category_counts"],
         },
         "use_case": style["use_case"],
+        "generation_status": "ready",
         "generation_rules": [
             "Keep the first slide of the generated style showcase as the original source PPT cover.",
             "Use the source PPTX as the layout authority, but use the extracted asset manifest to choose logos, marks, photos, and recurring decorative elements.",
@@ -544,6 +552,7 @@ def write_style_files(style: dict[str, Any], manifest: dict[str, Any], demo_path
         },
         "removed_scope": "Lingnan PDF is intentionally excluded from strict styles because it is not an editable PPTX template in this project.",
     }
+    spec["rules"] = spec["generation_rules"]
     (style_dir / "style.json").write_text(json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")
     lines = [
         f"# {style['name']}",
@@ -576,6 +585,7 @@ def write_style_files(style: dict[str, Any], manifest: dict[str, Any], demo_path
         "demo_pptx": rel(demo_path),
         "asset_manifest": spec["asset_manifest"],
         "source": rel(source),
+        "generation_status": "ready",
     }
 
 
@@ -611,10 +621,18 @@ def make_gallery(entries: list[dict[str, Any]]) -> Path:
 
 def update_style_index(entries: list[dict[str, Any]], gallery: Path) -> None:
     index_path = STYLE_ROOT / "style-index.json"
-    payload = {
-        "styles": entries,
-        "template_element_gallery_pptx": rel(gallery),
-    }
+    if index_path.exists():
+        payload = json.loads(index_path.read_text(encoding="utf-8"))
+    else:
+        payload = {"styles": []}
+    strict_ids = {entry["id"] for entry in entries}
+    retained = [
+        entry
+        for entry in payload.get("styles", [])
+        if not (entry.get("group") == "strict-original" or entry.get("id") in strict_ids)
+    ]
+    payload["styles"] = entries + retained
+    payload["template_element_gallery_pptx"] = rel(gallery)
     index_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 

@@ -2,20 +2,27 @@
   "id": "moloch-sysu-minimal",
   "name": "Moloch-SYSU Minimal",
   "group": "beamer-candidates",
-  "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
   "demo_pptx": "outputs/style-showcase/beamer-candidates/moloch-sysu-minimal-showcase.pptx",
+  "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
   "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
   "aspect_ratio": "16:9",
   "slide_size_inches": {
     "width": 13.333,
     "height": 7.5
   },
+  "reference": {
+    "label": "Moloch / Metropolis lineage",
+    "urls": [
+      "https://moloch.ink/",
+      "https://github.com/jolars/moloch"
+    ]
+  },
   "fonts": {
     "heading": "思源黑体 CN Heavy",
     "primary": "思源黑体 CN Medium",
     "fallback": "微软雅黑"
   },
-  "palette_or_colors": {
+  "palette_variants": {
     "blue": {
       "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
@@ -56,26 +63,7 @@
       "muted": "735A5D"
     }
   },
-  "use_case": "Technical talks that need maximum reading space and minimal visual noise.",
-  "generation_status": "style_selection_only",
-  "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template.",
-  "rules": [
-    "Large type, sparse content, and a single progress bar.",
-    "Light background for SYSU compatibility.",
-    "No boxed clutter unless the slide needs a formal block.",
-    "Use one color variant per full slide in selection decks.",
-    "Use slide titles around 18-30 pt and body text normally at 16 pt or larger.",
-    "Use large visual regions; avoid miniature slide previews.",
-    "Keep 16:9 widescreen dimensions."
-  ],
-  "reference": {
-    "label": "Moloch / Metropolis lineage",
-    "urls": [
-      "https://moloch.ink/",
-      "https://github.com/jolars/moloch"
-    ]
-  },
-  "palette_variants": {
+  "palette_or_colors": {
     "blue": {
       "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
@@ -127,6 +115,17 @@
     "Use large visual regions; avoid miniature slide previews.",
     "Keep 16:9 widescreen dimensions."
   ],
+  "rules": [
+    "Large type, sparse content, and a single progress bar.",
+    "Light background for SYSU compatibility.",
+    "No boxed clutter unless the slide needs a formal block.",
+    "Use one color variant per full slide in selection decks.",
+    "Use slide titles around 18-30 pt and body text normally at 16 pt or larger.",
+    "Use large visual regions; avoid miniature slide previews.",
+    "Keep 16:9 widescreen dimensions."
+  ],
+  "use_case": "Technical talks that need maximum reading space and minimal visual noise.",
+  "generation_status": "style_selection_only",
   "notes": [
     "This is a PPTX adaptation for SYSU style selection, not a LaTeX export.",
     "All generated slides use 16:9 widescreen dimensions.",
