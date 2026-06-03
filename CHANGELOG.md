@@ -1,5 +1,14 @@
 # 更新记录
 
+## v0.2 - 2026-06-03
+
+- 重做 strict 官方蓝/绿/红教师选型总览，新增三色单独 README 预览图。
+- 升级 Beamer 蓝/绿/红生成模板和 showcase，补充长中文标题、两栏讲授、科研结果图、表格、流程、总结和参考/backup 页型。
+- 重做五套 Beamer 候选展示的基准内容，保留 `style_selection_only` 状态，不作为默认生产模板。
+- 新增 PPT design tokens、科研图表规则、视觉 QA rubric，并扩展输出契约中的 `qa-notes.md` 章节要求。
+- 更新 `style.json` 和 `style-index.json` 的 `visual_tokens`、`qa_focus`、`sample_page_types`、推荐用途和适用场景字段。
+- 重新导出 README 预览图，并通过项目状态、JSON、禁用关键词、PPTX 16:9 尺寸和空白格式校验。
+
 ## v0.1 - 2026-05-24
 
 - 新增项目内 Codex PPT 生成技能和风格索引。
