@@ -104,11 +104,16 @@ def rgb(hex_value: str) -> RGBColor:
 def add_rect(slide, x, y, w, h, fill, line=None, radius=False):
     shape_type = MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE if radius else MSO_AUTO_SHAPE_TYPE.RECTANGLE
     shape = slide.shapes.add_shape(shape_type, Inches(x), Inches(y), Inches(w), Inches(h))
+    if radius and getattr(shape, "adjustments", None):
+        try:
+            shape.adjustments[0] = 0.08
+        except Exception:
+            pass
     shape.fill.solid()
     shape.fill.fore_color.rgb = rgb(fill)
     if line:
         shape.line.color.rgb = rgb(line)
-        shape.line.width = Pt(0.9)
+        shape.line.width = Pt(0.65)
     else:
         shape.line.fill.background()
     return shape
@@ -407,9 +412,52 @@ def slide_visual(prs, style, logo_on_dark, hero):
     add_text(slide, "右侧保留一个主要视觉区域，承载案例、图表或课堂截图。", 6.7, 5.18, 4.95, 0.28, 12.5, style["muted"], style["font_fallback"])
 
 
+def slide_result_figure(prs, style, logo_on_dark):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    add_header(slide, style, "科研结果图页：只突出一个关键比较", 5, logo_on_dark, "结果")
+    add_text(slide, "示例问题：加入过程性反馈后，学生能否更快完成概念迁移？", 0.92, 1.05, 8.8, 0.3, 15.8, style["text"], style["font_fallback"])
+    chart_x, chart_y, chart_w, chart_h = 0.98, 1.72, 7.1, 4.38
+    add_rect(slide, chart_x, chart_y, chart_w, chart_h, "FFFFFF", style["border"])
+    axis_x = chart_x + 0.62
+    axis_y = chart_y + chart_h - 0.58
+    add_line(slide, axis_x, axis_y, chart_x + chart_w - 0.35, axis_y, "98A2B3", 1.0)
+    add_line(slide, axis_x, axis_y, axis_x, chart_y + 0.45, "98A2B3", 1.0)
+    labels = ["课前", "活动1", "活动2", "课后"]
+    baseline = [0.36, 0.42, 0.48, 0.55]
+    ai_feedback = [0.38, 0.52, 0.68, 0.82]
+    plot_w = chart_w - 1.28
+    plot_h = chart_h - 1.2
+    prev = None
+    prev2 = None
+    for i, label in enumerate(labels):
+        px = axis_x + i * (plot_w / (len(labels) - 1))
+        py_base = axis_y - baseline[i] * plot_h
+        py_ai = axis_y - ai_feedback[i] * plot_h
+        add_rect(slide, px - 0.035, py_base - 0.035, 0.07, 0.07, "A0A8B3")
+        add_rect(slide, px - 0.04, py_ai - 0.04, 0.08, 0.08, style["secondary"])
+        if prev:
+            add_line(slide, prev[0], prev[1], px, py_base, "A0A8B3", 1.4)
+        if prev2:
+            add_line(slide, prev2[0], prev2[1], px, py_ai, style["secondary"], 2.4)
+        prev = (px, py_base)
+        prev2 = (px, py_ai)
+        add_text(slide, label, px - 0.33, axis_y + 0.22, 0.66, 0.18, 10.5, style["muted"], style["font_fallback"], align=PP_ALIGN.CENTER)
+    add_text(slide, "迁移完成率", chart_x + 0.22, chart_y + 0.28, 1.3, 0.18, 10.5, style["muted"], style["font_fallback"])
+    add_text(slide, "过程性反馈组", chart_x + chart_w - 1.78, chart_y + 0.64, 1.35, 0.2, 11.5, style["secondary"], style["font_fallback"], bold=True)
+    add_text(slide, "常规教学组", chart_x + chart_w - 1.78, chart_y + 0.94, 1.35, 0.2, 11, "667085", style["font_fallback"])
+    add_text(slide, "Source: 示例课堂数据；真实 deck 应替换为原始图表或统计结果。", chart_x + 0.28, chart_y + chart_h + 0.12, 4.7, 0.16, 8.8, style["muted"], style["font_fallback"])
+    add_rect(slide, 8.52, 1.72, 3.68, 4.38, style["surface"], style["border"])
+    add_text(slide, "图表页规则", 8.84, 2.08, 2.4, 0.24, 16.2, style["accent"], style["font"], bold=True)
+    add_bullet(slide, "一页只解释一个比较", 8.86, 2.72, 2.82, style, size=14.5)
+    add_bullet(slide, "直接标注关键系列", 8.86, 3.28, 2.82, style, size=14.5)
+    add_bullet(slide, "轴标签和单位必须可读", 8.86, 3.84, 2.82, style, size=14.5)
+    add_bullet(slide, "来源贴近图表而非隐藏", 8.86, 4.4, 2.82, style, size=14.5)
+    add_text(slide, "正式科研页可替换为论文图、实验图或统计图，但必须保留单位、样本量和来源。", 8.82, 5.12, 2.92, 0.48, 11.8, style["muted"], style["font_fallback"])
+
+
 def slide_table(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_header(slide, style, "表格页：比较三种课堂反馈证据", 5, logo_on_dark, "比较")
+    add_header(slide, style, "表格页：比较三种课堂反馈证据", 6, logo_on_dark, "比较")
     add_text(slide, "投影表格只回答一个问题：哪类证据最适合支持教师下一步行动？", 0.94, 1.05, 9.7, 0.32, 16, style["text"], style["font_fallback"])
     x, y = 1.0, 1.78
     col_w = [3.05, 3.1, 4.35]
@@ -439,7 +487,7 @@ def slide_table(prs, style, logo_on_dark):
 
 def slide_algorithm(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_header(slide, style, "流程图页：从大纲到可复查课件", 6, logo_on_dark, "流程")
+    add_header(slide, style, "流程图页：从大纲到可复查课件", 7, logo_on_dark, "流程")
     nodes = [
         ("写大纲", "outline.md"),
         ("选模板", "style.json"),
@@ -459,7 +507,7 @@ def slide_algorithm(prs, style, logo_on_dark):
 
 def slide_diagram(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_header(slide, style, "总结页：把课堂结论压缩成三个可执行动作", 7, logo_on_dark, "总结")
+    add_header(slide, style, "总结页：把课堂结论压缩成三个可执行动作", 8, logo_on_dark, "总结")
     cards = [
         ("先选风格", "用蓝/绿/红或 Beamer 系列确定视觉边界。"),
         ("再映射页面", "根据内容形状选择长标题、两栏、表格或流程图。"),
@@ -477,7 +525,7 @@ def slide_diagram(prs, style, logo_on_dark):
 
 def slide_refs(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_header(slide, style, "交付记录与备份页", 8, logo_on_dark, "交付")
+    add_header(slide, style, "交付记录与备份页", 9, logo_on_dark, "交付")
     refs = [
         "源模板与资产包：提供中山大学颜色、字体、标识和校区图像。",
         "style.json：记录本次 deck 的风格、字体、调色板和生成规则。",
@@ -508,6 +556,7 @@ def make_deck(style: dict[str, Any]) -> tuple[Path, Path]:
     slide_agenda(prs, style, logo_on_dark)
     slide_blocks(prs, style, logo_on_dark)
     slide_visual(prs, style, logo_on_dark, hero)
+    slide_result_figure(prs, style, logo_on_dark)
     slide_table(prs, style, logo_on_dark)
     slide_algorithm(prs, style, logo_on_dark)
     slide_diagram(prs, style, logo_on_dark)
@@ -553,6 +602,45 @@ def write_style(style: dict[str, Any], template_path: Path, showcase_path: Path)
             "fallback": style["font_fallback"],
         },
         "generation_status": "ready",
+        "visual_tokens": {
+            "color": {
+                key: style[key]
+                for key in ["accent", "secondary", "emphasis", "warning", "bg", "surface", "surface2", "border", "text", "muted"]
+            },
+            "typography": {
+                "title": {"size_pt": 20, "font": style["font"]},
+                "body": {"size_pt_min": 16, "font": style["font_fallback"]},
+                "caption": {"size_pt_min": 10, "font": style["font_fallback"]},
+                "citation": {"size_pt_min": 9, "font": style["font_fallback"]},
+            },
+            "spacing": {
+                "page_margin_in": 0.68,
+                "gutter_in": 0.28,
+                "block_padding_in": 0.24,
+                "footer_gap_in": 0.14,
+            },
+            "components": ["frame_header", "footer", "two_column", "evidence_figure", "booktabs_table", "flow_step", "summary_card", "reference_note"],
+        },
+        "qa_focus": [
+            "Chinese title overflow",
+            "body text readability",
+            "chart axis readability",
+            "image aspect ratio",
+            "citation proximity",
+            "footer consistency",
+            "large block density",
+        ],
+        "sample_page_types": [
+            "cover",
+            "agenda",
+            "long Chinese title",
+            "two-column lecture",
+            "scientific result figure",
+            "comparison table",
+            "workflow diagram",
+            "summary",
+            "references and backup",
+        ],
         "rules": [
             "Use Beamer-like structure but redraw for PPTX projection scale.",
             "Keep 16:9 canvas with larger margins and fewer simultaneous elements.",
@@ -600,6 +688,8 @@ def write_style(style: dict[str, Any], template_path: Path, showcase_path: Path)
         "asset_manifest": style["asset_manifest"],
         "source": style["source"],
         "generation_status": "ready",
+        "use_case": style["use_case"],
+        "recommended_for": style["use_case"],
     }
 
 

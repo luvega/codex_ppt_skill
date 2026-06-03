@@ -19,6 +19,20 @@ Always choose a `style-id` before creating a deck. The style spec controls palet
 - The smaller Tang Feng template uses Arial plus Microsoft YaHei. Keep that pairing when starting from that file.
 - Keep slide footers and numbers unless the selected source slide omits them.
 
+## PPT Design Tokens
+
+Treat each style as a small design system, similar to a front-end component library. A generation agent should read the selected `style.json` and use these token roles before drawing any custom shapes:
+
+| Token group | Required roles | How to use |
+|---|---|---|
+| Color | `bg`, `surface`, `surface2`, `accent`, `secondary`, `border`, `text`, `muted`, `emphasis`, `warning` | Use one primary accent per deck. Use `emphasis` and `warning` only for meaning, not decoration. |
+| Typography | `title`, `subtitle`, `body`, `caption`, `footer`, `citation` | Preserve source fonts. Never shrink body text below 16 pt; citations may be smaller but must stay readable. |
+| Spacing | `page_margin`, `gutter`, `block_padding`, `table_padding`, `footer_gap` | Reuse the same margins and gutters across similar pages. Do not place text directly against shape edges. |
+| Components | `frame_header`, `footer`, `block`, `table`, `image_frame`, `callout`, `flow_step`, `reference_note` | Similar components must share size, padding, border, and text rhythm. Differences should be intentional variants. |
+| Visual QA | `overflow`, `image_aspect`, `chart_readability`, `citation_proximity`, `footer_consistency`, `brand_color` | Record the checks in `qa-notes.md` before delivery. |
+
+Avoid over-framing content. Do not put cards inside cards; use blocks only when they express a semantic role such as theorem/example/alert, evidence, or action item.
+
 ## Style Switching
 
 | Style ID | Palette role | Best use |
@@ -61,6 +75,16 @@ Use colors from the selected style spec. The blue style is the default for forma
 
 For charts, use one primary template accent plus neutral grays. Highlight only the key result. Avoid red/green-only encodings for comparisons.
 
+Use color semantically:
+
+- `accent`: page identity, frame title, primary rule, or selected state.
+- `secondary`: secondary emphasis, step connectors, and key highlights.
+- `emphasis`: positive result, confirmed evidence, or recommended action.
+- `warning`: caution, limitation, or unresolved risk.
+- `muted`: captions, citations, and secondary labels.
+
+Do not use gradients, decorative glows, arbitrary pastel fills, or stock icon palettes in official or academic decks.
+
 ## Typography Rules
 
 - Title: short, specific, and readable from the back of a room.
@@ -97,3 +121,9 @@ Use these when the deck is a seminar, defense, research talk, lab meeting, confe
 - Preserve image aspect ratios unless intentionally cropping into a template frame.
 - Keep captions close to the visual they describe.
 - Use high-resolution images; avoid blurry screenshots.
+- Slide charts should be simpler than journal figures. Split multi-panel figures across slides instead of shrinking them.
+- Axis labels should normally be 18 pt or larger; tick labels should normally be 16 pt or larger.
+- Prefer direct labels near lines/bars over complex legends when there are four or fewer series.
+- Use one highlighted comparison per chart. De-emphasize background series in neutral gray.
+- Keep units, sample size, statistical labels, and source notes visible when they are needed to interpret the claim.
+- For microscopy, gel/blot, model screenshots, or other image evidence, preserve aspect ratio, avoid destructive contrast changes, and keep any crop or annotation choice documented in `qa-notes.md`.

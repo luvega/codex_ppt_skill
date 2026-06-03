@@ -315,6 +315,66 @@
   },
   "use_case": "Exact official SYSU green style with extracted source serif titles, marks, and campus imagery.",
   "generation_status": "ready",
+  "visual_tokens": {
+    "color": {
+      "bg": "FFFFFF",
+      "surface": "F4F8F1",
+      "surface2": "EAF2E4",
+      "accent": "2F6F4E",
+      "secondary": "73A45D",
+      "border": "DCE8DC",
+      "text": "1E2A22",
+      "muted": "617067"
+    },
+    "typography": {
+      "title": {
+        "size_pt": 22,
+        "font": "思源宋体 CN Heavy"
+      },
+      "body": {
+        "size_pt_min": 16,
+        "font": "思源宋体 CN Heavy"
+      },
+      "caption": {
+        "size_pt_min": 10,
+        "font": "Arial"
+      },
+      "citation": {
+        "size_pt_min": 9,
+        "font": "Arial"
+      }
+    },
+    "spacing": {
+      "page_margin_in": 0.8,
+      "gutter_in": 0.28,
+      "block_padding_in": 0.24,
+      "footer_gap_in": 0.12
+    },
+    "components": [
+      "source_cover",
+      "font_sample",
+      "color_system",
+      "asset_grid",
+      "hero_image",
+      "applied_pattern"
+    ]
+  },
+  "qa_focus": [
+    "strict source fidelity",
+    "title overflow",
+    "image aspect ratio",
+    "asset provenance",
+    "footer consistency",
+    "brand color separation"
+  ],
+  "sample_page_types": [
+    "source cover",
+    "template typography",
+    "color system",
+    "asset inventory",
+    "hero image",
+    "applied teaching/report pattern"
+  ],
   "generation_rules": [
     "Keep the first slide of the generated style showcase as the original source PPT cover.",
     "Use the source PPTX as the layout authority, but use the extracted asset manifest to choose logos, marks, photos, and recurring decorative elements.",

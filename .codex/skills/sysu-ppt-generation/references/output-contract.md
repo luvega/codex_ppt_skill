@@ -36,3 +36,21 @@ Action titles should state the slide claim or teaching point. Avoid topic-only t
 - Asset manifest used and major inserted assets.
 - Rendering method, thumbnail/PDF review result, or the reason visual rendering was not run.
 - Known limitations, especially if `generation_status` is not `ready`.
+
+Use these fixed headings so later reviewers and agents can find the relevant evidence quickly:
+
+```markdown
+# QA Notes
+
+## Structural QA
+
+## Visual QA
+
+## Scientific Figure QA
+
+## Template Fidelity
+
+## Known Limitations
+```
+
+`Visual QA` should cover title overflow, body text overflow, element overlap, image aspect ratio, chart readability, footer consistency, and off-brand colors. `Scientific Figure QA` should cover axis labels, units, legends/direct labels, source notes, sample sizes or statistics when relevant, and whether any figure was simplified for projection.

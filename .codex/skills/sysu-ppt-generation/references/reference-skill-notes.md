@@ -25,3 +25,9 @@ Use ai-lingnan `/pptx` ideas for strict original PPTX work: inspect first, map t
 Use `ppt169_building_effective_agents` as the technical-deck rhythm reference for content pages only. The SYSU source PPTX remains the cover, background, and brand authority; use SYSU fonts, extracted SYSU assets, and SYSU template colors. Do not carry over the LoRA Hu blue/orange paper palette, the effective-agents dark background, or the effective-agents Anthropic coral palette unless the user explicitly asks for those styles.
 
 Use `Noi1r/beamer-skill` as a structural reference for Beamer-like academic PPTX templates only. Translate its LaTeX concepts into PowerPoint components: frame title bars, footlines, block styles, readable columns, centered tables, diagram spacing rules, references, and backup slides. Replace its default institute text and colors with SYSU assets and selected SYSU official blue/green/red palettes. Do not copy Beamer PDF density into PPTX; use larger text, larger components, and fewer elements per slide.
+
+## Selected Local Resource Policy
+
+For the current SYSU PPT workflow, use the project-local `sysu-ppt-generation` skill as the only authority for PPTX generation. Borrow design-method ideas from local skills such as `academic-presentation-teaching`, `scientific-slides`, `office-academic-skill`, `scientific-visualization`, `nature-figure-compliance`, and the front-end design token discipline in `frontend-app-builder`.
+
+Canva, Figma, BioRender, public Beamer themes, and PPT Master are references only unless the user provides a concrete file/link or an installed connector/tool is available in the active session. Do not make them required dependencies for generating SYSU PPTX decks.

@@ -222,11 +222,16 @@ def variant_meta(index: dict[str, dict[str, Any]], variant_name: str) -> dict[st
 def add_rect(slide, x: float, y: float, w: float, h: float, fill: str, line: str | None = None, *, radius: bool = False):
     shape_type = MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE if radius else MSO_AUTO_SHAPE_TYPE.RECTANGLE
     shape = slide.shapes.add_shape(shape_type, Inches(x), Inches(y), Inches(w), Inches(h))
+    if radius and getattr(shape, "adjustments", None):
+        try:
+            shape.adjustments[0] = 0.08
+        except Exception:
+            pass
     shape.fill.solid()
     shape.fill.fore_color.rgb = rgb(fill)
     if line:
         shape.line.color.rgb = rgb(line)
-        shape.line.width = Pt(0.9)
+        shape.line.width = Pt(0.65)
     else:
         shape.line.fill.background()
     return shape
@@ -497,15 +502,67 @@ def add_variant_slide(prs, family: dict[str, Any], variant_key: str, variants: d
     variant = variants[variant_key]
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     color_label = {"blue": "蓝色", "green": "绿色", "red": "红色"}[variant_key]
-    add_family_header(slide, family, variant, f"{color_label}方案：真实中文两栏讲授页", slide_no, assets.logo_light[variant_key], assets.logo_dark[variant_key])
-    add_rect(slide, 0.92, 1.2, 5.8, 4.72, "FFFFFF", variant["border"], radius=True)
-    add_picture_crop(slide, assets.photo[variant_key], 1.16, 1.44, 5.32, 3.62)
-    add_text(slide, "中山大学源模板提取图像或课程案例图", 1.18, 5.25, 4.8, 0.2, 10.5, variant["muted"], family["font_primary"])
-    add_text(slide, "课堂页先讲一个判断", 7.18, 1.38, 4.35, 0.44, 23, variant["accent"], family["font_heading"], bold=True)
-    add_text(slide, "右侧文字解释学生应看到什么，而不是把教师要说的全部写进页面。视觉区域保持足够大，便于投影检查。", 7.2, 2.08, 4.55, 1.05, 17, variant["text"], family["font_primary"])
-    add_bullet(slide, "标题表达结论，不只写主题。", 7.25, 3.55, 4.1, variant, family)
-    add_bullet(slide, "图片、表格和流程图各占一页核心空间。", 7.25, 4.15, 4.1, variant, family)
-    add_rect(slide, 7.2, 5.25, 3.8, 0.08, variant["secondary"])
+    if variant_key == "blue":
+        add_family_header(slide, family, variant, f"{color_label}基准：真实中文两栏讲授页", slide_no, assets.logo_light[variant_key], assets.logo_dark[variant_key])
+        add_rect(slide, 0.92, 1.2, 5.8, 4.72, "FFFFFF", variant["border"], radius=True)
+        add_picture_crop(slide, assets.photo[variant_key], 1.16, 1.44, 5.32, 3.62)
+        add_text(slide, "中山大学源模板提取图像或课程案例图", 1.18, 5.25, 4.8, 0.2, 10.5, variant["muted"], family["font_primary"])
+        add_text(slide, "课堂页先讲一个判断", 7.18, 1.38, 4.35, 0.44, 23, variant["accent"], family["font_heading"], bold=True)
+        add_text(slide, "右侧文字解释学生应看到什么，而不是把教师要说的全部写进页面。视觉区域保持足够大，便于投影检查。", 7.2, 2.08, 4.55, 1.05, 17, variant["text"], family["font_primary"])
+        add_bullet(slide, "标题表达结论，不只写主题。", 7.25, 3.55, 4.1, variant, family)
+        add_bullet(slide, "图片、表格和流程图各占一页核心空间。", 7.25, 4.15, 4.1, variant, family)
+        add_rect(slide, 7.2, 5.25, 3.8, 0.08, variant["secondary"])
+    elif variant_key == "green":
+        add_family_header(slide, family, variant, f"{color_label}基准：科研结果图页", slide_no, assets.logo_light[variant_key], assets.logo_dark[variant_key])
+        add_text(slide, "同一套结果图用于比较候选风格的图表承载能力。", 0.92, 1.18, 8.6, 0.28, 15.8, variant["text"], family["font_primary"])
+        chart_x, chart_y, chart_w, chart_h = 1.02, 1.78, 7.0, 4.2
+        add_rect(slide, chart_x, chart_y, chart_w, chart_h, "FFFFFF", variant["border"])
+        axis_x = chart_x + 0.62
+        axis_y = chart_y + chart_h - 0.55
+        add_line(slide, axis_x, axis_y, chart_x + chart_w - 0.38, axis_y, "98A2B3", 1.0)
+        add_line(slide, axis_x, axis_y, axis_x, chart_y + 0.48, "98A2B3", 1.0)
+        points = [0.32, 0.46, 0.61, 0.78]
+        labels = ["课前", "活动1", "活动2", "课后"]
+        prev = None
+        for i, value in enumerate(points):
+            px = axis_x + i * ((chart_w - 1.25) / 3)
+            py = axis_y - value * (chart_h - 1.2)
+            if prev:
+                add_line(slide, prev[0], prev[1], px, py, variant["secondary"], 2.4)
+            add_rect(slide, px - 0.04, py - 0.04, 0.08, 0.08, variant["secondary"])
+            add_text(slide, labels[i], px - 0.3, axis_y + 0.2, 0.6, 0.16, 10, variant["muted"], family["font_primary"], align=PP_ALIGN.CENTER)
+            prev = (px, py)
+        add_text(slide, "概念迁移完成率", chart_x + 0.22, chart_y + 0.28, 1.5, 0.18, 10.5, variant["muted"], family["font_primary"])
+        add_text(slide, "关键提升", chart_x + chart_w - 1.42, chart_y + 0.66, 1.0, 0.2, 12, variant["secondary"], family["font_heading"], bold=True)
+        add_text(slide, "Source: 示例课堂数据", chart_x + 0.28, chart_y + chart_h + 0.08, 2.2, 0.16, 8.8, variant["muted"], family["font_primary"])
+        add_large_note(slide, family, variant, 8.12, 2.0, "检查点", "轴标签、单位、直接标注和来源必须在 16:9 预览图中可读。")
+    else:
+        add_family_header(slide, family, variant, f"{color_label}基准：表格与流程检查页", slide_no, assets.logo_light[variant_key], assets.logo_dark[variant_key])
+        add_text(slide, "同一张比较表用于检查候选风格的中文密度、表格线和重点色。", 0.95, 1.18, 8.8, 0.28, 15.8, variant["text"], family["font_primary"])
+        x, y = 1.02, 1.9
+        col_w = [2.65, 3.55, 3.35]
+        headers = ["证据类型", "适合回答的问题", "课堂使用约束"]
+        rows = [
+            ["课堂提问", "学生是否掌握关键概念", "记录代表性回答即可"],
+            ["过程日志", "学习路径在哪一步卡住", "只保留可解释字段"],
+            ["阶段测验", "是否达到教学目标", "突出一个改进动作"],
+        ]
+        total_w = sum(col_w)
+        add_line(slide, x, y, x + total_w, y, variant["accent"], 2.1)
+        cursor = x
+        for text, w in zip(headers, col_w):
+            add_text(slide, text, cursor + 0.08, y + 0.2, w - 0.16, 0.18, 11.8, variant["accent"], family["font_heading"], bold=True)
+            cursor += w
+        add_line(slide, x, y + 0.58, x + total_w, y + 0.58, variant["border"], 0.8)
+        for r, row in enumerate(rows):
+            yy = y + 0.86 + r * 0.74
+            cursor = x
+            for c, (text, w) in enumerate(zip(row, col_w)):
+                add_text(slide, text, cursor + 0.08, yy, w - 0.16, 0.28, 12.4, variant["text"], family["font_primary"], bold=c == 0)
+                cursor += w
+            add_line(slide, x, yy + 0.5, x + total_w, yy + 0.5, variant["border"], 0.45)
+        add_rect(slide, 1.1, 5.35, 9.1, 0.1, variant["secondary"])
+        add_text(slide, "选择候选风格时优先看：表格是否清楚、中文是否拥挤、强调色是否过重。", 1.12, 5.72, 8.9, 0.28, 13.6, variant["muted"], family["font_primary"])
 
 
 def add_component_slide(prs, family: dict[str, Any], variants: dict[str, dict[str, Any]], assets: AssetPack):
@@ -648,6 +705,48 @@ def write_style(family: dict[str, Any], showcase_path: Path, variants: dict[str,
         ],
         "use_case": family["use_case"],
         "generation_status": "style_selection_only",
+        "visual_tokens": {
+            "color": {
+                "bg": family["bg"],
+                "neutral": family["neutral"],
+                "variants": {
+                    key: {
+                        role: value[role]
+                        for role in ["accent", "secondary", "emphasis", "warning", "surface", "surface2", "border", "text", "muted"]
+                    }
+                    for key, value in variants.items()
+                },
+            },
+            "typography": {
+                "heading": {"font": family["font_heading"], "size_pt_range": [18, 30]},
+                "body": {"font": family["font_primary"], "size_pt_min": 16},
+                "caption": {"font": FONT_YAHEI, "size_pt_min": 9},
+            },
+            "spacing": {
+                "page_margin_in": 0.78,
+                "gutter_in": 0.3,
+                "block_padding_in": 0.24,
+                "footer_gap_in": 0.14,
+            },
+            "components": ["candidate_header", "two_column_benchmark", "result_chart_benchmark", "table_benchmark", "component_demo", "selection_notes"],
+        },
+        "qa_focus": [
+            "candidate comparison consistency",
+            "Chinese title capacity",
+            "scientific chart readability",
+            "table density",
+            "color emphasis strength",
+            "style_selection_only status",
+        ],
+        "sample_page_types": [
+            "cover",
+            "PPTX scale rule",
+            "two-column lecture benchmark",
+            "scientific result figure benchmark",
+            "table and flow benchmark",
+            "component demo",
+            "selection notes",
+        ],
         "notes": [
             "This is a PPTX adaptation for SYSU style selection, not a LaTeX export.",
             "All generated slides use 16:9 widescreen dimensions.",
@@ -691,6 +790,8 @@ def write_style(family: dict[str, Any], showcase_path: Path, variants: dict[str,
         "asset_manifest": base["asset_manifest"],
         "source": base["source"],
         "generation_status": "style_selection_only",
+        "use_case": family["use_case"],
+        "recommended_for": "Style selection only; promote explicitly before production use.",
         "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template.",
     }
 

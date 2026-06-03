@@ -23,6 +23,18 @@ Every `style.json` must include:
 
 Optional fields such as `template_pptx`, `contact_sheet`, `reference`, `assets`, and `status_reason` may be present when relevant.
 
+## Recommended Optional Fields
+
+Use these fields when a style is intended for repeatable deck generation or visual review:
+
+| Field | Meaning |
+|---|---|
+| `visual_tokens` | PPT design-system roles for color, typography, spacing, and component reuse. |
+| `qa_focus` | Visual and scientific checks that should be recorded in `qa-notes.md`. |
+| `sample_page_types` | Page types demonstrated by the style showcase, such as long Chinese title, two-column lecture, evidence figure, table, flow, summary, references, or backup. |
+
+These fields are additive. Older agents may ignore them, but newer agents should read them before creating custom shapes or deciding whether a style is suitable for a teaching or scientific-report task.
+
 ## Generation Status
 
 Use these values:
@@ -40,3 +52,4 @@ Use these values:
 4. For `strict-original`, read `source`, `asset_manifest`, and `template-inventory.md` before mapping slides.
 5. For `beamer-inspired`, start from `template_pptx` and use the listed source assets.
 6. For `beamer-candidates`, treat the deck as visual selection material unless the user explicitly promotes it to a production direction.
+7. Read `visual_tokens`, `sample_page_types`, and `qa_focus` when available, then copy the selected `style.json` into the output folder.

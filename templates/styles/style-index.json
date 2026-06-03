@@ -8,7 +8,9 @@
       "demo_pptx": "outputs/style-showcase/template-elements/strict-sysu-official-blue-elements-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
       "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
-      "generation_status": "ready"
+      "generation_status": "ready",
+      "use_case": "Exact official SYSU blue style with extracted marks, campus imagery, and source typography.",
+      "recommended_for": "默认正式入口；不确定选型时优先使用。"
     },
     {
       "id": "strict-sysu-official-green",
@@ -18,7 +20,9 @@
       "demo_pptx": "outputs/style-showcase/template-elements/strict-sysu-official-green-elements-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
       "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
-      "generation_status": "ready"
+      "generation_status": "ready",
+      "use_case": "Exact official SYSU green style with extracted source serif titles, marks, and campus imagery.",
+      "recommended_for": "生物医学和公共健康语境的首选正式入口。"
     },
     {
       "id": "strict-sysu-official-red",
@@ -28,7 +32,9 @@
       "demo_pptx": "outputs/style-showcase/template-elements/strict-sysu-official-red-elements-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
       "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
-      "generation_status": "ready"
+      "generation_status": "ready",
+      "use_case": "Exact official SYSU red style with extracted ceremonial marks, source serif titles, and campus imagery.",
+      "recommended_for": "需要庄重感和正式身份表达时使用。"
     },
     {
       "id": "beamer-sysu-blue",
@@ -39,7 +45,9 @@
       "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-blue-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
       "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
-      "generation_status": "ready"
+      "generation_status": "ready",
+      "use_case": "Academic reports, seminars, and technical talks using SYSU official blue.",
+      "recommended_for": "Academic reports, seminars, and technical talks using SYSU official blue."
     },
     {
       "id": "beamer-sysu-green",
@@ -50,7 +58,9 @@
       "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-green-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
       "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
-      "generation_status": "ready"
+      "generation_status": "ready",
+      "use_case": "Biomedical, life-science, public-health, and sustainability talks using SYSU official green.",
+      "recommended_for": "Biomedical, life-science, public-health, and sustainability talks using SYSU official green."
     },
     {
       "id": "beamer-sysu-red",
@@ -61,7 +71,9 @@
       "demo_pptx": "outputs/style-showcase/beamer-inspired/beamer-sysu-red-showcase.pptx",
       "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
       "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
-      "generation_status": "ready"
+      "generation_status": "ready",
+      "use_case": "Formal academic reports, defenses, and official talks using SYSU red.",
+      "recommended_for": "Formal academic reports, defenses, and official talks using SYSU red."
     },
     {
       "id": "simpleplus-sysu-clean",
@@ -72,6 +84,8 @@
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
       "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
       "generation_status": "style_selection_only",
+      "use_case": "Clean academic seminars, course reports, and content-first research talks.",
+      "recommended_for": "Style selection only; promote explicitly before production use.",
       "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
     },
     {
@@ -83,6 +97,8 @@
       "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
       "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
       "generation_status": "style_selection_only",
+      "use_case": "Formal university reports, defenses, and institution-facing academic presentations.",
+      "recommended_for": "Style selection only; promote explicitly before production use.",
       "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
     },
     {
@@ -94,6 +110,8 @@
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
       "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
       "generation_status": "style_selection_only",
+      "use_case": "Technical talks that need maximum reading space and minimal visual noise.",
+      "recommended_for": "Style selection only; promote explicitly before production use.",
       "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
     },
     {
@@ -105,6 +123,8 @@
       "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
       "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
       "generation_status": "style_selection_only",
+      "use_case": "Algorithm, code, computational method, and data-heavy research presentations.",
+      "recommended_for": "Style selection only; promote explicitly before production use.",
       "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
     },
     {
@@ -116,6 +136,8 @@
       "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
       "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
       "generation_status": "style_selection_only",
+      "use_case": "Long-form lectures, structured research talks, and teaching-first slide decks.",
+      "recommended_for": "Style selection only; promote explicitly before production use.",
       "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
     }
   ],

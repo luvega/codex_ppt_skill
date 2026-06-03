@@ -45,6 +45,74 @@
     "fallback": "微软雅黑"
   },
   "generation_status": "ready",
+  "visual_tokens": {
+    "color": {
+      "accent": "0B4F6C",
+      "secondary": "3494BA",
+      "emphasis": "029E73",
+      "warning": "DE8F05",
+      "bg": "FFFFFF",
+      "surface": "F3F8FB",
+      "surface2": "E6F1F6",
+      "border": "D8E5EC",
+      "text": "1D2733",
+      "muted": "667085"
+    },
+    "typography": {
+      "title": {
+        "size_pt": 20,
+        "font": "思源黑体 CN Medium"
+      },
+      "body": {
+        "size_pt_min": 16,
+        "font": "微软雅黑"
+      },
+      "caption": {
+        "size_pt_min": 10,
+        "font": "微软雅黑"
+      },
+      "citation": {
+        "size_pt_min": 9,
+        "font": "微软雅黑"
+      }
+    },
+    "spacing": {
+      "page_margin_in": 0.68,
+      "gutter_in": 0.28,
+      "block_padding_in": 0.24,
+      "footer_gap_in": 0.14
+    },
+    "components": [
+      "frame_header",
+      "footer",
+      "two_column",
+      "evidence_figure",
+      "booktabs_table",
+      "flow_step",
+      "summary_card",
+      "reference_note"
+    ]
+  },
+  "qa_focus": [
+    "Chinese title overflow",
+    "body text readability",
+    "chart axis readability",
+    "image aspect ratio",
+    "citation proximity",
+    "footer consistency",
+    "large block density"
+  ],
+  "sample_page_types": [
+    "cover",
+    "agenda",
+    "long Chinese title",
+    "two-column lecture",
+    "scientific result figure",
+    "comparison table",
+    "workflow diagram",
+    "summary",
+    "references and backup"
+  ],
   "rules": [
     "Use Beamer-like structure but redraw for PPTX projection scale.",
     "Keep 16:9 canvas with larger margins and fewer simultaneous elements.",

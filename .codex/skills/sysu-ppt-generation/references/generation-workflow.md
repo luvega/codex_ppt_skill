@@ -104,7 +104,9 @@ When render tools are available:
 
 1. Convert final PPTX to PDF or images.
 2. Build a thumbnail grid.
-3. Check every slide for text cutoff, overlaps, wrong fonts, broken images, footer collisions, and off-brand colors.
+3. Check every slide for title overflow, text cutoff, overlaps, wrong fonts, broken images, image stretching, footer collisions, chart readability, citation proximity, and off-brand colors.
 4. Fix and rerender until the issue list is empty.
 
 When render tools are not available, still perform structural QA and explicitly note that visual rendering was not run.
+
+Use `visual-qa-rubric.md` as the required checklist. For scientific-report slides, also check that figures have readable axis labels, units, direct labels or a simple legend, and one clearly highlighted result.

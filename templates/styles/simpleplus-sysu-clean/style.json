@@ -126,6 +126,95 @@
   ],
   "use_case": "Clean academic seminars, course reports, and content-first research talks.",
   "generation_status": "style_selection_only",
+  "visual_tokens": {
+    "color": {
+      "bg": "FFFFFF",
+      "neutral": "F8FAFC",
+      "variants": {
+        "blue": {
+          "accent": "0B4F6C",
+          "secondary": "3494BA",
+          "emphasis": "029E73",
+          "warning": "DE8F05",
+          "surface": "F3F8FB",
+          "surface2": "E6F1F6",
+          "border": "D8E5EC",
+          "text": "1D2733",
+          "muted": "667085"
+        },
+        "green": {
+          "accent": "2F6F4E",
+          "secondary": "73A45D",
+          "emphasis": "0B8F67",
+          "warning": "C98218",
+          "surface": "F4F8F1",
+          "surface2": "EAF2E4",
+          "border": "DCE8DC",
+          "text": "1E2A22",
+          "muted": "617067"
+        },
+        "red": {
+          "accent": "8F1D2C",
+          "secondary": "C83A3A",
+          "emphasis": "0173B2",
+          "warning": "DE8F05",
+          "surface": "FBF4F4",
+          "surface2": "F3E5E5",
+          "border": "ECDADA",
+          "text": "2B1B1D",
+          "muted": "735A5D"
+        }
+      }
+    },
+    "typography": {
+      "heading": {
+        "font": "思源黑体 CN Heavy",
+        "size_pt_range": [
+          18,
+          30
+        ]
+      },
+      "body": {
+        "font": "思源黑体 CN Medium",
+        "size_pt_min": 16
+      },
+      "caption": {
+        "font": "微软雅黑",
+        "size_pt_min": 9
+      }
+    },
+    "spacing": {
+      "page_margin_in": 0.78,
+      "gutter_in": 0.3,
+      "block_padding_in": 0.24,
+      "footer_gap_in": 0.14
+    },
+    "components": [
+      "candidate_header",
+      "two_column_benchmark",
+      "result_chart_benchmark",
+      "table_benchmark",
+      "component_demo",
+      "selection_notes"
+    ]
+  },
+  "qa_focus": [
+    "candidate comparison consistency",
+    "Chinese title capacity",
+    "scientific chart readability",
+    "table density",
+    "color emphasis strength",
+    "style_selection_only status"
+  ],
+  "sample_page_types": [
+    "cover",
+    "PPTX scale rule",
+    "two-column lecture benchmark",
+    "scientific result figure benchmark",
+    "table and flow benchmark",
+    "component demo",
+    "selection notes"
+  ],
   "notes": [
     "This is a PPTX adaptation for SYSU style selection, not a LaTeX export.",
     "All generated slides use 16:9 widescreen dimensions.",

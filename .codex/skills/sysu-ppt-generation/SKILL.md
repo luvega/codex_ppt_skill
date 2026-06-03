@@ -48,7 +48,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .codex\skills\sysu-ppt-gener
 10. Read `references/style-schema.md` before interpreting `style.json` fields or `generation_status`.
 11. Read `references/output-contract.md` before creating a new deck output folder.
 12. Read `references/design-rules.md` when choosing colors, fonts, slide patterns, or academic presentation structure.
-13. Read `references/reference-skill-notes.md` only when you need the rationale from the referenced third-party skills.
+13. Read `references/visual-qa-rubric.md` before final visual review or when writing `qa-notes.md`.
+14. Read `references/reference-skill-notes.md` only when you need the rationale from the referenced third-party skills.
 
 ## Style Choice
 
@@ -123,6 +124,8 @@ When strict fidelity matters, follow the ai-lingnan `/pptx` pattern: analyze the
 - Do not use decorative icons, emoji, gradients, or stock-photo filler in academic or official decks.
 - For academic decks, apply the ghost deck test: reading only slide titles should tell the argument.
 - Keep source citations on slides when using borrowed figures, claims, or data.
+- Record visual QA in `qa-notes.md`: title overflow, text readability, element overlap, image aspect ratio, chart readability, citation proximity, footer consistency, and brand color.
+- For scientific figures, simplify journal-density figures for projection: split multi-panel images, enlarge axis labels, direct-label key series, and keep one highlighted result per slide.
 
 ## Local References
 

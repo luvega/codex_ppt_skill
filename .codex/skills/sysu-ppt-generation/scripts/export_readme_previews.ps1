@@ -14,6 +14,21 @@ $items = @(
     Out = "strict-template-gallery.png"
   },
   @{
+    Pptx = "outputs\style-showcase\template-elements\strict-sysu-official-blue-elements-showcase.pptx"
+    Slide = 6
+    Out = "strict-blue.png"
+  },
+  @{
+    Pptx = "outputs\style-showcase\template-elements\strict-sysu-official-green-elements-showcase.pptx"
+    Slide = 6
+    Out = "strict-green.png"
+  },
+  @{
+    Pptx = "outputs\style-showcase\template-elements\strict-sysu-official-red-elements-showcase.pptx"
+    Slide = 6
+    Out = "strict-red.png"
+  },
+  @{
     Pptx = "outputs\style-showcase\beamer-inspired\beamer-sysu-blue-showcase.pptx"
     Slide = 4
     Out = "beamer-inspired-blue.png"
@@ -25,7 +40,7 @@ $items = @(
   },
   @{
     Pptx = "outputs\style-showcase\beamer-inspired\beamer-sysu-red-showcase.pptx"
-    Slide = 6
+    Slide = 7
     Out = "beamer-inspired-red.png"
   },
   @{
@@ -35,22 +50,22 @@ $items = @(
   },
   @{
     Pptx = "outputs\style-showcase\beamer-candidates\ustc-thu-sysu-institutional-showcase.pptx"
-    Slide = 3
+    Slide = 4
     Out = "candidate-ustc-thu.png"
   },
   @{
     Pptx = "outputs\style-showcase\beamer-candidates\moloch-sysu-minimal-showcase.pptx"
-    Slide = 3
+    Slide = 5
     Out = "candidate-moloch.png"
   },
   @{
     Pptx = "outputs\style-showcase\beamer-candidates\sleek-sysu-research-showcase.pptx"
-    Slide = 3
+    Slide = 4
     Out = "candidate-sleek.png"
   },
   @{
     Pptx = "outputs\style-showcase\beamer-candidates\river-sysu-atelier-showcase.pptx"
-    Slide = 3
+    Slide = 5
     Out = "candidate-river.png"
   }
 )

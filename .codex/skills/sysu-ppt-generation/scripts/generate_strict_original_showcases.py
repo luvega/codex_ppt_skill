@@ -47,6 +47,9 @@ STRICT_STYLES: list[dict[str, Any]] = [
         "secondary": "3494BA",
         "primary_fonts": ["思源黑体 CN Medium", "思源黑体 CN Heavy", "等线"],
         "use_case": "Exact official SYSU blue style with extracted marks, campus imagery, and source typography.",
+        "teacher_scenario": "通用课程汇报、课题组分享、学术报告和答辩。",
+        "visual_risk": "内容页容易被长段落填满，需主动使用图文页和比较页。",
+        "recommended_for": "默认正式入口；不确定选型时优先使用。",
     },
     {
         "id": "strict-sysu-official-green",
@@ -56,6 +59,9 @@ STRICT_STYLES: list[dict[str, Any]] = [
         "secondary": "73A45D",
         "primary_fonts": ["思源宋体 CN Heavy", "思源黑体 CN Regular", "Raleway", "汉仪旗黑-50S"],
         "use_case": "Exact official SYSU green style with extracted source serif titles, marks, and campus imagery.",
+        "teacher_scenario": "生命科学、公共卫生、生态、医学相关课程和科研汇报。",
+        "visual_risk": "图片资源较多，需避免把多张图压缩到同一页。",
+        "recommended_for": "生物医学和公共健康语境的首选正式入口。",
     },
     {
         "id": "strict-sysu-official-red",
@@ -65,6 +71,9 @@ STRICT_STYLES: list[dict[str, Any]] = [
         "secondary": "C83A3A",
         "primary_fonts": ["思源宋体 CN Medium", "思源宋体 CN Heavy", "Calibri"],
         "use_case": "Exact official SYSU red style with extracted ceremonial marks, source serif titles, and campus imagery.",
+        "teacher_scenario": "正式会议、政策汇报、学院级汇报、仪式性或偏行政场景。",
+        "visual_risk": "红色强调强，正文和表格页需控制密度。",
+        "recommended_for": "需要庄重感和正式身份表达时使用。",
     },
 ]
 
@@ -535,6 +544,47 @@ def write_style_files(style: dict[str, Any], manifest: dict[str, Any], demo_path
         },
         "use_case": style["use_case"],
         "generation_status": "ready",
+        "visual_tokens": {
+            "color": {
+                "bg": source_palette(style)["bg"],
+                "surface": source_palette(style)["surface"],
+                "surface2": source_palette(style)["surface2"],
+                "accent": style["accent"],
+                "secondary": style["secondary"],
+                "border": source_palette(style)["border"],
+                "text": source_palette(style)["text"],
+                "muted": source_palette(style)["muted"],
+            },
+            "typography": {
+                "title": {"size_pt": 22, "font": style["primary_fonts"][0]},
+                "body": {"size_pt_min": 16, "font": style["primary_fonts"][0]},
+                "caption": {"size_pt_min": 10, "font": "Arial"},
+                "citation": {"size_pt_min": 9, "font": "Arial"},
+            },
+            "spacing": {
+                "page_margin_in": 0.8,
+                "gutter_in": 0.28,
+                "block_padding_in": 0.24,
+                "footer_gap_in": 0.12,
+            },
+            "components": ["source_cover", "font_sample", "color_system", "asset_grid", "hero_image", "applied_pattern"],
+        },
+        "qa_focus": [
+            "strict source fidelity",
+            "title overflow",
+            "image aspect ratio",
+            "asset provenance",
+            "footer consistency",
+            "brand color separation",
+        ],
+        "sample_page_types": [
+            "source cover",
+            "template typography",
+            "color system",
+            "asset inventory",
+            "hero image",
+            "applied teaching/report pattern",
+        ],
         "generation_rules": [
             "Keep the first slide of the generated style showcase as the original source PPT cover.",
             "Use the source PPTX as the layout authority, but use the extracted asset manifest to choose logos, marks, photos, and recurring decorative elements.",
@@ -586,6 +636,8 @@ def write_style_files(style: dict[str, Any], manifest: dict[str, Any], demo_path
         "asset_manifest": spec["asset_manifest"],
         "source": rel(source),
         "generation_status": "ready",
+        "use_case": style["use_case"],
+        "recommended_for": style["recommended_for"],
     }
 
 
@@ -600,20 +652,33 @@ def make_gallery(entries: list[dict[str, Any]]) -> Path:
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     slide.background.fill.solid()
     slide.background.fill.fore_color.rgb = rgb("FFFFFF")
-    add_text(slide, "SYSU Template Element Library", 0.72, 0.55, 8.2, 0.5, 27, "1D2733", "Microsoft YaHei", bold=True)
-    add_text(slide, "Strict showcases keep the source cover, then demonstrate extracted SYSU fonts, colors, marks, and imagery.", 0.75, 1.13, 9.5, 0.28, 12, "667085", "Microsoft YaHei")
+    add_text(slide, "教师选型总览：官方严格模板", 0.72, 0.5, 8.2, 0.48, 25, "1D2733", "Microsoft YaHei", bold=True)
+    add_text(slide, "蓝 / 绿 / 红三套 strict 风格保留源模板身份，适合正式生成；本页用于先判断场景，再进入对应 showcase。", 0.75, 1.08, 10.8, 0.28, 11.5, "667085", "Microsoft YaHei")
     for i, entry in enumerate(entries):
         style = next(s for s in STRICT_STYLES if s["id"] == entry["id"])
         spec = json.loads((ROOT / entry["style_spec"]).read_text(encoding="utf-8"))
-        x = 0.78 + (i % 2) * 6.18
-        y = 1.85 + (i // 2) * 1.68
-        add_rect(slide, x, y, 5.48, 1.26, "F8FAFC", "D8E5EC", radius=True)
-        add_rect(slide, x + 0.32, y + 0.24, 0.52, 0.08, style["accent"])
-        add_text(slide, entry["name"], x + 0.38, y + 0.2, 3.75, 0.26, 12.8, style["accent"], style["primary_fonts"][0], bold=True)
-        add_text(slide, entry["id"], x + 0.38, y + 0.55, 3.75, 0.2, 8.5, "667085", "Arial")
+        x = 0.72 + i * 4.12
+        y = 1.62
+        add_rect(slide, x, y, 3.62, 5.05, "F8FAFC", "D8E5EC", radius=True)
+        add_rect(slide, x + 0.24, y + 0.3, 1.32, 0.82, "FFFFFF", "D8E5EC")
+        add_rect(slide, x + 0.24, y + 0.3, 1.32, 0.16, style["accent"])
+        add_text(slide, "封面", x + 0.42, y + 0.63, 0.88, 0.16, 8.6, style["accent"], "Microsoft YaHei", bold=True, align=PP_ALIGN.CENTER)
+        add_rect(slide, x + 1.78, y + 0.3, 1.32, 0.82, "FFFFFF", "D8E5EC")
+        add_rect(slide, x + 1.92, y + 0.48, 1.02, 0.06, style["accent"])
+        add_rect(slide, x + 1.92, y + 0.66, 0.72, 0.04, "98A2B3")
+        add_rect(slide, x + 1.92, y + 0.82, 0.95, 0.04, "98A2B3")
+        add_text(slide, "内容页", x + 1.98, y + 0.98, 0.82, 0.12, 6.8, "667085", "Microsoft YaHei", align=PP_ALIGN.CENTER)
+        add_text(slide, entry["name"].replace("Strict SYSU Official ", "官方"), x + 0.24, y + 1.42, 3.08, 0.26, 15, style["accent"], style["primary_fonts"][0], bold=True)
+        add_text(slide, entry["id"], x + 0.24, y + 1.78, 3.1, 0.18, 7.8, "667085", "Arial")
         counts = spec["assets"]["category_counts"]
         total = sum(counts.values())
-        add_text(slide, f"{total} media assets", x + 3.98, y + 0.55, 1.05, 0.2, 8.6, "1D2733", "Arial", align=PP_ALIGN.RIGHT)
+        add_text(slide, f"{total} 个提取资产", x + 0.24, y + 2.14, 2.2, 0.18, 9.5, "667085", "Microsoft YaHei")
+        add_text(slide, "适用场景", x + 0.24, y + 2.48, 0.9, 0.16, 8.8, style["accent"], "Microsoft YaHei", bold=True)
+        add_text(slide, style["teacher_scenario"], x + 0.24, y + 2.72, 3.08, 0.42, 9.4, "1D2733", "Microsoft YaHei")
+        add_text(slide, "视觉风险", x + 0.24, y + 3.32, 0.9, 0.16, 8.8, style["accent"], "Microsoft YaHei", bold=True)
+        add_text(slide, style["visual_risk"], x + 0.24, y + 3.56, 3.08, 0.42, 9.4, "1D2733", "Microsoft YaHei")
+        add_text(slide, "推荐用途", x + 0.24, y + 4.16, 0.9, 0.16, 8.8, style["accent"], "Microsoft YaHei", bold=True)
+        add_text(slide, style["recommended_for"], x + 0.24, y + 4.4, 3.08, 0.5, 9.4, "1D2733", "Microsoft YaHei")
     gallery.parent.mkdir(parents=True, exist_ok=True)
     prs.save(gallery)
     return gallery

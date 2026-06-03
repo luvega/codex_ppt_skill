@@ -6,9 +6,17 @@
 
 ## 效果预览
 
-### 原始模板要素
+### 教师选型总览
 
-<img src="docs/previews/strict-template-gallery.png" width="760" alt="原始模板要素预览">
+<img src="docs/previews/strict-template-gallery.png" width="760" alt="教师选型总览预览">
+
+### Strict 官方三色
+
+严格原始模板用于需要尽量贴近中山大学官方源模板的正式场景。蓝色作为默认通用入口，绿色用于生命科学/公共卫生/生态等语境，红色用于正式会议、政策汇报和仪式性场景。
+
+| 官方蓝 | 官方绿 | 官方红 |
+|---|---|---|
+| <img src="docs/previews/strict-blue.png" width="300" alt="Strict 官方蓝模板预览"> | <img src="docs/previews/strict-green.png" width="300" alt="Strict 官方绿模板预览"> | <img src="docs/previews/strict-red.png" width="300" alt="Strict 官方红模板预览"> |
 
 ### Beamer 启发模板
 
@@ -27,6 +35,16 @@
 | Moloch Minimal 中山大学版 | Sleek Research 中山大学版 | River/Atelier Inspired 中山大学版 |
 |---|---|---|
 | <img src="docs/previews/candidate-moloch.png" width="300" alt="Moloch 候选模板预览"> | <img src="docs/previews/candidate-sleek.png" width="300" alt="Sleek 候选模板预览"> | <img src="docs/previews/candidate-river.png" width="300" alt="River Atelier 候选模板预览"> |
+
+### 候选风格差异矩阵
+
+| 候选方向 | 密度 | 正式度 | 教学适配 | 科研图表适配 | 中文标题承载 |
+|---|---|---|---|---|---|
+| `simpleplus-sysu-clean` | 中低 | 中 | 高 | 中 | 高 |
+| `ustc-thu-sysu-institutional` | 中 | 高 | 中 | 中 | 中高 |
+| `moloch-sysu-minimal` | 低 | 中 | 中 | 高 | 高 |
+| `sleek-sysu-research` | 中高 | 中 | 中 | 高 | 中 |
+| `river-sysu-atelier` | 中 | 中高 | 高 | 中高 | 高 |
 
 ## 仓库内容
 
@@ -89,6 +107,7 @@ outputs/<deck-slug>/
 templates/styles/style-index.json
 .codex/skills/sysu-ppt-generation/references/style-schema.md
 .codex/skills/sysu-ppt-generation/references/output-contract.md
+.codex/skills/sysu-ppt-generation/references/visual-qa-rubric.md
 ```
 
 再按目标场景选择风格。若需要 Beamer 系列 PPTX，可优先从以下目录中的生成模板开始：
