@@ -1,5 +1,16 @@
 # 更新记录
 
+## v0.4 - 2026-07-10
+
+- 新增 Visual Discovery：未指定风格的新建/重设计任务先用真实内容生成 `safe`、`structured`、`exploratory` 三个封面方案。
+- 为全部活动风格增加紧凑 `selection_profile`，生成代理先读 style index，选定后再读完整 `style.json`。
+- 新增 `deck-brief.json`、`asset-review.json`、`style-selection.json` 契约，以及 `speaker_led` / `reading_first` 两种交付模式。
+- 新增 `extract_deck_content.py`，只读提取旧 PPT 的页序、标题、正文、备注、图片、几何、裁剪和源文件 SHA-256。
+- 新增 `generate_style_discovery_previews.py` 与 `validate_style_discovery.py`，生成/校验三页 PPTX、1600x900 PNG、contact sheet 和选型记录。
+- 扩展 `audit_deck_taste.py --brief`、项目 validator、Content Intake QA 和 Style Discovery QA。
+- 新增中文 Visual Discovery showcase 和 README 第一屏预览，完整使用说明覆盖新建、旧稿重设计和旧稿修订流程。
+- 固定参考 `zarazhangrui/frontend-slides` 提交 `9906a34d640d2111f724544cbc50f7f130569ae1`；仅做 MIT 许可下的方法改写，不引入 HTML、CSS、动画、浏览器编辑、部署、在线字体或外部模板包。
+
 ## v0.3 - 2026-07-10
 
 - 新增 PPT Taste Framework，以 `Design Read`、`layout_variance`、`visual_density` 和 `visual_energy` 显式约束构图判断。

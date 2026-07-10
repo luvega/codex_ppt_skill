@@ -51,6 +51,15 @@ STYLES: list[dict[str, Any]] = [
         "font_fallback": "微软雅黑",
         "use_case": "Academic reports, seminars, and technical talks using SYSU official blue.",
         "taste": [4, 5, 4],
+        "selection_profile": {
+            "mood": ["structured", "clear", "technical"],
+            "tone": ["academic", "teaching", "research"],
+            "formality": "medium-high",
+            "delivery_modes": ["speaker_led", "reading_first"],
+            "surface_scheme": "light",
+            "best_for": "结构化课程、科研报告、方法讲解和技术型学术交流。",
+            "avoid_for": "要求完全复刻官方源模板几何的严格正式场景。",
+        },
     },
     {
         "id": "beamer-sysu-green",
@@ -71,6 +80,15 @@ STYLES: list[dict[str, Any]] = [
         "font_fallback": "微软雅黑",
         "use_case": "Biomedical, life-science, public-health, and sustainability talks using SYSU official green.",
         "taste": [4, 5, 4],
+        "selection_profile": {
+            "mood": ["structured", "scientific", "calm"],
+            "tone": ["biomedical", "teaching", "evidence-led"],
+            "formality": "medium-high",
+            "delivery_modes": ["speaker_led", "reading_first"],
+            "surface_scheme": "light",
+            "best_for": "生命科学、公共卫生、生物医学课程和科研结果汇报。",
+            "avoid_for": "要求完全复刻官方源模板几何或强烈仪式感的场景。",
+        },
     },
     {
         "id": "beamer-sysu-red",
@@ -91,6 +109,15 @@ STYLES: list[dict[str, Any]] = [
         "font_fallback": "微软雅黑",
         "use_case": "Formal academic reports, defenses, and official talks using SYSU red.",
         "taste": [3, 5, 4],
+        "selection_profile": {
+            "mood": ["structured", "formal", "authoritative"],
+            "tone": ["defense", "policy", "institutional"],
+            "formality": "high",
+            "delivery_modes": ["speaker_led", "reading_first"],
+            "surface_scheme": "light",
+            "best_for": "正式答辩、政策解读和需要清晰结构的官方学术报告。",
+            "avoid_for": "轻松课堂或需要高版式变化的实验性展示。",
+        },
     },
 ]
 
@@ -717,6 +744,7 @@ def write_style(style: dict[str, Any], template_path: Path, showcase_path: Path)
         "generation_status": "ready",
         "use_case": style["use_case"],
         "recommended_for": style["use_case"],
+        "selection_profile": style["selection_profile"],
     }
 
 

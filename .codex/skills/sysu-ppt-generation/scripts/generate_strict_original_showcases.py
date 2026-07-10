@@ -50,6 +50,15 @@ STRICT_STYLES: list[dict[str, Any]] = [
         "teacher_scenario": "通用课程汇报、课题组分享、学术报告和答辩。",
         "visual_risk": "内容页容易被长段落填满，需主动使用图文页和比较页。",
         "recommended_for": "默认正式入口；不确定选型时优先使用。",
+        "selection_profile": {
+            "mood": ["official", "calm", "trustworthy"],
+            "tone": ["academic", "institutional", "general-purpose"],
+            "formality": "high",
+            "delivery_modes": ["speaker_led", "reading_first"],
+            "surface_scheme": "light",
+            "best_for": "通用课程、科研汇报、答辩和正式学术交流。",
+            "avoid_for": "需要明显实验性、娱乐性或非校方品牌表达的场景。",
+        },
     },
     {
         "id": "strict-sysu-official-green",
@@ -62,6 +71,15 @@ STRICT_STYLES: list[dict[str, Any]] = [
         "teacher_scenario": "生命科学、公共卫生、生态、医学相关课程和科研汇报。",
         "visual_risk": "图片资源较多，需避免把多张图压缩到同一页。",
         "recommended_for": "生物医学和公共健康语境的首选正式入口。",
+        "selection_profile": {
+            "mood": ["natural", "scholarly", "calm"],
+            "tone": ["biomedical", "public-health", "evidence-led"],
+            "formality": "high",
+            "delivery_modes": ["speaker_led", "reading_first"],
+            "surface_scheme": "light",
+            "best_for": "生命科学、公共卫生、生态和生物医学科研教学。",
+            "avoid_for": "与生命科学无关且要求强烈仪式感的正式行政汇报。",
+        },
     },
     {
         "id": "strict-sysu-official-red",
@@ -74,6 +92,15 @@ STRICT_STYLES: list[dict[str, Any]] = [
         "teacher_scenario": "正式会议、政策汇报、学院级汇报、仪式性或偏行政场景。",
         "visual_risk": "红色强调强，正文和表格页需控制密度。",
         "recommended_for": "需要庄重感和正式身份表达时使用。",
+        "selection_profile": {
+            "mood": ["ceremonial", "authoritative", "formal"],
+            "tone": ["policy", "institutional", "official"],
+            "formality": "high",
+            "delivery_modes": ["speaker_led", "reading_first"],
+            "surface_scheme": "light",
+            "best_for": "正式会议、政策汇报、学院级汇报和仪式性场景。",
+            "avoid_for": "轻松课堂、长时间技术讲解或需要低强调色负担的报告。",
+        },
     },
 ]
 
@@ -668,6 +695,7 @@ def write_style_files(style: dict[str, Any], manifest: dict[str, Any], demo_path
         "generation_status": "ready",
         "use_case": style["use_case"],
         "recommended_for": style["recommended_for"],
+        "selection_profile": style["selection_profile"],
     }
 
 

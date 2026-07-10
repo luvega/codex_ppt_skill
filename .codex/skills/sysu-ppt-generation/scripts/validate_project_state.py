@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -35,6 +37,22 @@ REQUIRED_STYLE_FIELDS = {
 TASTE_MODES = {"preserve", "evolve", "selection"}
 REQUIRED_TASTE_FIELDS = {"mode", "layout_variance", "visual_density", "visual_energy", "shape_system", "layout_repetition_limit"}
 PATTERN_ROOT = ROOT / ".codex" / "skills" / "sysu-ppt-generation" / "references" / "layout-patterns"
+REQUIRED_SELECTION_FIELDS = {
+    "mood",
+    "tone",
+    "formality",
+    "delivery_modes",
+    "surface_scheme",
+    "best_for",
+    "avoid_for",
+}
+DELIVERY_MODES = {"speaker_led", "reading_first"}
+FORMALITY_VALUES = {"low", "medium-low", "medium", "medium-high", "high"}
+SURFACE_SCHEMES = {"light", "dark", "mixed"}
+FRONTEND_SLIDES_COMMIT = "9906a34d640d2111f724544cbc50f7f130569ae1"
+ADAPTATION_REFERENCE = ROOT / ".codex" / "skills" / "sysu-ppt-generation" / "references" / "frontend-slides-adaptation.md"
+OUTPUT_CONTRACT = ROOT / ".codex" / "skills" / "sysu-ppt-generation" / "references" / "output-contract.md"
+VISUAL_DISCOVERY_DIR = ROOT / "outputs" / "style-showcase" / "visual-discovery"
 
 STALE_PATTERNS = [
     "/".join(["F:", "AI_PPT"]),
@@ -80,6 +98,29 @@ def add_path_error(errors: list[str], label: str, owner: str, path_value: str | 
         errors.append(f"{owner}: {label} does not exist: {path_value}")
 
 
+def validate_selection_profile(owner: str, profile: Any, errors: list[str]) -> None:
+    if not isinstance(profile, dict):
+        errors.append(f"{owner}: selection_profile must be an object")
+        return
+    missing = sorted(REQUIRED_SELECTION_FIELDS - set(profile))
+    if missing:
+        errors.append(f"{owner}: selection_profile missing fields: {', '.join(missing)}")
+    for field in ("mood", "tone"):
+        value = profile.get(field)
+        if not isinstance(value, list) or not value or not all(isinstance(item, str) and item.strip() for item in value):
+            errors.append(f"{owner}: selection_profile {field} must be a non-empty string list")
+    if profile.get("formality") not in FORMALITY_VALUES:
+        errors.append(f"{owner}: selection_profile formality is invalid: {profile.get('formality')}")
+    delivery_modes = profile.get("delivery_modes")
+    if not isinstance(delivery_modes, list) or not delivery_modes or not set(delivery_modes).issubset(DELIVERY_MODES):
+        errors.append(f"{owner}: selection_profile delivery_modes must use speaker_led/reading_first")
+    if profile.get("surface_scheme") not in SURFACE_SCHEMES:
+        errors.append(f"{owner}: selection_profile surface_scheme is invalid: {profile.get('surface_scheme')}")
+    for field in ("best_for", "avoid_for"):
+        if not isinstance(profile.get(field), str) or not profile.get(field, "").strip():
+            errors.append(f"{owner}: selection_profile {field} must be non-empty")
+
+
 def validate_style_registry(errors: list[str], warnings: list[str]) -> dict[str, dict[str, Any]]:
     index = load_json(STYLE_INDEX)
     styles: dict[str, dict[str, Any]] = {}
@@ -109,6 +150,7 @@ def validate_style_registry(errors: list[str], warnings: list[str]) -> dict[str,
             errors.append(f"{sid}: style asset_manifest differs from style-index asset_manifest")
         if entry.get("generation_status") != style.get("generation_status"):
             errors.append(f"{sid}: generation_status differs between style-index and style.json")
+        validate_selection_profile(sid, entry.get("selection_profile"), errors)
         profile = style.get("taste_profile", {})
         missing_profile = sorted(REQUIRED_TASTE_FIELDS - set(profile))
         if missing_profile:
@@ -125,7 +167,48 @@ def validate_style_registry(errors: list[str], warnings: list[str]) -> dict[str,
         if not isinstance(style.get("anti_patterns"), list) or not style.get("anti_patterns"):
             errors.append(f"{sid}: anti_patterns must be a non-empty list")
 
+    for label in ("style_discovery_showcase_pptx", "style_discovery_contact_sheet"):
+        add_path_error(errors, label, "style-index", index.get(label))
+
     return styles
+
+
+def validate_visual_discovery_contract(errors: list[str]) -> None:
+    for path in (ADAPTATION_REFERENCE, OUTPUT_CONTRACT):
+        if not path.exists():
+            errors.append(f"missing Visual Discovery reference: {rel(path)}")
+            return
+    adaptation = ADAPTATION_REFERENCE.read_text(encoding="utf-8")
+    if FRONTEND_SLIDES_COMMIT not in adaptation:
+        errors.append("frontend-slides adaptation does not pin the required commit")
+    contract = OUTPUT_CONTRACT.read_text(encoding="utf-8")
+    for token in ("deck-brief.json", "asset-review.json", "style-selection.json", "Content Intake QA", "Style Discovery QA"):
+        if token not in contract:
+            errors.append(f"output contract missing Visual Discovery token: {token}")
+
+
+def validate_visual_discovery_showcase(errors: list[str]) -> None:
+    script = ROOT / ".codex" / "skills" / "sysu-ppt-generation" / "scripts" / "validate_style_discovery.py"
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(script),
+            str(VISUAL_DISCOVERY_DIR),
+            "--brief",
+            str(VISUAL_DISCOVERY_DIR / "deck-brief.json"),
+            "--asset-review",
+            str(VISUAL_DISCOVERY_DIR / "asset-review.json"),
+            "--require-confirmed",
+            "--require-powerpoint-rendered",
+        ],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        encoding="utf-8",
+    )
+    if result.returncode:
+        messages = [line.removeprefix("ERROR: ") for line in result.stdout.splitlines() if line.startswith("ERROR:")]
+        errors.extend(f"Visual Discovery showcase: {message}" for message in (messages or ["validation failed"]))
 
 
 def validate_inventory(errors: list[str]) -> None:
@@ -181,6 +264,8 @@ def main() -> int:
     validate_inventory(errors)
     validate_stale_text(errors)
     validate_pptx_sizes(errors, warnings)
+    validate_visual_discovery_contract(errors)
+    validate_visual_discovery_showcase(errors)
 
     for warning in warnings:
         print(f"WARN: {warning}")

@@ -6,6 +6,8 @@ Create generated decks under `outputs/<deck-slug>/`:
 
 ```text
 outputs/<deck-slug>/
+  deck-brief.json
+  asset-review.json
   outline.md
   style.json
   template-mapping.json
@@ -15,11 +17,22 @@ outputs/<deck-slug>/
   qa-notes.md
 ```
 
+For a PPTX redesign or revision, also keep `source-deck-extract.json` and
+`extracted-assets/`. When style discovery is required, keep its PPTX, PNGs,
+contact sheet, and `style-selection.json` under `style-discovery/`.
+
 Keep `templates/source/` immutable. Copy a template into the output folder before editing.
 
 ## Style Selection
 
-Read `templates/styles/style-index.json` first. If the user does not specify a style, use this decision order:
+Read `templates/styles/style-index.json` first. Use each entry's compact
+`selection_profile` without opening every full style spec. If the user does
+not specify a style for a new deck or redesign, generate three real title-slide
+previews in this order: domain-matched strict `safe`, corresponding Beamer
+`structured`, then a matched candidate or high-stakes ready `exploratory`.
+
+If the user explicitly specifies a style, skip discovery and open only that
+style's full `style.json`. For quick deterministic routing, use this order:
 
 | Content | Style ID |
 |---|---|
@@ -30,6 +43,11 @@ Read `templates/styles/style-index.json` first. If the user does not specify a s
 | User asks for Beamer-like academic PPTX structure | `beamer-sysu-blue`, `beamer-sysu-green`, or `beamer-sysu-red` |
 
 Copy the chosen `style.json` into the output folder so the deck is reproducible.
+
+Before the outline, write `deck-brief.json` and review supplied assets in
+`asset-review.json`. For `pptx_redesign` or `pptx_revision`, run
+`extract_deck_content.py`, inspect the extracted titles, text, notes, images,
+geometry, and crop values, and confirm the content before remapping slides.
 
 The source template and extracted asset manifest are the authority. Use the style spec to locate the source PPTX, `asset_manifest`, contact sheet, and demo file. Do not reduce a strict style to a copied template or a palette swap. The removed `sysu-minimal-*` styles are not active generation targets. `template-inventory.md/json` describes only source templates under `templates/source/`; generated templates under `templates/generated/` are routed through `style-index.json`.
 

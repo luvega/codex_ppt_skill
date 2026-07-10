@@ -2,6 +2,25 @@
 
 This project uses `templates/styles/style-index.json` as the public style registry and `templates/styles/<style-id>/style.json` as the per-style generation contract.
 
+## Selection Profile
+
+Every entry in `style-index.json` includes a compact `selection_profile` so an
+agent can shortlist styles without loading every full style spec:
+
+| Field | Meaning |
+|---|---|
+| `mood` | Short descriptive signals such as calm, structured, or technical. |
+| `tone` | Intended presentation voice and subject signals. |
+| `formality` | `low`, `medium-low`, `medium`, `medium-high`, or `high`. |
+| `delivery_modes` | Non-empty subset of `speaker_led` and `reading_first`. |
+| `surface_scheme` | `light`, `dark`, or `mixed`; current SYSU styles are light. |
+| `best_for` | Positive selection guidance. |
+| `avoid_for` | Situations where the style should not be shortlisted. |
+
+Read the index first. Open full `style.json` files only after a style is
+selected, except that the preview generator may read shortlisted specs
+internally to draw the three preview slides.
+
 ## Required Fields
 
 Every `style.json` must include:
@@ -50,13 +69,17 @@ Use these values:
 ## Agent Reading Order
 
 1. Read `templates/styles/style-index.json`.
-2. Choose a style by `use_case`, `group`, and `generation_status`.
+2. Shortlist by `selection_profile`, `use_case`, `group`, and `generation_status`.
 3. Open the selected `style.json`.
 4. For `strict-original`, read `source`, `asset_manifest`, and `template-inventory.md` before mapping slides.
 5. For `beamer-inspired`, start from `template_pptx` and use the listed source assets.
 6. For `beamer-candidates`, treat the deck as visual selection material unless the user explicitly promotes it to a production direction.
 7. Read `visual_tokens`, `sample_page_types`, and `qa_focus` when available, then copy the selected `style.json` into the output folder.
 8. Read `taste_profile`, choose a `layout_pattern_id` for every slide, and record deck-level overrides in `outline.md`.
+
+When style discovery is required, record all options and the final choice in
+`style-selection.json`. A selected `style_selection_only` style needs
+`approval_scope: deck_only`; this never changes the registry status.
 
 ## Taste Profile Contract
 

@@ -7,6 +7,13 @@ $ErrorActionPreference = "Stop"
 $previewDir = Join-Path $Root "docs\previews"
 New-Item -ItemType Directory -Force -Path $previewDir | Out-Null
 
+$visualDiscovery = Join-Path $Root "outputs\style-showcase\visual-discovery\contact-sheet.png"
+if (-not (Test-Path -LiteralPath $visualDiscovery)) {
+  throw "Missing Visual Discovery contact sheet: $visualDiscovery"
+}
+Copy-Item -LiteralPath $visualDiscovery -Destination (Join-Path $previewDir "visual-discovery.png") -Force
+Write-Host "Wrote $(Join-Path $previewDir 'visual-discovery.png')"
+
 $items = @(
   @{
     Pptx = "outputs\style-showcase\taste-calibration\taste-calibration-showcase.pptx"

@@ -1,0 +1,49 @@
+{
+  "approval_scope": "none",
+  "approved_asset_count": 0,
+  "confirmed": true,
+  "generator_version": "0.4",
+  "input_hashes": {
+    "asset_review_sha256": "dcd6eb454845079c4ad7cb4385a1ad77774f9c2f3507269d179f86213863bfb5",
+    "brief_sha256": "84ed7927d9ac25b9a0be616c4e93e78ced2d8905a9ec154233a97d2c18ecb1dd",
+    "generator_sha256": "8d3ff36cf5eab2a76558564db48a7eebd06417b5f78d24fa24f80d0e3575397f",
+    "style_registry_sha256": "f1eba9cfdac8ce327b00c54572c31ef6bb1b639b0f8045705836bb41937e7cba",
+    "style_specs_sha256": {
+      "beamer-sysu-green": "b5f227fdad11f5cf659ac2be654db9ed819b6fc1f600eac4c7b8e40297cdf199",
+      "sleek-sysu-research": "ce07e0bd3cf87e55f53576d640a4c82c658a2dc25af9bd031fbb21a2f8e1bba9",
+      "strict-sysu-official-green": "b3ce4e79a706a6e9f38c4d44456d72d3c58e0b49505b4fabe6e1fb666fef8483"
+    }
+  },
+  "options": [
+    {
+      "generation_status": "ready",
+      "name": "Strict SYSU Official Green",
+      "option": "A",
+      "role": "safe",
+      "style_id": "strict-sysu-official-green"
+    },
+    {
+      "generation_status": "ready",
+      "name": "Beamer SYSU Green",
+      "option": "B",
+      "role": "structured",
+      "style_id": "beamer-sysu-green"
+    },
+    {
+      "generation_status": "style_selection_only",
+      "name": "Sleek-SYSU Research",
+      "option": "C",
+      "role": "exploratory",
+      "style_id": "sleek-sysu-research"
+    }
+  ],
+  "render_method": "powerpoint",
+  "runtime": {
+    "pillow": "12.0.0",
+    "python": "3.13.13",
+    "python_pptx": "1.0.2"
+  },
+  "schema_version": 1,
+  "selected_option": "B",
+  "selected_style_id": "beamer-sysu-green"
+}

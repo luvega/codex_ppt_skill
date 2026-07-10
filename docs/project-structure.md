@@ -25,6 +25,7 @@ E:/Codex_Projects/AI_PPT/
       template-elements/    # generated demo PPTX built from extracted template assets
       beamer-inspired/      # Beamer-inspired SYSU blue/green/red demos
       beamer-candidates/    # SimplePlus, USTC/THU, Moloch, Sleek, River candidate demos
+      visual-discovery/     # real-content three-option selection deck, PNGs, brief, and selection record
   .codex/
     skills/sysu-ppt-generation/
     reference-skills/
@@ -60,6 +61,7 @@ Generated preview decks:
 - `outputs/style-showcase/beamer-candidates/moloch-sysu-minimal-showcase.pptx`
 - `outputs/style-showcase/beamer-candidates/sleek-sysu-research-showcase.pptx`
 - `outputs/style-showcase/beamer-candidates/river-sysu-atelier-showcase.pptx`
+- `outputs/style-showcase/visual-discovery/style-discovery-showcase.pptx`
 
 README preview images:
 
@@ -72,5 +74,6 @@ README preview images:
 - `docs/previews/candidate-moloch.png`
 - `docs/previews/candidate-sleek.png`
 - `docs/previews/candidate-river.png`
+- `docs/previews/visual-discovery.png`
 
 Strict official showcase decks are not source PPTX copies. They keep the original source PPT cover as slide 1, then demonstrate extracted fonts, template colors,校徽/wordmark assets, campus imagery, recurring marks, and applied slide patterns. Generic full-height left vertical stripes are not part of the strict style unless the source slide itself contains that element.

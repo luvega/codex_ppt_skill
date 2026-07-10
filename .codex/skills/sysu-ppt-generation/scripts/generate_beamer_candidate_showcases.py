@@ -98,6 +98,15 @@ STYLE_FAMILIES: list[dict[str, Any]] = [
         "neutral": "F8FAFC",
         "use_case": "Clean academic seminars, course reports, and content-first research talks.",
         "taste": [4, 4, 3],
+        "selection_profile": {
+            "mood": ["clean", "restrained", "content-first"],
+            "tone": ["seminar", "teaching", "academic"],
+            "formality": "medium",
+            "delivery_modes": ["speaker_led", "reading_first"],
+            "surface_scheme": "light",
+            "best_for": "希望减少装饰、突出课程或研究内容的学术报告。",
+            "avoid_for": "要求强仪式感或高视觉张力的正式活动。",
+        },
         "rules": [
             "White canvas, light rules, and restrained color.",
             "Small identity elements, large content regions.",
@@ -120,6 +129,15 @@ STYLE_FAMILIES: list[dict[str, Any]] = [
         "neutral": "F4F1EA",
         "use_case": "Formal university reports, defenses, and institution-facing academic presentations.",
         "taste": [3, 5, 4],
+        "selection_profile": {
+            "mood": ["institutional", "formal", "weighty"],
+            "tone": ["defense", "university", "official"],
+            "formality": "high",
+            "delivery_modes": ["speaker_led", "reading_first"],
+            "surface_scheme": "light",
+            "best_for": "学校级汇报、答辩和面向机构的正式学术展示。",
+            "avoid_for": "轻松教学、快速产品演示或需要低正式度的分享。",
+        },
         "rules": [
             "Stronger institutional header and frame number.",
             "Serif-heavy Chinese title hierarchy.",
@@ -142,6 +160,15 @@ STYLE_FAMILIES: list[dict[str, Any]] = [
         "neutral": "F0F1EE",
         "use_case": "Technical talks that need maximum reading space and minimal visual noise.",
         "taste": [5, 3, 4],
+        "selection_profile": {
+            "mood": ["minimal", "spacious", "focused"],
+            "tone": ["technical", "modern", "speaker-led"],
+            "formality": "medium",
+            "delivery_modes": ["speaker_led"],
+            "surface_scheme": "light",
+            "best_for": "需要大字号、强留白和单结论节奏的技术演讲。",
+            "avoid_for": "异步阅读型报告、密集方法表格或正式政策汇报。",
+        },
         "rules": [
             "Large type, sparse content, and a single progress bar.",
             "Light background for SYSU compatibility.",
@@ -163,6 +190,15 @@ STYLE_FAMILIES: list[dict[str, Any]] = [
         "neutral": "ECEFF3",
         "use_case": "Algorithm, code, computational method, and data-heavy research presentations.",
         "taste": [5, 6, 5],
+        "selection_profile": {
+            "mood": ["technical", "precise", "energetic"],
+            "tone": ["algorithm", "code", "data-heavy"],
+            "formality": "medium",
+            "delivery_modes": ["speaker_led", "reading_first"],
+            "surface_scheme": "light",
+            "best_for": "算法、代码、计算方法和数据密集型科研报告。",
+            "avoid_for": "仪式性汇报或不需要技术面板的通用课程。",
+        },
         "rules": [
             "Technical panels are large and few.",
             "Use dark-on-light contrast and clear grid alignment.",
@@ -184,6 +220,15 @@ STYLE_FAMILIES: list[dict[str, Any]] = [
         "neutral": "F1F2EF",
         "use_case": "Long-form lectures, structured research talks, and teaching-first slide decks.",
         "taste": [5, 5, 4],
+        "selection_profile": {
+            "mood": ["structured", "scholarly", "teaching-first"],
+            "tone": ["lecture", "long-form", "academic"],
+            "formality": "medium-high",
+            "delivery_modes": ["speaker_led", "reading_first"],
+            "surface_scheme": "light",
+            "best_for": "长课程、结构化科研报告和需要持续导航的讲授型 deck。",
+            "avoid_for": "极短演讲或只需要一页结论的高冲击展示。",
+        },
         "rules": [
             "Visible structure with quiet progress cues.",
             "Large theorem/equation/table environments.",
@@ -824,6 +869,7 @@ def write_style(family: dict[str, Any], showcase_path: Path, variants: dict[str,
         "use_case": family["use_case"],
         "recommended_for": "Style selection only; promote explicitly before production use.",
         "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template.",
+        "selection_profile": family["selection_profile"],
     }
 
 

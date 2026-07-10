@@ -1,4 +1,4 @@
 interface:
   display_name: "SYSU PPT Generation"
-  short_description: "Generate SYSU PPT decks from local templates."
-  default_prompt: "Create a SYSU-styled PowerPoint deck from my outline using the local template inventory."
+  short_description: "Generate or refresh SYSU PPTX decks with visual discovery."
+  default_prompt: "Create or refresh a SYSU PowerPoint deck using the local style registry, real-content visual discovery when needed, and the project QA contracts."

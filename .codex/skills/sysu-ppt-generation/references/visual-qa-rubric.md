@@ -18,6 +18,10 @@ Use this checklist for every generated SYSU deck and every refreshed showcase pr
 | Pattern rhythm | No pattern appears on three consecutive content slides; long decks use at least four families. | Remap one slide to a figure, comparison, flow, divider, or summary pattern. |
 | Shape consistency | Radius, line weight, and shadow treatment form one coherent system. | Remove isolated pills, mixed radii, and black drop shadows. |
 | Evidence integrity | Visual regions contain real evidence or relevant imagery, not stock-icon filler or fake dashboards. | Replace decoration with a real figure, table, diagram, or explicitly empty region. |
+| Delivery mode | Slide density and explanatory detail match `speaker_led` or `reading_first`. | Split content, reduce supporting points, or move details to notes/backup. |
+| Preview authenticity | Style previews use real deck content and expose no option labels, style IDs, paths, or workflow notes. | Move comparison labels outside the slide image and regenerate. |
+| Downscaled legibility | The deck remains legible in both 1600x900 and 800x450 exports. | Increase type/visual scale or simplify the slide. |
+| Render provenance | Preview metadata says `powerpoint` when COM rendering is available; fallback rendering is documented. | Re-export from the PPTX and rerun style-discovery validation. |
 
 ## Scientific Figure Checks
 
@@ -47,3 +51,6 @@ Use this compact ledger shape in `qa-notes.md`:
 - Three equal cards appear only when the content is genuinely three independent peers.
 - Chinese titles use semantic line breaks and zero letter spacing.
 - Source-defined typography and geometry override generic taste rules in `preserve` mode.
+- `deck-brief.json` declares a valid delivery mode and content confirmation state.
+- Supplied figures and images have an `asset-review.json` entry before outline mapping.
+- Style discovery, when required, contains `safe`, `structured`, and `exploratory` previews using real title-slide content.

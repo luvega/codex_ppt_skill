@@ -1,6 +1,6 @@
 # AI_PPT 完整使用说明
 
-适用版本：`v0.3`
+适用版本：`v0.4`
 
 本项目是面向中山大学教学、科研报告和正式汇报的项目内 PPT 生成技能库。正式生成入口只有 `.codex/skills/sysu-ppt-generation/`；源模板、风格规范、派生模板、展示稿和质量检查都围绕这一入口组织。
 
@@ -79,6 +79,34 @@ python .codex\skills\sysu-ppt-generation\scripts\validate_project_state.py
 - Beamer 风格以生成模板为起点，允许在 SYSU 身份内改善内容页构图。
 - candidate 只能用于选型；正式生成前必须明确提升为某个生产方向。
 
+### 4.1 未指定风格时的 Visual Discovery
+
+新建 deck 或重设计旧 PPT 且没有指定 style ID 时，不直接默认生成整套
+蓝色模板。先使用真实题目、副标题、作者、日期和已批准资产生成三个封面：
+
+| 角色 | 选型来源 |
+|---|---|
+| `safe` | 与内容领域匹配的 `strict-*`。 |
+| `structured` | 对应颜色的 `beamer-sysu-*`。 |
+| `exploratory` | 匹配的候选风格；高风险正式场景可改用另一套 `ready` 风格。 |
+
+预览页本身不得出现 `Option A`、style ID、模板名、文件路径或生成说明。
+这些标签只放在 `contact-sheet.png` 外围。用户选中候选风格时，只在本次
+deck 的 `style-selection.json` 中记录 `approval_scope: deck_only`，不改变
+候选风格在全局注册表中的 `style_selection_only` 状态。
+
+```powershell
+python .codex\skills\sysu-ppt-generation\scripts\generate_style_discovery_previews.py `
+  --brief outputs\<deck-slug>\deck-brief.json `
+  --asset-review outputs\<deck-slug>\asset-review.json `
+  --output-dir outputs\<deck-slug>\style-discovery `
+  --render-method auto
+```
+
+`auto` 优先调用 PowerPoint COM 导出真实 PNG；不可用时才回退到 Pillow，
+并在 `style-selection.json` 和 QA 中记录。正式 showcase 和最终选型检查应
+使用 `--render-method powerpoint`。
+
 ## 5. PPT Taste Layer
 
 ### 5.1 Design Read
@@ -114,9 +142,20 @@ python .codex\skills\sysu-ppt-generation\scripts\validate_project_state.py
 - `evolve`：Beamer 风格。在 SYSU 身份内改善节奏和层级。
 - `selection`：候选展示，只用于比较视觉方向。
 
-## 6. 从大纲到 PPT
+### 5.4 Delivery mode
 
-### 6.1 准备输入
+| 模式 | 使用场景 | 主报告密度 |
+|---|---|---|
+| `speaker_led` | 现场讲授、答辩、会议报告 | 通常 3-5；一页一个观点，通常 1-3 个支撑点。 |
+| `reading_first` | 异步阅读、内部审阅、详细材料 | 通常 5-6；允许注释图、比较表和简洁解释。 |
+
+现场演讲默认 `speaker_led`，异步流转默认 `reading_first`。不要创造含糊的
+中间模式。两种模式均保持正文不小于 16 pt；内容超载时拆页。密度 7-8
+仍只用于方法、文献或 backup。
+
+## 6. 从 brief 到 PPT
+
+### 6.1 建立 deck-brief.json
 
 建议提供：
 
@@ -128,10 +167,56 @@ python .codex\skills\sysu-ppt-generation\scripts\validate_project_state.py
 
 不得用装饰图替代缺失的研究证据。原始图表不可用时，在 QA 中明确记录限制。
 
-### 6.2 创建输出目录
+固定字段示例：
+
+```json
+{
+  "workflow_mode": "new_deck",
+  "purpose": "科研报告",
+  "audience": "教师与研究生",
+  "duration_minutes": 15,
+  "target_slide_count": 12,
+  "content_readiness": "complete",
+  "delivery_mode": "speaker_led",
+  "brand_fidelity": "strict",
+  "requested_style_id": null,
+  "style_discovery_required": true,
+  "content_confirmed": true,
+  "title": "单细胞图谱揭示治疗后免疫状态重塑",
+  "subtitle": "阶段性科研报告",
+  "author": "中山大学研究团队",
+  "date": "2026-07-10"
+}
+```
+
+`workflow_mode` 使用 `new_deck`、`pptx_redesign` 或 `pptx_revision`。
+`content_readiness` 使用 `complete`、`rough_notes` 或 `topic_only`。
+`brand_fidelity` 使用 `strict` 或 `sysu_evolved`。
+
+### 6.2 先做 asset-review.json
+
+有用户素材时，每项记录：`path`、`kind`、`content_summary`、`usable`、
+`reason`、`dominant_colors`、`aspect_ratio`、`source`、
+`planned_slide_roles` 和 `processing`。不要覆盖原文件。
+
+没有用户素材时仍保留：
+
+```json
+{
+  "status": "none_provided",
+  "assets": []
+}
+```
+
+资产评审先于最终大纲。可用的研究图、显微图、截图或校徽会改变页型选择，
+不是在大纲完成后再用于填空。
+
+### 6.3 创建输出目录
 
 ```text
 outputs/<deck-slug>/
+  deck-brief.json
+  asset-review.json
   outline.md
   style.json
   template-mapping.json
@@ -141,9 +226,23 @@ outputs/<deck-slug>/
   qa-notes.md
 ```
 
+条件性文件：
+
+```text
+source-deck-extract.json
+extracted-assets/
+style-discovery/
+  style-options.pptx
+  option-a.png
+  option-b.png
+  option-c.png
+  contact-sheet.png
+  style-selection.json
+```
+
 `deck-slug` 使用简短 ASCII 名称，例如 `crc-lab-meeting-202607`。
 
-### 6.3 编写 outline.md
+### 6.4 编写 outline.md
 
 ```markdown
 # Outline
@@ -157,6 +256,7 @@ outputs/<deck-slug>/
 - Layout variance: `4`
 - Visual density: `5`
 - Visual energy: `4`
+- Delivery mode: `speaker_led`
 
 | New Slide | Action Title | Content Role | Layout Pattern ID | Exhibit/Image | Template File | Template Slide/Layout |
 |---:|---|---|---|---|---|---|
@@ -169,7 +269,7 @@ outputs/<deck-slug>/
 
 只读标题应能说明完整论证，这就是 ghost deck 检查。
 
-### 6.4 编写 template-mapping.json
+### 6.5 编写 template-mapping.json
 
 ```json
 {
@@ -199,7 +299,7 @@ outputs/<deck-slug>/
 
 同一 pattern 不得连续出现三页。8 页以上主报告至少使用四类 pattern。
 
-### 6.5 复制 style 和模板
+### 6.6 复制 style 和模板
 
 将选定的 `templates/styles/<style-id>/style.json` 复制到输出目录。然后：
 
@@ -208,7 +308,7 @@ outputs/<deck-slug>/
 
 永远不要原地修改 `templates/source/`。
 
-### 6.6 完成替换
+### 6.7 完成替换
 
 `replacements.json` 应记录每个替换对象：
 
@@ -227,6 +327,26 @@ outputs/<deck-slug>/
 ```
 
 优先替换模板占位符；只有模板无法承载时才绘制自由形状。自由形状必须遵守选定 pattern 和 style tokens。
+
+### 6.8 旧 PPT 重设计或修订
+
+先提取内容：
+
+```powershell
+python .codex\skills\sysu-ppt-generation\scripts\extract_deck_content.py `
+  inputs\source.pptx `
+  --output-dir outputs\<deck-slug>
+```
+
+检查 `source-deck-extract.json` 中的页序、标题、正文、讲者备注、图片、
+表格单元格、填充/背景图、几何和裁剪信息。重复提取会先清理旧的
+`extracted-assets/`，避免保留已经从源稿删除的图片。确认无缺失后再把
+`content_confirmed` 设为 `true`。
+
+- `pptx_redesign`：确认内容后进入 Visual Discovery，再映射到新模板。
+- `pptx_revision`：默认保持原视觉系统，仅修改要求涉及的页面；除非用户要求重设计，否则跳过 Visual Discovery。
+
+提取脚本只读源文件，并记录提取前 SHA-256。QA 时再次核对源文件哈希。
 
 ## 7. Layout Pattern 选择
 
@@ -265,6 +385,10 @@ outputs/<deck-slug>/
 
 ## Structural QA
 
+## Content Intake QA
+
+## Style Discovery QA
+
 ## Visual QA
 
 ## Taste QA
@@ -285,13 +409,23 @@ Taste QA 至少检查：
 - 强调色、圆角、线宽和阴影是否统一。
 - strict 模式是否保留源模板身份。
 
+Content Intake QA 至少检查素材评审、旧 PPT 提取内容、讲者备注、图片
+几何/裁剪和源文件哈希。Style Discovery QA 至少检查三种角色、真实内容、
+最终选择和候选风格的 `deck_only` 授权。
+
 运行只读审计：
 
 ```powershell
 python .codex\skills\sysu-ppt-generation\scripts\audit_deck_taste.py `
   outputs\<deck-slug>\final.pptx `
   --style outputs\<deck-slug>\style.json `
-  --mapping outputs\<deck-slug>\template-mapping.json
+  --mapping outputs\<deck-slug>\template-mapping.json `
+  --brief outputs\<deck-slug>\deck-brief.json
+
+python .codex\skills\sysu-ppt-generation\scripts\validate_style_discovery.py `
+  outputs\<deck-slug>\style-discovery `
+  --brief outputs\<deck-slug>\deck-brief.json `
+  --require-confirmed
 ```
 
 脚本只报告问题，不自动修改 PPTX。`error` 必须修复；`warning` 必须在 `qa-notes.md` 中解释。
@@ -308,6 +442,19 @@ python "$skill\scripts\generate_strict_original_showcases.py"
 python "$skill\scripts\generate_beamer_inspired_templates.py"
 python "$skill\scripts\generate_beamer_candidate_showcases.py"
 python "$skill\scripts\generate_taste_calibration_showcase.py"
+python "$skill\scripts\generate_style_discovery_previews.py" `
+  --brief outputs\style-showcase\visual-discovery\deck-brief.json `
+  --asset-review outputs\style-showcase\visual-discovery\asset-review.json `
+  --output-dir outputs\style-showcase\visual-discovery `
+  --select B `
+  --showcase `
+  --render-method powerpoint
+python "$skill\scripts\validate_style_discovery.py" `
+  outputs\style-showcase\visual-discovery `
+  --brief outputs\style-showcase\visual-discovery\deck-brief.json `
+  --asset-review outputs\style-showcase\visual-discovery\asset-review.json `
+  --require-confirmed `
+  --require-powerpoint-rendered
 python "$skill\scripts\validate_project_state.py"
 powershell -NoProfile -ExecutionPolicy Bypass -File "$skill\scripts\export_readme_previews.ps1"
 ```
@@ -356,8 +503,26 @@ git lfs install
 git lfs pull
 ```
 
+### 三张风格预览没有明显差异
+
+先确认 `style-index.json` 的 `selection_profile` 完整，并检查三个选项是否
+分别来自 strict、Beamer production 和候选/备用 ready 风格。预览必须改变
+构图体系，不能只换颜色。
+
+### 旧 PPT 提取后不能直接重设计
+
+先检查 `source-deck-extract.json` 与提取资产，确认页序、正文、备注和图片
+无遗漏，再把 `content_confirmed` 设为 `true`。不要把提取成功等同于内容已确认。
+
 ## 12. 外部参考边界
 
 PPT Taste Layer 概念性参考 `leonxlnx/taste-skill` v2，固定提交为 `b17742737e796305d829b3ad39eda3add0d79060`。本项目只提取 brief inference、三旋钮、anti-default、redesign mode、pattern library 和 pre-flight 方法，不安装该 skill，不引入 React、CSS、动效、暗色模式或在线服务依赖。
 
 SYSU 源模板、style registry、style spec 和本地生成脚本始终拥有更高优先级。
+
+Visual Discovery 概念性参考 `zarazhangrui/frontend-slides`，固定提交为
+`9906a34d640d2111f724544cbc50f7f130569ae1`。本项目只提取真实内容预览、
+渐进式 style index、交付密度、图片先行、旧 PPT 内容确认和渲染检查，
+不安装或 vendor 该仓库，不引入 HTML、CSS、React/Node、动画、浏览器编辑、
+在线字体、Vercel 或其外部模板包。完整边界见
+`.codex/skills/sysu-ppt-generation/references/frontend-slides-adaptation.md`。

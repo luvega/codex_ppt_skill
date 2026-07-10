@@ -10,7 +10,27 @@
       "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
       "generation_status": "ready",
       "use_case": "Exact official SYSU blue style with extracted marks, campus imagery, and source typography.",
-      "recommended_for": "默认正式入口；不确定选型时优先使用。"
+      "recommended_for": "默认正式入口；不确定选型时优先使用。",
+      "selection_profile": {
+        "mood": [
+          "official",
+          "calm",
+          "trustworthy"
+        ],
+        "tone": [
+          "academic",
+          "institutional",
+          "general-purpose"
+        ],
+        "formality": "high",
+        "delivery_modes": [
+          "speaker_led",
+          "reading_first"
+        ],
+        "surface_scheme": "light",
+        "best_for": "通用课程、科研汇报、答辩和正式学术交流。",
+        "avoid_for": "需要明显实验性、娱乐性或非校方品牌表达的场景。"
+      }
     },
     {
       "id": "strict-sysu-official-green",
@@ -22,7 +42,27 @@
       "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
       "generation_status": "ready",
       "use_case": "Exact official SYSU green style with extracted source serif titles, marks, and campus imagery.",
-      "recommended_for": "生物医学和公共健康语境的首选正式入口。"
+      "recommended_for": "生物医学和公共健康语境的首选正式入口。",
+      "selection_profile": {
+        "mood": [
+          "natural",
+          "scholarly",
+          "calm"
+        ],
+        "tone": [
+          "biomedical",
+          "public-health",
+          "evidence-led"
+        ],
+        "formality": "high",
+        "delivery_modes": [
+          "speaker_led",
+          "reading_first"
+        ],
+        "surface_scheme": "light",
+        "best_for": "生命科学、公共卫生、生态和生物医学科研教学。",
+        "avoid_for": "与生命科学无关且要求强烈仪式感的正式行政汇报。"
+      }
     },
     {
       "id": "strict-sysu-official-red",
@@ -34,72 +74,27 @@
       "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
       "generation_status": "ready",
       "use_case": "Exact official SYSU red style with extracted ceremonial marks, source serif titles, and campus imagery.",
-      "recommended_for": "需要庄重感和正式身份表达时使用。"
-    },
-    {
-      "id": "simpleplus-sysu-clean",
-      "name": "SimplePlus-SYSU Clean",
-      "group": "beamer-candidates",
-      "style_spec": "templates/styles/simpleplus-sysu-clean/style.json",
-      "demo_pptx": "outputs/style-showcase/beamer-candidates/simpleplus-sysu-clean-showcase.pptx",
-      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
-      "generation_status": "style_selection_only",
-      "use_case": "Clean academic seminars, course reports, and content-first research talks.",
-      "recommended_for": "Style selection only; promote explicitly before production use.",
-      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
-    },
-    {
-      "id": "ustc-thu-sysu-institutional",
-      "name": "USTC/THU-SYSU Institutional",
-      "group": "beamer-candidates",
-      "style_spec": "templates/styles/ustc-thu-sysu-institutional/style.json",
-      "demo_pptx": "outputs/style-showcase/beamer-candidates/ustc-thu-sysu-institutional-showcase.pptx",
-      "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
-      "generation_status": "style_selection_only",
-      "use_case": "Formal university reports, defenses, and institution-facing academic presentations.",
-      "recommended_for": "Style selection only; promote explicitly before production use.",
-      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
-    },
-    {
-      "id": "moloch-sysu-minimal",
-      "name": "Moloch-SYSU Minimal",
-      "group": "beamer-candidates",
-      "style_spec": "templates/styles/moloch-sysu-minimal/style.json",
-      "demo_pptx": "outputs/style-showcase/beamer-candidates/moloch-sysu-minimal-showcase.pptx",
-      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
-      "generation_status": "style_selection_only",
-      "use_case": "Technical talks that need maximum reading space and minimal visual noise.",
-      "recommended_for": "Style selection only; promote explicitly before production use.",
-      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
-    },
-    {
-      "id": "sleek-sysu-research",
-      "name": "Sleek-SYSU Research",
-      "group": "beamer-candidates",
-      "style_spec": "templates/styles/sleek-sysu-research/style.json",
-      "demo_pptx": "outputs/style-showcase/beamer-candidates/sleek-sysu-research-showcase.pptx",
-      "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
-      "generation_status": "style_selection_only",
-      "use_case": "Algorithm, code, computational method, and data-heavy research presentations.",
-      "recommended_for": "Style selection only; promote explicitly before production use.",
-      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
-    },
-    {
-      "id": "river-sysu-atelier",
-      "name": "River/Beamer Atelier Inspired",
-      "group": "beamer-candidates",
-      "style_spec": "templates/styles/river-sysu-atelier/style.json",
-      "demo_pptx": "outputs/style-showcase/beamer-candidates/river-sysu-atelier-showcase.pptx",
-      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
-      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
-      "generation_status": "style_selection_only",
-      "use_case": "Long-form lectures, structured research talks, and teaching-first slide decks.",
-      "recommended_for": "Style selection only; promote explicitly before production use.",
-      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template."
+      "recommended_for": "需要庄重感和正式身份表达时使用。",
+      "selection_profile": {
+        "mood": [
+          "ceremonial",
+          "authoritative",
+          "formal"
+        ],
+        "tone": [
+          "policy",
+          "institutional",
+          "official"
+        ],
+        "formality": "high",
+        "delivery_modes": [
+          "speaker_led",
+          "reading_first"
+        ],
+        "surface_scheme": "light",
+        "best_for": "正式会议、政策汇报、学院级汇报和仪式性场景。",
+        "avoid_for": "轻松课堂、长时间技术讲解或需要低强调色负担的报告。"
+      }
     },
     {
       "id": "beamer-sysu-blue",
@@ -112,7 +107,27 @@
       "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
       "generation_status": "ready",
       "use_case": "Academic reports, seminars, and technical talks using SYSU official blue.",
-      "recommended_for": "Academic reports, seminars, and technical talks using SYSU official blue."
+      "recommended_for": "Academic reports, seminars, and technical talks using SYSU official blue.",
+      "selection_profile": {
+        "mood": [
+          "structured",
+          "clear",
+          "technical"
+        ],
+        "tone": [
+          "academic",
+          "teaching",
+          "research"
+        ],
+        "formality": "medium-high",
+        "delivery_modes": [
+          "speaker_led",
+          "reading_first"
+        ],
+        "surface_scheme": "light",
+        "best_for": "结构化课程、科研报告、方法讲解和技术型学术交流。",
+        "avoid_for": "要求完全复刻官方源模板几何的严格正式场景。"
+      }
     },
     {
       "id": "beamer-sysu-green",
@@ -125,7 +140,27 @@
       "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
       "generation_status": "ready",
       "use_case": "Biomedical, life-science, public-health, and sustainability talks using SYSU official green.",
-      "recommended_for": "Biomedical, life-science, public-health, and sustainability talks using SYSU official green."
+      "recommended_for": "Biomedical, life-science, public-health, and sustainability talks using SYSU official green.",
+      "selection_profile": {
+        "mood": [
+          "structured",
+          "scientific",
+          "calm"
+        ],
+        "tone": [
+          "biomedical",
+          "teaching",
+          "evidence-led"
+        ],
+        "formality": "medium-high",
+        "delivery_modes": [
+          "speaker_led",
+          "reading_first"
+        ],
+        "surface_scheme": "light",
+        "best_for": "生命科学、公共卫生、生物医学课程和科研结果汇报。",
+        "avoid_for": "要求完全复刻官方源模板几何或强烈仪式感的场景。"
+      }
     },
     {
       "id": "beamer-sysu-red",
@@ -138,8 +173,194 @@
       "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
       "generation_status": "ready",
       "use_case": "Formal academic reports, defenses, and official talks using SYSU red.",
-      "recommended_for": "Formal academic reports, defenses, and official talks using SYSU red."
+      "recommended_for": "Formal academic reports, defenses, and official talks using SYSU red.",
+      "selection_profile": {
+        "mood": [
+          "structured",
+          "formal",
+          "authoritative"
+        ],
+        "tone": [
+          "defense",
+          "policy",
+          "institutional"
+        ],
+        "formality": "high",
+        "delivery_modes": [
+          "speaker_led",
+          "reading_first"
+        ],
+        "surface_scheme": "light",
+        "best_for": "正式答辩、政策解读和需要清晰结构的官方学术报告。",
+        "avoid_for": "轻松课堂或需要高版式变化的实验性展示。"
+      }
+    },
+    {
+      "id": "simpleplus-sysu-clean",
+      "name": "SimplePlus-SYSU Clean",
+      "group": "beamer-candidates",
+      "style_spec": "templates/styles/simpleplus-sysu-clean/style.json",
+      "demo_pptx": "outputs/style-showcase/beamer-candidates/simpleplus-sysu-clean-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "generation_status": "style_selection_only",
+      "use_case": "Clean academic seminars, course reports, and content-first research talks.",
+      "recommended_for": "Style selection only; promote explicitly before production use.",
+      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template.",
+      "selection_profile": {
+        "mood": [
+          "clean",
+          "restrained",
+          "content-first"
+        ],
+        "tone": [
+          "seminar",
+          "teaching",
+          "academic"
+        ],
+        "formality": "medium",
+        "delivery_modes": [
+          "speaker_led",
+          "reading_first"
+        ],
+        "surface_scheme": "light",
+        "best_for": "希望减少装饰、突出课程或研究内容的学术报告。",
+        "avoid_for": "要求强仪式感或高视觉张力的正式活动。"
+      }
+    },
+    {
+      "id": "ustc-thu-sysu-institutional",
+      "name": "USTC/THU-SYSU Institutional",
+      "group": "beamer-candidates",
+      "style_spec": "templates/styles/ustc-thu-sysu-institutional/style.json",
+      "demo_pptx": "outputs/style-showcase/beamer-candidates/ustc-thu-sysu-institutional-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-red/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-红.pptx",
+      "generation_status": "style_selection_only",
+      "use_case": "Formal university reports, defenses, and institution-facing academic presentations.",
+      "recommended_for": "Style selection only; promote explicitly before production use.",
+      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template.",
+      "selection_profile": {
+        "mood": [
+          "institutional",
+          "formal",
+          "weighty"
+        ],
+        "tone": [
+          "defense",
+          "university",
+          "official"
+        ],
+        "formality": "high",
+        "delivery_modes": [
+          "speaker_led",
+          "reading_first"
+        ],
+        "surface_scheme": "light",
+        "best_for": "学校级汇报、答辩和面向机构的正式学术展示。",
+        "avoid_for": "轻松教学、快速产品演示或需要低正式度的分享。"
+      }
+    },
+    {
+      "id": "moloch-sysu-minimal",
+      "name": "Moloch-SYSU Minimal",
+      "group": "beamer-candidates",
+      "style_spec": "templates/styles/moloch-sysu-minimal/style.json",
+      "demo_pptx": "outputs/style-showcase/beamer-candidates/moloch-sysu-minimal-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "generation_status": "style_selection_only",
+      "use_case": "Technical talks that need maximum reading space and minimal visual noise.",
+      "recommended_for": "Style selection only; promote explicitly before production use.",
+      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template.",
+      "selection_profile": {
+        "mood": [
+          "minimal",
+          "spacious",
+          "focused"
+        ],
+        "tone": [
+          "technical",
+          "modern",
+          "speaker-led"
+        ],
+        "formality": "medium",
+        "delivery_modes": [
+          "speaker_led"
+        ],
+        "surface_scheme": "light",
+        "best_for": "需要大字号、强留白和单结论节奏的技术演讲。",
+        "avoid_for": "异步阅读型报告、密集方法表格或正式政策汇报。"
+      }
+    },
+    {
+      "id": "sleek-sysu-research",
+      "name": "Sleek-SYSU Research",
+      "group": "beamer-candidates",
+      "style_spec": "templates/styles/sleek-sysu-research/style.json",
+      "demo_pptx": "outputs/style-showcase/beamer-candidates/sleek-sysu-research-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-green/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-绿.pptx",
+      "generation_status": "style_selection_only",
+      "use_case": "Algorithm, code, computational method, and data-heavy research presentations.",
+      "recommended_for": "Style selection only; promote explicitly before production use.",
+      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template.",
+      "selection_profile": {
+        "mood": [
+          "technical",
+          "precise",
+          "energetic"
+        ],
+        "tone": [
+          "algorithm",
+          "code",
+          "data-heavy"
+        ],
+        "formality": "medium",
+        "delivery_modes": [
+          "speaker_led",
+          "reading_first"
+        ],
+        "surface_scheme": "light",
+        "best_for": "算法、代码、计算方法和数据密集型科研报告。",
+        "avoid_for": "仪式性汇报或不需要技术面板的通用课程。"
+      }
+    },
+    {
+      "id": "river-sysu-atelier",
+      "name": "River/Beamer Atelier Inspired",
+      "group": "beamer-candidates",
+      "style_spec": "templates/styles/river-sysu-atelier/style.json",
+      "demo_pptx": "outputs/style-showcase/beamer-candidates/river-sysu-atelier-showcase.pptx",
+      "asset_manifest": "templates/assets/strict-sysu-official-blue/asset-manifest.json",
+      "source": "templates/source/sysu-official/中山大学幻灯片模板-蓝.pptx",
+      "generation_status": "style_selection_only",
+      "use_case": "Long-form lectures, structured research talks, and teaching-first slide decks.",
+      "recommended_for": "Style selection only; promote explicitly before production use.",
+      "status_reason": "Candidate showcase for choosing a Beamer-derived direction; not a default production template.",
+      "selection_profile": {
+        "mood": [
+          "structured",
+          "scholarly",
+          "teaching-first"
+        ],
+        "tone": [
+          "lecture",
+          "long-form",
+          "academic"
+        ],
+        "formality": "medium-high",
+        "delivery_modes": [
+          "speaker_led",
+          "reading_first"
+        ],
+        "surface_scheme": "light",
+        "best_for": "长课程、结构化科研报告和需要持续导航的讲授型 deck。",
+        "avoid_for": "极短演讲或只需要一页结论的高冲击展示。"
+      }
     }
   ],
-  "template_element_gallery_pptx": "outputs/style-showcase/template-elements/template-elements-gallery.pptx"
+  "template_element_gallery_pptx": "outputs/style-showcase/template-elements/template-elements-gallery.pptx",
+  "style_discovery_showcase_pptx": "outputs/style-showcase/visual-discovery/style-discovery-showcase.pptx",
+  "style_discovery_contact_sheet": "outputs/style-showcase/visual-discovery/contact-sheet.png"
 }

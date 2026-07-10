@@ -10,6 +10,11 @@ Before mapping slides, write one Chinese sentence that identifies the audience, 
 
 Record the sentence and the three dial values under `## Design Read` in `outline.md`.
 
+Also record `delivery_mode` from `deck-brief.json`. Use `speaker_led` for live
+explanation and `reading_first` for asynchronous or detailed review. When the
+need is mixed, choose the closer mode: live delivery defaults to
+`speaker_led`, while async circulation defaults to `reading_first`.
+
 ## Three Dials
 
 | Dial | 1-3 | 4-6 | 7-8 | 9-10 |
@@ -48,6 +53,17 @@ The budgets are defaults, not substitutes for visual review.
 | 7-8 | methods, dense comparison, references, or backup only; label the exception in QA |
 | 9-10 | split the slide before delivery |
 
+## Delivery Modes
+
+| Mode | Main-slide behavior |
+|---|---|
+| `speaker_led` | Density 3-5, one claim or teaching point, one dominant exhibit, normally one to three supporting points. |
+| `reading_first` | Density 5-6, self-contained context, annotated figures, comparison tables, or concise explanatory copy. |
+
+Density 7-8 remains limited to methods, references, or backup slides. Both
+modes keep substantive text at 16 pt or larger and split content before
+shrinking it.
+
 ## Anti-Patterns
 
 - Three equal cards created only because the outline has three bullets.
@@ -61,3 +77,8 @@ Source-defined serif titles, centered covers, and distinctive official shapes ar
 ## Reference Boundary
 
 The framework is a concept-level adaptation of `leonxlnx/taste-skill` v2 at commit `b17742737e796305d829b3ad39eda3add0d79060` (MIT). It does not vendor the external skill or import its frontend stack, motion, dark-mode, or web-component rules.
+
+The conditional visual-discovery, delivery-mode, asset-first outline, and PPTX
+intake workflow is conceptually adapted from `zarazhangrui/frontend-slides` at
+commit `9906a34d640d2111f724544cbc50f7f130569ae1` (MIT). PPTX remains the only
+production output.

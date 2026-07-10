@@ -1,0 +1,17 @@
+{
+  "workflow_mode": "new_deck",
+  "purpose": "生物医学科研报告",
+  "audience": "课题组教师与研究生",
+  "duration_minutes": 15,
+  "target_slide_count": 12,
+  "content_readiness": "complete",
+  "delivery_mode": "speaker_led",
+  "brand_fidelity": "sysu_evolved",
+  "requested_style_id": null,
+  "style_discovery_required": true,
+  "content_confirmed": true,
+  "title": "单细胞图谱揭示治疗后免疫状态重塑",
+  "subtitle": "同一份科研内容的三种中山大学 PPT 视觉方向",
+  "author": "中山大学研究团队",
+  "date": "2026-07-10"
+}
