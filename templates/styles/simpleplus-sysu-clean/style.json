@@ -126,6 +126,32 @@
   ],
   "use_case": "Clean academic seminars, course reports, and content-first research talks.",
   "generation_status": "style_selection_only",
+  "taste_profile": {
+    "mode": "selection",
+    "layout_variance": 4,
+    "visual_density": 4,
+    "visual_energy": 3,
+    "shape_system": "subtle",
+    "layout_repetition_limit": 2
+  },
+  "layout_pattern_ids": [
+    "section-divider",
+    "action-title-hero-visual",
+    "full-figure-evidence",
+    "figure-plus-interpretation",
+    "two-column-teaching",
+    "comparison-table",
+    "process-or-causal-flow",
+    "claim-summary",
+    "references-backup"
+  ],
+  "anti_patterns": [
+    "three equal cards used without peer semantics",
+    "nested cards, decorative pills, and repeated micro-labels",
+    "three consecutive slides using the same layout pattern",
+    "fake dashboards, stock-icon filler, and evidence-free diagrams",
+    "mixed radius, accent, line-weight, or shadow systems"
+  ],
   "visual_tokens": {
     "color": {
       "bg": "FFFFFF",

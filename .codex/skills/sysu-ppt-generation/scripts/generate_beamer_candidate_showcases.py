@@ -97,6 +97,7 @@ STYLE_FAMILIES: list[dict[str, Any]] = [
         "bg": "FFFFFF",
         "neutral": "F8FAFC",
         "use_case": "Clean academic seminars, course reports, and content-first research talks.",
+        "taste": [4, 4, 3],
         "rules": [
             "White canvas, light rules, and restrained color.",
             "Small identity elements, large content regions.",
@@ -118,6 +119,7 @@ STYLE_FAMILIES: list[dict[str, Any]] = [
         "bg": "FBFBF8",
         "neutral": "F4F1EA",
         "use_case": "Formal university reports, defenses, and institution-facing academic presentations.",
+        "taste": [3, 5, 4],
         "rules": [
             "Stronger institutional header and frame number.",
             "Serif-heavy Chinese title hierarchy.",
@@ -139,6 +141,7 @@ STYLE_FAMILIES: list[dict[str, Any]] = [
         "bg": "FAFAF7",
         "neutral": "F0F1EE",
         "use_case": "Technical talks that need maximum reading space and minimal visual noise.",
+        "taste": [5, 3, 4],
         "rules": [
             "Large type, sparse content, and a single progress bar.",
             "Light background for SYSU compatibility.",
@@ -159,6 +162,7 @@ STYLE_FAMILIES: list[dict[str, Any]] = [
         "bg": "F6F7F9",
         "neutral": "ECEFF3",
         "use_case": "Algorithm, code, computational method, and data-heavy research presentations.",
+        "taste": [5, 6, 5],
         "rules": [
             "Technical panels are large and few.",
             "Use dark-on-light contrast and clear grid alignment.",
@@ -179,12 +183,27 @@ STYLE_FAMILIES: list[dict[str, Any]] = [
         "bg": "FBFBFA",
         "neutral": "F1F2EF",
         "use_case": "Long-form lectures, structured research talks, and teaching-first slide decks.",
+        "taste": [5, 5, 4],
         "rules": [
             "Visible structure with quiet progress cues.",
             "Large theorem/equation/table environments.",
             "Good for lectures that need recurring navigation.",
         ],
     },
+]
+
+LAYOUT_PATTERN_IDS = [
+    "section-divider", "action-title-hero-visual", "full-figure-evidence",
+    "figure-plus-interpretation", "two-column-teaching", "comparison-table",
+    "process-or-causal-flow", "claim-summary", "references-backup",
+]
+
+ANTI_PATTERNS = [
+    "three equal cards used without peer semantics",
+    "nested cards, decorative pills, and repeated micro-labels",
+    "three consecutive slides using the same layout pattern",
+    "fake dashboards, stock-icon filler, and evidence-free diagrams",
+    "mixed radius, accent, line-weight, or shadow systems",
 ]
 
 
@@ -279,7 +298,7 @@ def add_text(
     return box
 
 
-def add_bullet(slide, text: str, x: float, y: float, w: float, variant: dict[str, str], family: dict[str, Any], *, size: float = 15.5):
+def add_bullet(slide, text: str, x: float, y: float, w: float, variant: dict[str, str], family: dict[str, Any], *, size: float = 16.0):
     add_rect(slide, x, y + 0.12, 0.13, 0.13, variant["secondary"])
     add_text(slide, text, x + 0.3, y, w - 0.3, 0.32, size, variant["text"], family["font_primary"])
 
@@ -477,6 +496,8 @@ def add_cover(prs, family: dict[str, Any], variants: dict[str, dict[str, Any]], 
         x = 0.92 + i * 1.28
         add_rect(slide, x, 5.35, 0.96, 0.24, pal["accent"])
         add_text(slide, key, x, 5.68, 0.96, 0.16, 9.5, variant["muted"], "Arial", align=PP_ALIGN.CENTER)
+    v, d, e = family["taste"]
+    add_text(slide, f"Taste profile  |  variance {v}  density {d}  energy {e}", 0.92, 6.28, 5.55, 0.22, 11.5, variant["muted"], "Arial")
 
 
 def add_scale_rule(prs, family: dict[str, Any], variants: dict[str, dict[str, Any]], assets: AssetPack):
@@ -514,7 +535,7 @@ def add_variant_slide(prs, family: dict[str, Any], variant_key: str, variants: d
         add_rect(slide, 7.2, 5.25, 3.8, 0.08, variant["secondary"])
     elif variant_key == "green":
         add_family_header(slide, family, variant, f"{color_label}基准：科研结果图页", slide_no, assets.logo_light[variant_key], assets.logo_dark[variant_key])
-        add_text(slide, "同一套结果图用于比较候选风格的图表承载能力。", 0.92, 1.18, 8.6, 0.28, 15.8, variant["text"], family["font_primary"])
+        add_text(slide, "同一套结果图用于比较候选风格的图表承载能力。", 0.92, 1.18, 8.6, 0.28, 16.0, variant["text"], family["font_primary"])
         chart_x, chart_y, chart_w, chart_h = 1.02, 1.78, 7.0, 4.2
         add_rect(slide, chart_x, chart_y, chart_w, chart_h, "FFFFFF", variant["border"])
         axis_x = chart_x + 0.62
@@ -538,7 +559,7 @@ def add_variant_slide(prs, family: dict[str, Any], variant_key: str, variants: d
         add_large_note(slide, family, variant, 8.12, 2.0, "检查点", "轴标签、单位、直接标注和来源必须在 16:9 预览图中可读。")
     else:
         add_family_header(slide, family, variant, f"{color_label}基准：表格与流程检查页", slide_no, assets.logo_light[variant_key], assets.logo_dark[variant_key])
-        add_text(slide, "同一张比较表用于检查候选风格的中文密度、表格线和重点色。", 0.95, 1.18, 8.8, 0.28, 15.8, variant["text"], family["font_primary"])
+        add_text(slide, "同一张比较表用于检查候选风格的中文密度、表格线和重点色。", 0.95, 1.18, 8.8, 0.28, 16.0, variant["text"], family["font_primary"])
         x, y = 1.02, 1.9
         col_w = [2.65, 3.55, 3.35]
         headers = ["证据类型", "适合回答的问题", "课堂使用约束"]
@@ -609,7 +630,7 @@ def add_reference_close(prs, family: dict[str, Any], variants: dict[str, dict[st
     add_text(slide, family["name"], 0.95, 1.28, 5.8, 0.44, 23, variant["accent"], family["font_heading"], bold=True)
     add_text(slide, family["use_case"], 0.95, 1.95, 5.8, 0.7, 17, variant["text"], family["font_primary"])
     for i, rule in enumerate(family["rules"]):
-        add_bullet(slide, rule, 1.0, 3.08 + i * 0.58, 5.85, variant, family, size=15.2)
+        add_bullet(slide, rule, 1.0, 3.08 + i * 0.58, 5.85, variant, family, size=16.0)
     add_rect(slide, 7.35, 1.35, 4.75, 3.85, "FFFFFF", variant["border"], radius=True)
     add_text(slide, "References", 7.68, 1.68, 2.3, 0.24, 15, variant["accent"], family["font_heading"], bold=True)
     for i, url in enumerate(family["reference_urls"]):
@@ -705,6 +726,16 @@ def write_style(family: dict[str, Any], showcase_path: Path, variants: dict[str,
         ],
         "use_case": family["use_case"],
         "generation_status": "style_selection_only",
+        "taste_profile": {
+            "mode": "selection",
+            "layout_variance": family["taste"][0],
+            "visual_density": family["taste"][1],
+            "visual_energy": family["taste"][2],
+            "shape_system": "subtle" if family["family"] != "moloch" else "sharp",
+            "layout_repetition_limit": 2,
+        },
+        "layout_pattern_ids": LAYOUT_PATTERN_IDS,
+        "anti_patterns": ANTI_PATTERNS,
         "visual_tokens": {
             "color": {
                 "bg": family["bg"],

@@ -11,6 +11,7 @@ These repositories are stored under `.codex/reference-skills/` for project-local
 | ai-lingnan/ai-tools-installation recommended_skills | `.codex/reference-skills/ai-tools-installation/recommended_skills` | f76ba65 | For `/pptx`, analyze templates visually, use varied source layouts, do structural edits before content replacement, and run visual QA. For `marp-slides-creator`, keep one point per slide, strong hierarchy, limited density, staged reviews, and PNG checks. For `marp-export`, prefer explicit export commands and report missing rendering dependencies. |
 | hugohe3/ppt-master building_effective_agents | `.codex/reference-skills/ppt-master/examples/ppt169_building_effective_agents` | f477b63 | Borrow only the aesthetic discipline: precise cards, hero diagram first, concise interpretation second, and breathing/dense page rhythm. Do not import its dark background, Anthropic colors, Helvetica typography, chunk icons, or generic vertical accents into SYSU decks. |
 | Noi1r/beamer-skill | `.codex/reference-skills/beamer-skill/beamer` | b73d48a | Borrow Beamer/Madrid academic structure: 16:9, frame title bar, footline frame numbers, theorem/example blocks, two-column layouts, booktabs tables, algorithm frames, references, backup slides, and overflow discipline. For PPTX, scale typography and components up instead of preserving LaTeX Beamer density. Do not emit LaTeX unless requested. |
+| leonxlnx/taste-skill v2 | external reference only | b17742737e796305d829b3ad39eda3add0d79060 | Adapt brief inference, three dials, anti-default rules, redesign modes, pattern-library discipline, and pre-flight review to static PPT. Do not import frontend stack, motion, dark mode, or web UI bans mechanically. MIT-licensed source; concepts are paraphrased locally. |
 
 ## Local Adaptation
 
@@ -25,6 +26,8 @@ Use ai-lingnan `/pptx` ideas for strict original PPTX work: inspect first, map t
 Use `ppt169_building_effective_agents` as the technical-deck rhythm reference for content pages only. The SYSU source PPTX remains the cover, background, and brand authority; use SYSU fonts, extracted SYSU assets, and SYSU template colors. Do not carry over the LoRA Hu blue/orange paper palette, the effective-agents dark background, or the effective-agents Anthropic coral palette unless the user explicitly asks for those styles.
 
 Use `Noi1r/beamer-skill` as a structural reference for Beamer-like academic PPTX templates only. Translate its LaTeX concepts into PowerPoint components: frame title bars, footlines, block styles, readable columns, centered tables, diagram spacing rules, references, and backup slides. Replace its default institute text and colors with SYSU assets and selected SYSU official blue/green/red palettes. Do not copy Beamer PDF density into PPTX; use larger text, larger components, and fewer elements per slide.
+
+Use `leonxlnx/taste-skill` only as a method reference. The local adaptation replaces motion with `visual_energy`, treats source-template fidelity as the highest constraint, and converts web block/pre-flight ideas into PPT layout patterns and screenshot-based review. Do not copy React, CSS, animation, dark-mode, or frontend component instructions into this skill.
 
 ## Selected Local Resource Policy
 

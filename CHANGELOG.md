@@ -1,5 +1,15 @@
 # 更新记录
 
+## v0.3 - 2026-07-10
+
+- 新增 PPT Taste Framework，以 `Design Read`、`layout_variance`、`visual_density` 和 `visual_energy` 显式约束构图判断。
+- 新增九个独立 layout pattern，覆盖章节、证据图、两栏讲授、比较表、流程、总结和 references/backup。
+- 为所有活动 `style.json` 增加 `taste_profile`、`layout_pattern_ids` 和 `anti_patterns`，保持 strict/Beamer/候选状态边界。
+- 新增 Taste QA、anti-slop 排版规则和只读 `audit_deck_taste.py`。
+- 新增 `taste-calibration-showcase.pptx` 与 README 预览图，用同一组科研内容展示不同旋钮和修正版式。
+- 固定参考 `leonxlnx/taste-skill` 提交 `b17742737e796305d829b3ad39eda3add0d79060`；只做 MIT 许可下的概念性改写，不引入前端运行时依赖。
+- 新增 `docs/usage-guide.md` 完整中文使用说明，覆盖首次使用、风格选择、Taste Layer、pattern 映射、输出契约、QA、维护和故障排查。
+
 ## v0.2 - 2026-06-03
 
 - 重做 strict 官方蓝/绿/红教师选型总览，新增三色单独 README 预览图。

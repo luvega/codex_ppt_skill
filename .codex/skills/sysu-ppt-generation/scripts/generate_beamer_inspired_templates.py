@@ -50,6 +50,7 @@ STYLES: list[dict[str, Any]] = [
         "font": "思源黑体 CN Medium",
         "font_fallback": "微软雅黑",
         "use_case": "Academic reports, seminars, and technical talks using SYSU official blue.",
+        "taste": [4, 5, 4],
     },
     {
         "id": "beamer-sysu-green",
@@ -69,6 +70,7 @@ STYLES: list[dict[str, Any]] = [
         "font": "思源宋体 CN Heavy",
         "font_fallback": "微软雅黑",
         "use_case": "Biomedical, life-science, public-health, and sustainability talks using SYSU official green.",
+        "taste": [4, 5, 4],
     },
     {
         "id": "beamer-sysu-red",
@@ -88,7 +90,22 @@ STYLES: list[dict[str, Any]] = [
         "font": "思源宋体 CN Medium",
         "font_fallback": "微软雅黑",
         "use_case": "Formal academic reports, defenses, and official talks using SYSU red.",
+        "taste": [3, 5, 4],
     },
+]
+
+LAYOUT_PATTERN_IDS = [
+    "section-divider", "action-title-hero-visual", "full-figure-evidence",
+    "figure-plus-interpretation", "two-column-teaching", "comparison-table",
+    "process-or-causal-flow", "claim-summary", "references-backup",
+]
+
+ANTI_PATTERNS = [
+    "three equal cards used without peer semantics",
+    "nested cards, decorative pills, and repeated micro-labels",
+    "three consecutive slides using the same layout pattern",
+    "fake dashboards, stock-icon filler, and evidence-free diagrams",
+    "mixed radius, accent, line-weight, or shadow systems",
 ]
 
 
@@ -317,7 +334,7 @@ def add_block(slide, style: dict[str, Any], x, y, w, h, label, body, *, kind="no
     add_rect(slide, x, y, w, h, "FFFFFF", style["border"], radius=True)
     add_rect(slide, x, y, w, 0.48, header_color)
     add_text(slide, label, x + 0.2, y + 0.13, w - 0.4, 0.18, 11.5, "FFFFFF", style["font"], bold=True)
-    add_text(slide, body, x + 0.28, y + 0.78, w - 0.56, h - 0.95, 15.5, style["text"], style["font_fallback"])
+    add_text(slide, body, x + 0.28, y + 0.78, w - 0.56, h - 0.95, 16.0, style["text"], style["font_fallback"])
 
 
 def slide_cover(prs, style, logo_on_light, hero):
@@ -348,7 +365,7 @@ def slide_agenda(prs, style, logo_on_dark):
         y = 1.38 + i * 1.02
         add_text(slide, num, 1.05, y, 0.66, 0.28, 17, style["secondary"], "Arial", bold=True)
         add_text(slide, title, 1.92, y - 0.04, 2.35, 0.32, 18.5, style["accent"], style["font"], bold=True)
-        add_text(slide, desc, 4.45, y, 5.9, 0.27, 15.2, style["text"], style["font_fallback"])
+        add_text(slide, desc, 4.45, y, 5.9, 0.27, 16.0, style["text"], style["font_fallback"])
         add_line(slide, 1.92, y + 0.54, 10.7, y + 0.54, style["border"], 0.7)
 
 
@@ -404,9 +421,9 @@ def slide_visual(prs, style, logo_on_dark, hero):
         style["text"],
         style["font_fallback"],
     )
-    add_bullet(slide, "学生是否理解：看过程，不只看答案", 1.18, 3.38, 4.2, style, size=14.8)
-    add_bullet(slide, "教师是否调整：看反馈是否可执行", 1.18, 3.96, 4.2, style, size=14.8)
-    add_bullet(slide, "工具是否可靠：看记录能否复查", 1.18, 4.54, 4.2, style, size=14.8)
+    add_bullet(slide, "学生是否理解：看过程，不只看答案", 1.18, 3.38, 4.2, style, size=16.0)
+    add_bullet(slide, "教师是否调整：看反馈是否可执行", 1.18, 3.96, 4.2, style, size=16.0)
+    add_bullet(slide, "工具是否可靠：看记录能否复查", 1.18, 4.54, 4.2, style, size=16.0)
     add_rect(slide, 6.38, 1.16, 5.92, 4.95, style["surface"], style["border"], radius=True)
     add_picture_crop(slide, hero, 6.68, 1.48, 5.32, 3.38)
     add_text(slide, "右侧保留一个主要视觉区域，承载案例、图表或课堂截图。", 6.7, 5.18, 4.95, 0.28, 12.5, style["muted"], style["font_fallback"])
@@ -415,7 +432,7 @@ def slide_visual(prs, style, logo_on_dark, hero):
 def slide_result_figure(prs, style, logo_on_dark):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_header(slide, style, "科研结果图页：只突出一个关键比较", 5, logo_on_dark, "结果")
-    add_text(slide, "示例问题：加入过程性反馈后，学生能否更快完成概念迁移？", 0.92, 1.05, 8.8, 0.3, 15.8, style["text"], style["font_fallback"])
+    add_text(slide, "示例问题：加入过程性反馈后，学生能否更快完成概念迁移？", 0.92, 1.05, 8.8, 0.3, 16.0, style["text"], style["font_fallback"])
     chart_x, chart_y, chart_w, chart_h = 0.98, 1.72, 7.1, 4.38
     add_rect(slide, chart_x, chart_y, chart_w, chart_h, "FFFFFF", style["border"])
     axis_x = chart_x + 0.62
@@ -452,7 +469,7 @@ def slide_result_figure(prs, style, logo_on_dark):
     add_bullet(slide, "直接标注关键系列", 8.86, 3.28, 2.82, style, size=14.5)
     add_bullet(slide, "轴标签和单位必须可读", 8.86, 3.84, 2.82, style, size=14.5)
     add_bullet(slide, "来源贴近图表而非隐藏", 8.86, 4.4, 2.82, style, size=14.5)
-    add_text(slide, "正式科研页可替换为论文图、实验图或统计图，但必须保留单位、样本量和来源。", 8.82, 5.12, 2.92, 0.48, 11.8, style["muted"], style["font_fallback"])
+    add_text(slide, "正式科研页可替换为论文图、实验图或统计图，但必须保留单位、样本量和来源。", 8.82, 5.0, 2.92, 0.62, 16.0, style["muted"], style["font_fallback"])
 
 
 def slide_table(prs, style, logo_on_dark):
@@ -479,7 +496,7 @@ def slide_table(prs, style, logo_on_dark):
         cursor = x
         for c, (text, w) in enumerate(zip(row, col_w)):
             color = style["secondary"] if r == 1 and c == 2 else style["text"]
-            add_text(slide, text, cursor + 0.1, yy, w - 0.2, 0.33, 13.5, color, style["font_fallback"], bold=c == 0)
+            add_text(slide, text, cursor + 0.1, yy, w - 0.2, 0.4, 16.0, color, style["font_fallback"], bold=c == 0)
             cursor += w
         add_line(slide, x, yy + 0.56, x + total_w, yy + 0.56, style["border"], 0.45)
     add_line(slide, x, y + 0.88 + len(rows) * 0.78, x + total_w, y + 0.88 + len(rows) * 0.78, style["accent"], 1.9)
@@ -497,12 +514,12 @@ def slide_algorithm(prs, style, logo_on_dark):
     for i, (title, note) in enumerate(nodes):
         x = 0.95 + i * 3.05
         add_rect(slide, x, 2.15, 2.2, 1.18, "FFFFFF", style["border"], radius=True)
-        add_text(slide, title, x + 0.18, 2.45, 1.84, 0.24, 15, style["accent"], style["font"], bold=True, align=PP_ALIGN.CENTER)
+        add_text(slide, title, x + 0.18, 2.42, 1.84, 0.28, 16.0, style["accent"], style["font"], bold=True, align=PP_ALIGN.CENTER)
         add_text(slide, note, x + 0.18, 2.92, 1.84, 0.18, 9.8, style["muted"], "Arial", align=PP_ALIGN.CENTER)
         if i < len(nodes) - 1:
             add_arrow(slide, x + 2.32, 2.75, x + 2.92, 2.75, style["secondary"])
     add_rect(slide, 1.0, 4.42, 10.9, 0.92, style["surface"], style["border"], radius=True)
-    add_text(slide, "关键要求：每次生成 deck 都留下中间文件，后续教师或代理可以复查风格、内容替换和 QA 结论。", 1.32, 4.75, 10.05, 0.24, 15.2, style["text"], style["font_fallback"])
+    add_text(slide, "关键要求：每次生成 deck 都留下中间文件，后续教师或代理可以复查风格、内容替换和 QA 结论。", 1.32, 4.75, 10.05, 0.24, 16.0, style["text"], style["font_fallback"])
 
 
 def slide_diagram(prs, style, logo_on_dark):
@@ -519,8 +536,8 @@ def slide_diagram(prs, style, logo_on_dark):
         add_rect(slide, x, 1.72, 3.28, 0.12, style["secondary"])
         add_text(slide, f"0{i + 1}", x + 0.28, 2.08, 0.62, 0.24, 14, style["secondary"], "Arial", bold=True)
         add_text(slide, title, x + 0.9, 2.04, 1.85, 0.28, 17, style["accent"], style["font"], bold=True)
-        add_text(slide, body, x + 0.3, 2.9, 2.65, 0.72, 15, style["text"], style["font_fallback"])
-    add_text(slide, "适用作课程结尾、报告建议页或生成代理交付前的检查页。", 1.0, 5.45, 8.6, 0.3, 15, style["muted"], style["font_fallback"])
+        add_text(slide, body, x + 0.3, 2.9, 2.65, 0.72, 16.0, style["text"], style["font_fallback"])
+    add_text(slide, "适用作课程结尾、报告建议页或生成代理交付前的检查页。", 1.0, 5.45, 8.6, 0.3, 16.0, style["muted"], style["font_fallback"])
 
 
 def slide_refs(prs, style, logo_on_dark):
@@ -602,6 +619,16 @@ def write_style(style: dict[str, Any], template_path: Path, showcase_path: Path)
             "fallback": style["font_fallback"],
         },
         "generation_status": "ready",
+        "taste_profile": {
+            "mode": "evolve",
+            "layout_variance": style["taste"][0],
+            "visual_density": style["taste"][1],
+            "visual_energy": style["taste"][2],
+            "shape_system": "subtle",
+            "layout_repetition_limit": 2,
+        },
+        "layout_pattern_ids": LAYOUT_PATTERN_IDS,
+        "anti_patterns": ANTI_PATTERNS,
         "visual_tokens": {
             "color": {
                 key: style[key]

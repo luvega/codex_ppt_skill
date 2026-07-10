@@ -9,6 +9,11 @@ New-Item -ItemType Directory -Force -Path $previewDir | Out-Null
 
 $items = @(
   @{
+    Pptx = "outputs\style-showcase\taste-calibration\taste-calibration-showcase.pptx"
+    Slide = 6
+    Out = "taste-calibration.png"
+  },
+  @{
     Pptx = "outputs\style-showcase\template-elements\template-elements-gallery.pptx"
     Slide = 1
     Out = "strict-template-gallery.png"

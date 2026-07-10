@@ -49,7 +49,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .codex\skills\sysu-ppt-gener
 11. Read `references/output-contract.md` before creating a new deck output folder.
 12. Read `references/design-rules.md` when choosing colors, fonts, slide patterns, or academic presentation structure.
 13. Read `references/visual-qa-rubric.md` before final visual review or when writing `qa-notes.md`.
-14. Read `references/reference-skill-notes.md` only when you need the rationale from the referenced third-party skills.
+14. Read `references/ppt-taste-framework.md` before choosing freeform layouts or changing an existing deck's visual language.
+15. Read `references/layout-patterns/README.md`, then open only the selected pattern files before drawing custom shapes.
+16. Read `references/reference-skill-notes.md` only when you need the rationale from the referenced third-party skills.
 
 ## Style Choice
 
@@ -99,15 +101,16 @@ Ask at most three clarifying questions when required: target audience, talk dura
 ## Creation Workflow
 
 1. Choose one style ID from `templates/styles/style-index.json`.
-2. Save a slide-by-slide outline with action titles. For academic content, titles must state findings or claims, not just topics.
-3. Choose template slide indices from `template-inventory.md`. Slide indices are zero-based.
-4. Create an output folder under `outputs/<deck-slug>/` with `outline.md`, `style.json`, `template-mapping.json`, intermediate files, and the final `.pptx`.
-5. Copy the chosen source PPTX into the output folder. Never edit the original templates.
-6. Duplicate or delete slides to match `template-mapping.json`, then replace text and images while preserving placeholders and formatting.
-7. Use `python-pptx` for straightforward text/image replacement. Use OOXML edits only when needed to preserve masters, notes, comments, or complex formatting.
-8. Keep every template placeholder either filled with meaningful content or intentionally cleared. Do not leave sample text.
-9. Run the extraction script on the final PPTX when structural verification is needed, and compare slide count, layout use, font usage, and colors against the template inventory.
-10. If LibreOffice/Poppler are available, render thumbnails or PDF pages and visually check for cropped text, overlap, broken images, and off-brand colors. If they are not available, report that visual rendering was not run.
+2. Write a one-line Chinese Design Read and record the selected style's `layout_variance`, `visual_density`, and `visual_energy` in `outline.md`.
+3. Save a slide-by-slide outline with action titles. For academic content, titles must state findings or claims, not just topics.
+4. Choose a `layout_pattern_id` for every slide, then choose template slide indices from `template-inventory.md`. Slide indices are zero-based.
+5. Create an output folder under `outputs/<deck-slug>/` with `outline.md`, `style.json`, `template-mapping.json`, intermediate files, and the final `.pptx`.
+6. Copy the chosen source PPTX into the output folder. Never edit the original templates.
+7. Duplicate or delete slides to match `template-mapping.json`, then replace text and images while preserving placeholders and formatting.
+8. Use `python-pptx` for straightforward text/image replacement. Use OOXML edits only when needed to preserve masters, notes, comments, or complex formatting.
+9. Keep every template placeholder either filled with meaningful content or intentionally cleared. Do not leave sample text.
+10. Run the extraction script on the final PPTX when structural verification is needed, and compare slide count, layout use, font usage, and colors against the template inventory.
+11. Render thumbnails and complete Visual QA plus Taste QA. If rendering is unavailable, record the limitation explicitly.
 
 When strict fidelity matters, follow the ai-lingnan `/pptx` pattern: analyze the template visually, map content to varied source layouts, complete structural slide changes first, then edit text/images and run a visual check. Also read the selected style's `asset_manifest` so font families such as `思源宋体 CN Heavy` and reusable media elements are available during generation. Use the Marp reference only for density and review discipline; this skill's PPTX template-first workflow remains the authority.
 
@@ -126,6 +129,9 @@ When strict fidelity matters, follow the ai-lingnan `/pptx` pattern: analyze the
 - Keep source citations on slides when using borrowed figures, claims, or data.
 - Record visual QA in `qa-notes.md`: title overflow, text readability, element overlap, image aspect ratio, chart readability, citation proximity, footer consistency, and brand color.
 - For scientific figures, simplify journal-density figures for projection: split multi-panel images, enlarge axis labels, direct-label key series, and keep one highlighted result per slide.
+- Do not repeat one layout pattern on three consecutive content slides. Main decks with eight or more slides should use at least four pattern families.
+- Lock one accent, shape/radius system, line-weight system, and shadow policy per deck.
+- Do not default to three equal cards, nested cards, decorative pills, repeated micro-labels, fake dashboards, stock-icon filler, or evidence-free diagrams.
 
 ## Local References
 

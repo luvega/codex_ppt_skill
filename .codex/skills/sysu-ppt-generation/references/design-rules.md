@@ -33,6 +33,18 @@ Treat each style as a small design system, similar to a front-end component libr
 
 Avoid over-framing content. Do not put cards inside cards; use blocks only when they express a semantic role such as theorem/example/alert, evidence, or action item.
 
+## PPT Taste Controls
+
+Read `ppt-taste-framework.md` before composing freeform pages. Each style supplies a `taste_profile` with `mode`, `layout_variance`, `visual_density`, `visual_energy`, `shape_system`, and `layout_repetition_limit`.
+
+- `layout_variance` controls pattern rotation and asymmetry, not brand deviation.
+- `visual_density` controls text/figure/component load; main slides normally stay between 3 and 6.
+- `visual_energy` controls static contrast and emphasis, not animation.
+- `preserve` mode cannot override source masters, fonts, palette, logo, footer, or distinctive source geometry.
+- Choose a pattern from `layout-patterns/` before drawing custom shapes.
+
+Decks with eight or more slides should use at least four pattern families. Do not repeat one pattern on three consecutive content slides.
+
 ## Style Switching
 
 | Style ID | Palette role | Best use |
@@ -113,6 +125,10 @@ Use these when the deck is a seminar, defense, research talk, lab meeting, confe
 - Keep alignment consistent with the template margins.
 - Do not draw decorative cards inside existing template cards.
 - Prefer existing placeholders over manual text boxes. If manual boxes are necessary, align to the same margins and baseline rhythm.
+- Do not use three equal cards merely because an outline has three bullets; cards require independent peer semantics.
+- Lock one corner/radius rule, line-weight hierarchy, and shadow policy across the deck.
+- Avoid decorative pills, repeated micro-eyebrows, ornamental section numbering, fake dashboards, and stock-icon filler.
+- Break Chinese titles at semantic phrases and keep Chinese letter spacing at zero.
 
 ## Tables, Figures, and Images
 

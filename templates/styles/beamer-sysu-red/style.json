@@ -45,6 +45,32 @@
     "fallback": "微软雅黑"
   },
   "generation_status": "ready",
+  "taste_profile": {
+    "mode": "evolve",
+    "layout_variance": 3,
+    "visual_density": 5,
+    "visual_energy": 4,
+    "shape_system": "subtle",
+    "layout_repetition_limit": 2
+  },
+  "layout_pattern_ids": [
+    "section-divider",
+    "action-title-hero-visual",
+    "full-figure-evidence",
+    "figure-plus-interpretation",
+    "two-column-teaching",
+    "comparison-table",
+    "process-or-causal-flow",
+    "claim-summary",
+    "references-backup"
+  ],
+  "anti_patterns": [
+    "three equal cards used without peer semantics",
+    "nested cards, decorative pills, and repeated micro-labels",
+    "three consecutive slides using the same layout pattern",
+    "fake dashboards, stock-icon filler, and evidence-free diagrams",
+    "mixed radius, accent, line-weight, or shadow systems"
+  ],
   "visual_tokens": {
     "color": {
       "accent": "8F1D2C",

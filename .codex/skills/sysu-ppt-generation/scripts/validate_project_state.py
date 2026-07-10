@@ -27,7 +27,14 @@ REQUIRED_STYLE_FIELDS = {
     "use_case",
     "generation_status",
     "rules",
+    "taste_profile",
+    "layout_pattern_ids",
+    "anti_patterns",
 }
+
+TASTE_MODES = {"preserve", "evolve", "selection"}
+REQUIRED_TASTE_FIELDS = {"mode", "layout_variance", "visual_density", "visual_energy", "shape_system", "layout_repetition_limit"}
+PATTERN_ROOT = ROOT / ".codex" / "skills" / "sysu-ppt-generation" / "references" / "layout-patterns"
 
 STALE_PATTERNS = [
     "/".join(["F:", "AI_PPT"]),
@@ -102,6 +109,21 @@ def validate_style_registry(errors: list[str], warnings: list[str]) -> dict[str,
             errors.append(f"{sid}: style asset_manifest differs from style-index asset_manifest")
         if entry.get("generation_status") != style.get("generation_status"):
             errors.append(f"{sid}: generation_status differs between style-index and style.json")
+        profile = style.get("taste_profile", {})
+        missing_profile = sorted(REQUIRED_TASTE_FIELDS - set(profile))
+        if missing_profile:
+            errors.append(f"{sid}: taste_profile missing fields: {', '.join(missing_profile)}")
+        if profile.get("mode") not in TASTE_MODES:
+            errors.append(f"{sid}: invalid taste mode: {profile.get('mode')}")
+        for key in ("layout_variance", "visual_density", "visual_energy"):
+            value = profile.get(key)
+            if not isinstance(value, int) or not 1 <= value <= 10:
+                errors.append(f"{sid}: {key} must be an integer from 1 to 10")
+        for pattern_id in style.get("layout_pattern_ids", []):
+            if not (PATTERN_ROOT / f"{pattern_id}.md").exists():
+                errors.append(f"{sid}: missing layout pattern file: {pattern_id}.md")
+        if not isinstance(style.get("anti_patterns"), list) or not style.get("anti_patterns"):
+            errors.append(f"{sid}: anti_patterns must be a non-empty list")
 
     return styles
 

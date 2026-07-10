@@ -1,10 +1,18 @@
 # 中山大学 PPT 生成技能
 
-版本：`0.2`
+版本：`0.3`
 
 这是一个面向后续 Codex 使用的项目内 PowerPoint 生成技能库。仓库包含可切换的风格规范、从本地模板提取出的视觉资产、生成模板、展示 PPT 和 README 预览图，方便后续按不同场景选择风格并生成 16:9 演示文稿。
 
+完整操作流程、文件示例、审计命令和故障排查见：[AI_PPT 完整使用说明](docs/usage-guide.md)。
+
 ## 效果预览
+
+### PPT Taste Layer
+
+<img src="docs/previews/taste-calibration.png" width="760" alt="PPT Taste Layer 校准展示">
+
+Taste Layer 要求生成前完成一句中文 `Design Read`，再用三个旋钮控制构图：`layout_variance` 管版式变化，`visual_density` 管信息密度，`visual_energy` 管静态视觉张力。它改善内容页的层级、节奏和克制程度，但不覆盖 SYSU 源模板的字体、校徽、配色、母版和正式身份。
 
 ### 教师选型总览
 
@@ -49,6 +57,7 @@
 ## 仓库内容
 
 - `.codex/skills/`：项目内 Codex 技能、参考说明和确定性生成脚本。
+- `.codex/skills/sysu-ppt-generation/references/layout-patterns/`：可复用的 PPT 构图 pattern library。
 - `templates/styles/`：可切换风格规范和 `style-index.json`。
 - `templates/assets/`：从本地模板提取的校徽、标志、校区图片和可复用媒体资产。
 - `templates/generated/beamer-inspired/`：生成后的 Beamer 启发 PPTX 模板。
@@ -99,7 +108,11 @@ outputs/<deck-slug>/
 
 生成前先写 `outline.md` 和 `template-mapping.json`，再复制源模板或生成模板为 `working.pptx`。最终交付 `final.pptx`，并在 `qa-notes.md` 记录 slide count、尺寸、资产来源、渲染/缩略图检查结果和已知限制。
 
+`outline.md` 还必须记录 `Design Read`、Taste mode 和三个旋钮值；`template-mapping.json` 每页必须指定 `layout_pattern_id`；`qa-notes.md` 使用独立的 `Taste QA` 章节记录层级、节奏、克制、构图、品牌保真和证据清晰度。
+
 ## 使用方式
+
+首次使用或需要生成正式 deck 时，优先阅读 `docs/usage-guide.md`。以下内容仅作为快速入口。
 
 在 Codex 中打开本仓库后，先读取：
 
@@ -108,6 +121,8 @@ templates/styles/style-index.json
 .codex/skills/sysu-ppt-generation/references/style-schema.md
 .codex/skills/sysu-ppt-generation/references/output-contract.md
 .codex/skills/sysu-ppt-generation/references/visual-qa-rubric.md
+.codex/skills/sysu-ppt-generation/references/ppt-taste-framework.md
+.codex/skills/sysu-ppt-generation/references/layout-patterns/README.md
 ```
 
 再按目标场景选择风格。若需要 Beamer 系列 PPTX，可优先从以下目录中的生成模板开始：
@@ -126,7 +141,9 @@ python "$skill\scripts\extract_pptx_template.py" --root . --out-dir "$skill\refe
 python "$skill\scripts\generate_strict_original_showcases.py"
 python "$skill\scripts\generate_beamer_inspired_templates.py"
 python "$skill\scripts\generate_beamer_candidate_showcases.py"
+python "$skill\scripts\generate_taste_calibration_showcase.py"
 python "$skill\scripts\validate_project_state.py"
+python "$skill\scripts\audit_deck_taste.py" final.pptx --style style.json --mapping template-mapping.json
 powershell -NoProfile -ExecutionPolicy Bypass -File "$skill\scripts\export_readme_previews.ps1"
 ```
 
@@ -153,6 +170,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "$skill\scripts\export_readm
 ```text
 .codex/skills/<本项目技能目录>/references/reference-skill-notes.md
 ```
+
+PPT Taste Layer 概念性借鉴 [leonxlnx/taste-skill v2](https://github.com/leonxlnx/taste-skill/blob/main/skills/taste-skill/SKILL.md)，固定参考提交 `b17742737e796305d829b3ad39eda3add0d79060`，按 MIT License 改写为静态 PPT 规则。项目未安装或 vendor 该仓库，也未引入其 React、CSS、动效和暗色模式规则。
 
 ## Git LFS
 

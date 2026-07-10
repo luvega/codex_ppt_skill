@@ -20,6 +20,9 @@ Every `style.json` must include:
 | `use_case` | Short statement of when the style should be selected. |
 | `generation_status` | Current production status. |
 | `rules` | Generation rules that downstream agents must apply. |
+| `taste_profile` | PPT taste mode and three dial values, including shape and repetition rules. |
+| `layout_pattern_ids` | Pattern IDs that this style can use for repeatable composition. |
+| `anti_patterns` | Style-specific visual defaults that generation agents must avoid. |
 
 Optional fields such as `template_pptx`, `contact_sheet`, `reference`, `assets`, and `status_reason` may be present when relevant.
 
@@ -53,3 +56,11 @@ Use these values:
 5. For `beamer-inspired`, start from `template_pptx` and use the listed source assets.
 6. For `beamer-candidates`, treat the deck as visual selection material unless the user explicitly promotes it to a production direction.
 7. Read `visual_tokens`, `sample_page_types`, and `qa_focus` when available, then copy the selected `style.json` into the output folder.
+8. Read `taste_profile`, choose a `layout_pattern_id` for every slide, and record deck-level overrides in `outline.md`.
+
+## Taste Profile Contract
+
+- `mode`: one of `preserve`, `evolve`, or `selection`.
+- `layout_variance`, `visual_density`, `visual_energy`: integers from 1 through 10.
+- `shape_system`: `source_defined`, `sharp`, or `subtle`.
+- `layout_repetition_limit`: integer from 1 through 3; current active styles use 2.

@@ -14,6 +14,10 @@ Use this checklist for every generated SYSU deck and every refreshed showcase pr
 | Citation proximity | Source notes and citations sit near the figure, table, or claim they support. | Move citation from global footer to the relevant visual/callout region. |
 | Footer consistency | Footer text, page numbers, and wordmarks stay in the expected location and style. | Reuse the style footer component; avoid placing content in the footer band. |
 | Brand color | Colors come from the selected style tokens; no orange/black/medical-AI leftovers or arbitrary palettes. | Replace colors with style tokens from `style.json`. |
+| Taste profile | Layout, density, and energy match the selected `taste_profile`. | Split content, change the pattern, or reduce decorative emphasis. |
+| Pattern rhythm | No pattern appears on three consecutive content slides; long decks use at least four families. | Remap one slide to a figure, comparison, flow, divider, or summary pattern. |
+| Shape consistency | Radius, line weight, and shadow treatment form one coherent system. | Remove isolated pills, mixed radii, and black drop shadows. |
+| Evidence integrity | Visual regions contain real evidence or relevant imagery, not stock-icon filler or fake dashboards. | Replace decoration with a real figure, table, diagram, or explicitly empty region. |
 
 ## Scientific Figure Checks
 
@@ -34,3 +38,12 @@ Use this compact ledger shape in `qa-notes.md`:
 | 3 | Title fit | pass | Long Chinese title split across two lines. |
 | 5 | Chart readability | warn | Tick labels readable in PNG preview; raw source figure not available. |
 ```
+
+## Taste Pre-Flight
+
+- Design Read and three dial values are recorded.
+- Every slide has a `layout_pattern_id` in `template-mapping.json`.
+- One accent, shape system, line hierarchy, and shadow policy are used consistently.
+- Three equal cards appear only when the content is genuinely three independent peers.
+- Chinese titles use semantic line breaks and zero letter spacing.
+- Source-defined typography and geometry override generic taste rules in `preserve` mode.

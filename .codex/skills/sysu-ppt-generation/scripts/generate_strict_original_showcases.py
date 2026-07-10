@@ -77,6 +77,26 @@ STRICT_STYLES: list[dict[str, Any]] = [
     },
 ]
 
+LAYOUT_PATTERN_IDS = [
+    "section-divider",
+    "action-title-hero-visual",
+    "full-figure-evidence",
+    "figure-plus-interpretation",
+    "two-column-teaching",
+    "comparison-table",
+    "process-or-causal-flow",
+    "claim-summary",
+    "references-backup",
+]
+
+ANTI_PATTERNS = [
+    "three equal cards used as a default bullet layout",
+    "nested cards or decorative pills",
+    "repeated micro-eyebrows and ornamental section numbers",
+    "fake dashboards, stock-icon filler, and evidence-free diagrams",
+    "mixed accent, radius, line-weight, or shadow systems",
+]
+
 
 def rel(path: Path) -> str:
     return str(path.relative_to(ROOT)).replace("\\", "/")
@@ -544,6 +564,16 @@ def write_style_files(style: dict[str, Any], manifest: dict[str, Any], demo_path
         },
         "use_case": style["use_case"],
         "generation_status": "ready",
+        "taste_profile": {
+            "mode": "preserve",
+            "layout_variance": 3,
+            "visual_density": 5,
+            "visual_energy": 3,
+            "shape_system": "source_defined",
+            "layout_repetition_limit": 2,
+        },
+        "layout_pattern_ids": LAYOUT_PATTERN_IDS,
+        "anti_patterns": ANTI_PATTERNS,
         "visual_tokens": {
             "color": {
                 "bg": source_palette(style)["bg"],
